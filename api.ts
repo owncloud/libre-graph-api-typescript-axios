@@ -26,7 +26,13 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
  * @export
  * @interface BaseItem
  */
-export interface BaseItem extends Entity {
+export interface BaseItem {
+    /**
+     * Read-only.
+     * @type {string}
+     * @memberof BaseItem
+     */
+    'id'?: string;
     /**
      * 
      * @type {IdentitySet}
@@ -97,94 +103,75 @@ export interface BaseItem extends Entity {
 /**
  * 
  * @export
- * @interface BaseItemAllOf
+ * @interface BaseItemInline
  */
-export interface BaseItemAllOf {
+export interface BaseItemInline {
     /**
      * 
      * @type {IdentitySet}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'createdBy'?: IdentitySet;
     /**
      * Date and time of item creation. Read-only.
      * @type {string}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'createdDateTime'?: string;
     /**
      * Provides a user-visible description of the item. Optional.
      * @type {string}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'description'?: string;
     /**
      * ETag for the item. Read-only.
      * @type {string}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'eTag'?: string;
     /**
      * 
      * @type {IdentitySet}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'lastModifiedBy'?: IdentitySet;
     /**
      * Date and time the item was last modified. Read-only.
      * @type {string}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'lastModifiedDateTime'?: string;
     /**
      * The name of the item. Read-write.
      * @type {string}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'name'?: string;
     /**
      * 
      * @type {ItemReference}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'parentReference'?: ItemReference;
     /**
      * URL that displays the resource in the browser. Read-only.
      * @type {string}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'webUrl'?: string;
     /**
      * 
      * @type {User}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'createdByUser'?: User;
     /**
      * 
      * @type {User}
-     * @memberof BaseItemAllOf
+     * @memberof BaseItemInline
      */
     'lastModifiedByUser'?: User;
-}
-/**
- * 
- * @export
- * @interface CollectionOfDrive
- */
-export interface CollectionOfDrive {
-    /**
-     * 
-     * @type {Array<Drive>}
-     * @memberof CollectionOfDrive
-     */
-    'value'?: Array<Drive>;
-    /**
-     * 
-     * @type {string}
-     * @memberof CollectionOfDrive
-     */
-    '@odata.nextLink'?: string;
 }
 /**
  * 
@@ -206,6 +193,25 @@ export interface CollectionOfDriveItems {
     '@odata.nextLink'?: string;
 }
 /**
+ * 
+ * @export
+ * @interface CollectionOfDrives
+ */
+export interface CollectionOfDrives {
+    /**
+     * 
+     * @type {Array<Drive>}
+     * @memberof CollectionOfDrives
+     */
+    'value'?: Array<Drive>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CollectionOfDrives
+     */
+    '@odata.nextLink'?: string;
+}
+/**
  * Information about the deleted state of the item. Read-only.
  * @export
  * @interface Deleted
@@ -219,11 +225,17 @@ export interface Deleted {
     'state'?: string;
 }
 /**
- * 
+ * Represents an Active Directory object. The directoryObject type is the base type for many other directory entity types.
  * @export
  * @interface DirectoryObject
  */
-export interface DirectoryObject extends Entity {
+export interface DirectoryObject {
+    /**
+     * Read-only.
+     * @type {string}
+     * @memberof DirectoryObject
+     */
+    'id'?: string;
     /**
      * 
      * @type {string}
@@ -232,24 +244,96 @@ export interface DirectoryObject extends Entity {
     'deletedDateTime'?: string;
 }
 /**
- * Represents an Active Directory object. The directoryObject type is the base type for many other directory entity types.
+ * 
  * @export
- * @interface DirectoryObjectAllOf
+ * @interface DirectoryObjectInline
  */
-export interface DirectoryObjectAllOf {
+export interface DirectoryObjectInline {
     /**
      * 
      * @type {string}
-     * @memberof DirectoryObjectAllOf
+     * @memberof DirectoryObjectInline
      */
     'deletedDateTime'?: string;
 }
 /**
- * The user\'s HomeDrive. Read-only.
+ * Storage Space. Read-only.
  * @export
  * @interface Drive
  */
-export interface Drive extends BaseItem {
+export interface Drive {
+    /**
+     * Read-only.
+     * @type {string}
+     * @memberof Drive
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof Drive
+     */
+    'createdBy'?: IdentitySet;
+    /**
+     * Date and time of item creation. Read-only.
+     * @type {string}
+     * @memberof Drive
+     */
+    'createdDateTime'?: string;
+    /**
+     * Provides a user-visible description of the item. Optional.
+     * @type {string}
+     * @memberof Drive
+     */
+    'description'?: string;
+    /**
+     * ETag for the item. Read-only.
+     * @type {string}
+     * @memberof Drive
+     */
+    'eTag'?: string;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof Drive
+     */
+    'lastModifiedBy'?: IdentitySet;
+    /**
+     * Date and time the item was last modified. Read-only.
+     * @type {string}
+     * @memberof Drive
+     */
+    'lastModifiedDateTime'?: string;
+    /**
+     * The name of the item. Read-write.
+     * @type {string}
+     * @memberof Drive
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {ItemReference}
+     * @memberof Drive
+     */
+    'parentReference'?: ItemReference;
+    /**
+     * URL that displays the resource in the browser. Read-only.
+     * @type {string}
+     * @memberof Drive
+     */
+    'webUrl'?: string;
+    /**
+     * 
+     * @type {User}
+     * @memberof Drive
+     */
+    'createdByUser'?: User;
+    /**
+     * 
+     * @type {User}
+     * @memberof Drive
+     */
+    'lastModifiedByUser'?: User;
     /**
      * Describes the type of drive represented by this resource. Values are \"personal\" for users home spaces, \"project\" or \"share\". Read-only.
      * @type {string}
@@ -284,37 +368,37 @@ export interface Drive extends BaseItem {
 /**
  * 
  * @export
- * @interface DriveAllOf
+ * @interface DriveInline
  */
-export interface DriveAllOf {
+export interface DriveInline {
     /**
      * Describes the type of drive represented by this resource. Values are \"personal\" for users home spaces, \"project\" or \"share\". Read-only.
      * @type {string}
-     * @memberof DriveAllOf
+     * @memberof DriveInline
      */
     'driveType'?: string;
     /**
      * 
      * @type {IdentitySet}
-     * @memberof DriveAllOf
+     * @memberof DriveInline
      */
     'owner'?: IdentitySet;
     /**
      * 
      * @type {Quota}
-     * @memberof DriveAllOf
+     * @memberof DriveInline
      */
     'quota'?: Quota;
     /**
      * All items contained in the drive. Read-only. Nullable.
      * @type {Array<DriveItem>}
-     * @memberof DriveAllOf
+     * @memberof DriveInline
      */
     'items'?: Array<DriveItem>;
     /**
      * 
      * @type {DriveItem}
-     * @memberof DriveAllOf
+     * @memberof DriveInline
      */
     'root'?: DriveItem;
 }
@@ -323,7 +407,79 @@ export interface DriveAllOf {
  * @export
  * @interface DriveItem
  */
-export interface DriveItem extends BaseItem {
+export interface DriveItem {
+    /**
+     * Read-only.
+     * @type {string}
+     * @memberof DriveItem
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof DriveItem
+     */
+    'createdBy'?: IdentitySet;
+    /**
+     * Date and time of item creation. Read-only.
+     * @type {string}
+     * @memberof DriveItem
+     */
+    'createdDateTime'?: string;
+    /**
+     * Provides a user-visible description of the item. Optional.
+     * @type {string}
+     * @memberof DriveItem
+     */
+    'description'?: string;
+    /**
+     * ETag for the item. Read-only.
+     * @type {string}
+     * @memberof DriveItem
+     */
+    'eTag'?: string;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof DriveItem
+     */
+    'lastModifiedBy'?: IdentitySet;
+    /**
+     * Date and time the item was last modified. Read-only.
+     * @type {string}
+     * @memberof DriveItem
+     */
+    'lastModifiedDateTime'?: string;
+    /**
+     * The name of the item. Read-write.
+     * @type {string}
+     * @memberof DriveItem
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {ItemReference}
+     * @memberof DriveItem
+     */
+    'parentReference'?: ItemReference;
+    /**
+     * URL that displays the resource in the browser. Read-only.
+     * @type {string}
+     * @memberof DriveItem
+     */
+    'webUrl'?: string;
+    /**
+     * 
+     * @type {User}
+     * @memberof DriveItem
+     */
+    'createdByUser'?: User;
+    /**
+     * 
+     * @type {User}
+     * @memberof DriveItem
+     */
+    'lastModifiedByUser'?: User;
     /**
      * The content stream, if the item represents a file.
      * @type {string}
@@ -394,73 +550,73 @@ export interface DriveItem extends BaseItem {
 /**
  * 
  * @export
- * @interface DriveItemAllOf
+ * @interface DriveItemInline
  */
-export interface DriveItemAllOf {
+export interface DriveItemInline {
     /**
      * The content stream, if the item represents a file.
      * @type {string}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'content'?: string;
     /**
      * An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
      * @type {string}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'cTag'?: string;
     /**
      * 
      * @type {Deleted}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'deleted'?: Deleted;
     /**
      * 
      * @type {OpenGraphFile}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'file'?: OpenGraphFile;
     /**
      * 
      * @type {FileSystemInfo}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'fileSystemInfo'?: FileSystemInfo;
     /**
      * 
      * @type {Folder}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'folder'?: Folder;
     /**
      * 
      * @type {Image}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'image'?: Image;
     /**
      * If this property is non-null, it indicates that the driveItem is the top-most driveItem in the drive.
      * @type {object}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'root'?: object;
     /**
      * Size of the item in bytes. Read-only.
      * @type {number}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'size'?: number;
     /**
      * WebDAV compatible URL for the item. Read-only.
      * @type {string}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'webDavUrl'?: string;
     /**
      * Collection containing Item objects for the immediate children of Item. Only items representing folders have children. Read-only. Nullable.
      * @type {Array<DriveItem>}
-     * @memberof DriveItemAllOf
+     * @memberof DriveItemInline
      */
     'children'?: Array<DriveItem>;
 }
@@ -821,11 +977,23 @@ export interface Quota {
     'used'?: number;
 }
 /**
- * 
+ * Represents an Active Directory user object.
  * @export
  * @interface User
  */
-export interface User extends DirectoryObject {
+export interface User {
+    /**
+     * Read-only.
+     * @type {string}
+     * @memberof User
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'deletedDateTime'?: string;
     /**
      * true if the account is enabled; otherwise, false. This property is required when a user is created. Returned only on $select. Supports $filter.
      * @type {boolean}
@@ -996,177 +1164,177 @@ export interface User extends DirectoryObject {
     'drives'?: Array<Drive>;
 }
 /**
- * Represents an Active Directory user object.
+ * 
  * @export
- * @interface UserAllOf
+ * @interface UserInline
  */
-export interface UserAllOf {
+export interface UserInline {
     /**
      * true if the account is enabled; otherwise, false. This property is required when a user is created. Returned only on $select. Supports $filter.
      * @type {boolean}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'accountEnabled'?: boolean;
     /**
      * The telephone numbers for the user. Only one number can be set for this property. Returned by default. Read-only for users synced from on-premises directory.
      * @type {Array<string>}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'businessPhones'?: Array<string>;
     /**
      * The city in which the user is located. Returned only on $select. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'city'?: string;
     /**
      * The company name which the user is associated. This property can be useful for describing the company that an external user comes from. The maximum length of the company name is 64 characters.Returned only on $select.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'companyName'?: string;
     /**
      * The country/region in which the user is located; for example, \'US\' or \'UK\'. Returned only on $select. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'country'?: string;
     /**
      * The date and time the user was created. The value cannot be modified and is automatically populated when the entity is created. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. Property is nullable. A null value indicates that an accurate creation time couldn\'t be determined for the user. Returned only on $select. Read-only. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'createdDateTime'?: string;
     /**
      * The name for the department in which the user works. Returned only on $select. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'department'?: string;
     /**
      * The name displayed in the address book for the user. This value is usually the combination of the user\'s first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Returned by default. Supports $filter and $orderby.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'displayName'?: string;
     /**
      * The fax number of the user. Returned only on $select.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'faxNumber'?: string;
     /**
      * The given name (first name) of the user. Returned by default. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'givenName'?: string;
     /**
      * The time when this user last changed their password. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Returned only on $select. Read-only.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'lastPasswordChangeDateTime'?: string;
     /**
      * Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult and adult. Refer to the legal age group property definitions for further information. Returned only on $select.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'legalAgeGroupClassification'?: string;
     /**
      * The SMTP address for the user, for example, \'jeff@contoso.onowncloud.com\'. Returned by default. Supports $filter and endsWith.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'mail'?: string;
     /**
      * The mail alias for the user. This property must be specified when a user is created. Returned only on $select. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'mailNickname'?: string;
     /**
      * The primary cellular telephone number for the user. Returned by default. Read-only for users synced from on-premises directory.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'mobilePhone'?: string;
     /**
      * The office location in the user\'s place of business. Returned by default.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'officeLocation'?: string;
     /**
      * The postal code for the user\'s postal address. The postal code is specific to the user\'s country/region. In the United States of America, this attribute contains the ZIP code. Returned only on $select.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'postalCode'?: string;
     /**
      * The preferred language for the user. Should follow ISO 639-1 Code; for example \'en-US\'. Returned by default.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'preferredLanguage'?: string;
     /**
      * The state or province in the user\'s address. Returned only on $select. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'state'?: string;
     /**
      * The street address of the user\'s place of business. Returned only on $select.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'streetAddress'?: string;
     /**
      * The user\'s surname (family name or last name). Returned by default. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'surname'?: string;
     /**
      * A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.  Examples include: \'US\', \'JP\', and \'GB\'. Not nullable. Returned only on $select. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'usageLocation'?: string;
     /**
      * The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user\'s email name. The general format is alias@domain, where domain must be present in the tenant\'s collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization. Returned by default. Supports $filter, $orderby, and endsWith.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'userPrincipalName'?: string;
     /**
      * A string value that can be used to classify user types in your directory, such as \'Member\' and \'Guest\'. Returned only on $select. Supports $filter.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'userType'?: string;
     /**
      * A freeform text entry field for the user to describe themselves. Returned only on $select.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'aboutMe'?: string;
     /**
      * The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Returned only on $select.
      * @type {string}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'birthday'?: string;
     /**
      * 
      * @type {Drive}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'drive'?: Drive;
     /**
      * A collection of drives available for this user. Read-only.
      * @type {Array<Drive>}
-     * @memberof UserAllOf
+     * @memberof UserInline
      */
     'drives'?: Array<Drive>;
 }
@@ -1179,8 +1347,8 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * 
-         * @summary Create a new navigation property of a specific drive
-         * @param {Drive} drive New navigation property values
+         * @summary Create a new space of a specific type
+         * @param {Drive} drive New space property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1215,7 +1383,7 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary Delete a specific navigation property drive
+         * @summary Delete a specific space
          * @param {string} driveId key: id of drive
          * @param {string} [ifMatch] ETag
          * @param {*} [options] Override http request option.
@@ -1298,9 +1466,9 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary Update the navigation property of a specific drive
+         * @summary Update the space
          * @param {string} driveId key: id of drive
-         * @param {Drive} drive New navigation property values
+         * @param {Drive} drive New space values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1348,8 +1516,8 @@ export const DrivesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Create a new navigation property of a specific drive
-         * @param {Drive} drive New navigation property values
+         * @summary Create a new space of a specific type
+         * @param {Drive} drive New space property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1359,7 +1527,7 @@ export const DrivesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Delete a specific navigation property drive
+         * @summary Delete a specific space
          * @param {string} driveId key: id of drive
          * @param {string} [ifMatch] ETag
          * @param {*} [options] Override http request option.
@@ -1384,9 +1552,9 @@ export const DrivesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Update the navigation property of a specific drive
+         * @summary Update the space
          * @param {string} driveId key: id of drive
-         * @param {Drive} drive New navigation property values
+         * @param {Drive} drive New space values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1406,8 +1574,8 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * 
-         * @summary Create a new navigation property of a specific drive
-         * @param {Drive} drive New navigation property values
+         * @summary Create a new space of a specific type
+         * @param {Drive} drive New space property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1416,7 +1584,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
-         * @summary Delete a specific navigation property drive
+         * @summary Delete a specific space
          * @param {string} driveId key: id of drive
          * @param {string} [ifMatch] ETag
          * @param {*} [options] Override http request option.
@@ -1439,9 +1607,9 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
         },
         /**
          * 
-         * @summary Update the navigation property of a specific drive
+         * @summary Update the space
          * @param {string} driveId key: id of drive
-         * @param {Drive} drive New navigation property values
+         * @param {Drive} drive New space values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1460,8 +1628,8 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
 export class DrivesApi extends BaseAPI {
     /**
      * 
-     * @summary Create a new navigation property of a specific drive
-     * @param {Drive} drive New navigation property values
+     * @summary Create a new space of a specific type
+     * @param {Drive} drive New space property values
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DrivesApi
@@ -1472,7 +1640,7 @@ export class DrivesApi extends BaseAPI {
 
     /**
      * 
-     * @summary Delete a specific navigation property drive
+     * @summary Delete a specific space
      * @param {string} driveId key: id of drive
      * @param {string} [ifMatch] ETag
      * @param {*} [options] Override http request option.
@@ -1499,9 +1667,9 @@ export class DrivesApi extends BaseAPI {
 
     /**
      * 
-     * @summary Update the navigation property of a specific drive
+     * @summary Update the space
      * @param {string} driveId key: id of drive
-     * @param {Drive} drive New navigation property values
+     * @param {Drive} drive New space values
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DrivesApi
@@ -1520,7 +1688,7 @@ export const MeDriveApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
-         * @summary Get home drive for user
+         * @summary Get personal space for user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1560,7 +1728,7 @@ export const MeDriveApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Get home drive for user
+         * @summary Get personal space for user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1580,7 +1748,7 @@ export const MeDriveApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
-         * @summary Get home drive for user
+         * @summary Get personal space for user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1599,7 +1767,7 @@ export const MeDriveApiFactory = function (configuration?: Configuration, basePa
 export class MeDriveApi extends BaseAPI {
     /**
      * 
-     * @summary Get home drive for user
+     * @summary Get personal space for user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MeDriveApi
@@ -1618,7 +1786,7 @@ export const MeDriveRootApiAxiosParamCreator = function (configuration?: Configu
     return {
         /**
          * 
-         * @summary Get root from home drive
+         * @summary Get root from personal space
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1658,7 +1826,7 @@ export const MeDriveRootApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Get root from home drive
+         * @summary Get root from personal space
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1678,7 +1846,7 @@ export const MeDriveRootApiFactory = function (configuration?: Configuration, ba
     return {
         /**
          * 
-         * @summary Get root from home drive
+         * @summary Get root from personal space
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1697,7 +1865,7 @@ export const MeDriveRootApiFactory = function (configuration?: Configuration, ba
 export class MeDriveRootApi extends BaseAPI {
     /**
      * 
-     * @summary Get root from home drive
+     * @summary Get root from personal space
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MeDriveRootApi
@@ -1900,7 +2068,7 @@ export const MeDrivesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async meListDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrive>> {
+        async meListDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.meListDrives($top, $skip, $search, $filter, $count, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1927,7 +2095,7 @@ export const MeDrivesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meListDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: any): AxiosPromise<CollectionOfDrive> {
+        meListDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: any): AxiosPromise<CollectionOfDrives> {
             return localVarFp.meListDrives($top, $skip, $search, $filter, $count, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
