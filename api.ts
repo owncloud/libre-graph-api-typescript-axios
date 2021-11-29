@@ -1352,9 +1352,9 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        drivesCreateDrive: async (drive: Drive, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createDrive: async (drive: Drive, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'drive' is not null or undefined
-            assertParamExists('drivesCreateDrive', 'drive', drive)
+            assertParamExists('createDrive', 'drive', drive)
             const localVarPath = `/drives`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1389,9 +1389,9 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        drivesDeleteDrive: async (driveId: string, ifMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteDrive: async (driveId: string, ifMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'driveId' is not null or undefined
-            assertParamExists('drivesDeleteDrive', 'driveId', driveId)
+            assertParamExists('deleteDrive', 'driveId', driveId)
             const localVarPath = `/drives/{drive-id}`
                 .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1429,9 +1429,9 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        drivesGetDrive: async (driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDrive: async (driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'driveId' is not null or undefined
-            assertParamExists('drivesGetDrive', 'driveId', driveId)
+            assertParamExists('getDrive', 'driveId', driveId)
             const localVarPath = `/drives/{drive-id}`
                 .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1472,11 +1472,11 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        drivesUpdateDrive: async (driveId: string, drive: Drive, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateDrive: async (driveId: string, drive: Drive, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'driveId' is not null or undefined
-            assertParamExists('drivesUpdateDrive', 'driveId', driveId)
+            assertParamExists('updateDrive', 'driveId', driveId)
             // verify required parameter 'drive' is not null or undefined
-            assertParamExists('drivesUpdateDrive', 'drive', drive)
+            assertParamExists('updateDrive', 'drive', drive)
             const localVarPath = `/drives/{drive-id}`
                 .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1521,8 +1521,8 @@ export const DrivesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async drivesCreateDrive(drive: Drive, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.drivesCreateDrive(drive, options);
+        async createDrive(drive: Drive, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createDrive(drive, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1533,8 +1533,8 @@ export const DrivesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async drivesDeleteDrive(driveId: string, ifMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.drivesDeleteDrive(driveId, ifMatch, options);
+        async deleteDrive(driveId: string, ifMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteDrive(driveId, ifMatch, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1546,8 +1546,8 @@ export const DrivesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async drivesGetDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.drivesGetDrive(driveId, $select, $expand, options);
+        async getDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDrive(driveId, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1558,8 +1558,8 @@ export const DrivesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async drivesUpdateDrive(driveId: string, drive: Drive, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.drivesUpdateDrive(driveId, drive, options);
+        async updateDrive(driveId: string, drive: Drive, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDrive(driveId, drive, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1579,8 +1579,8 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        drivesCreateDrive(drive: Drive, options?: any): AxiosPromise<void> {
-            return localVarFp.drivesCreateDrive(drive, options).then((request) => request(axios, basePath));
+        createDrive(drive: Drive, options?: any): AxiosPromise<void> {
+            return localVarFp.createDrive(drive, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1590,8 +1590,8 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        drivesDeleteDrive(driveId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.drivesDeleteDrive(driveId, ifMatch, options).then((request) => request(axios, basePath));
+        deleteDrive(driveId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteDrive(driveId, ifMatch, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1602,8 +1602,8 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        drivesGetDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: any): AxiosPromise<Drive> {
-            return localVarFp.drivesGetDrive(driveId, $select, $expand, options).then((request) => request(axios, basePath));
+        getDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: any): AxiosPromise<Drive> {
+            return localVarFp.getDrive(driveId, $select, $expand, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1613,8 +1613,8 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        drivesUpdateDrive(driveId: string, drive: Drive, options?: any): AxiosPromise<void> {
-            return localVarFp.drivesUpdateDrive(driveId, drive, options).then((request) => request(axios, basePath));
+        updateDrive(driveId: string, drive: Drive, options?: any): AxiosPromise<void> {
+            return localVarFp.updateDrive(driveId, drive, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1634,8 +1634,8 @@ export class DrivesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DrivesApi
      */
-    public drivesCreateDrive(drive: Drive, options?: AxiosRequestConfig) {
-        return DrivesApiFp(this.configuration).drivesCreateDrive(drive, options).then((request) => request(this.axios, this.basePath));
+    public createDrive(drive: Drive, options?: AxiosRequestConfig) {
+        return DrivesApiFp(this.configuration).createDrive(drive, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1647,8 +1647,8 @@ export class DrivesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DrivesApi
      */
-    public drivesDeleteDrive(driveId: string, ifMatch?: string, options?: AxiosRequestConfig) {
-        return DrivesApiFp(this.configuration).drivesDeleteDrive(driveId, ifMatch, options).then((request) => request(this.axios, this.basePath));
+    public deleteDrive(driveId: string, ifMatch?: string, options?: AxiosRequestConfig) {
+        return DrivesApiFp(this.configuration).deleteDrive(driveId, ifMatch, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1661,8 +1661,8 @@ export class DrivesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DrivesApi
      */
-    public drivesGetDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig) {
-        return DrivesApiFp(this.configuration).drivesGetDrive(driveId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    public getDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig) {
+        return DrivesApiFp(this.configuration).getDrive(driveId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1674,8 +1674,106 @@ export class DrivesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DrivesApi
      */
-    public drivesUpdateDrive(driveId: string, drive: Drive, options?: AxiosRequestConfig) {
-        return DrivesApiFp(this.configuration).drivesUpdateDrive(driveId, drive, options).then((request) => request(this.axios, this.basePath));
+    public updateDrive(driveId: string, drive: Drive, options?: AxiosRequestConfig) {
+        return DrivesApiFp(this.configuration).updateDrive(driveId, drive, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * DrivesRootApi - axios parameter creator
+ * @export
+ */
+export const DrivesRootApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get root from arbitrary space
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRoot: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/drives/{drive-id}/root`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * DrivesRootApi - functional programming interface
+ * @export
+ */
+export const DrivesRootApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = DrivesRootApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Get root from arbitrary space
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getRoot(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRoot(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * DrivesRootApi - factory interface
+ * @export
+ */
+export const DrivesRootApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = DrivesRootApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Get root from arbitrary space
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRoot(options?: any): AxiosPromise<DriveItem> {
+            return localVarFp.getRoot(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * DrivesRootApi - object-oriented interface
+ * @export
+ * @class DrivesRootApi
+ * @extends {BaseAPI}
+ */
+export class DrivesRootApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get root from arbitrary space
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public getRoot(options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).getRoot(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1692,7 +1790,7 @@ export const MeDriveApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meDriveGetHome: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getHome: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/me/drive`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1732,8 +1830,8 @@ export const MeDriveApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async meDriveGetHome(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.meDriveGetHome(options);
+        async getHome(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getHome(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1752,8 +1850,8 @@ export const MeDriveApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meDriveGetHome(options?: any): AxiosPromise<Drive> {
-            return localVarFp.meDriveGetHome(options).then((request) => request(axios, basePath));
+        getHome(options?: any): AxiosPromise<Drive> {
+            return localVarFp.getHome(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1772,8 +1870,8 @@ export class MeDriveApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MeDriveApi
      */
-    public meDriveGetHome(options?: AxiosRequestConfig) {
-        return MeDriveApiFp(this.configuration).meDriveGetHome(options).then((request) => request(this.axios, this.basePath));
+    public getHome(options?: AxiosRequestConfig) {
+        return MeDriveApiFp(this.configuration).getHome(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1790,7 +1888,7 @@ export const MeDriveRootApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meDriveGetRoot: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        homeGetRoot: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/me/drive/root`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1830,8 +1928,8 @@ export const MeDriveRootApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async meDriveGetRoot(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.meDriveGetRoot(options);
+        async homeGetRoot(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.homeGetRoot(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1850,8 +1948,8 @@ export const MeDriveRootApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meDriveGetRoot(options?: any): AxiosPromise<DriveItem> {
-            return localVarFp.meDriveGetRoot(options).then((request) => request(axios, basePath));
+        homeGetRoot(options?: any): AxiosPromise<DriveItem> {
+            return localVarFp.homeGetRoot(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1870,8 +1968,8 @@ export class MeDriveRootApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MeDriveRootApi
      */
-    public meDriveGetRoot(options?: AxiosRequestConfig) {
-        return MeDriveRootApiFp(this.configuration).meDriveGetRoot(options).then((request) => request(this.axios, this.basePath));
+    public homeGetRoot(options?: AxiosRequestConfig) {
+        return MeDriveRootApiFp(this.configuration).homeGetRoot(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1888,7 +1986,7 @@ export const MeDriveRootChildrenApiAxiosParamCreator = function (configuration?:
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meDriveRootGetChildren: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        homeGetChildren: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/me/drive/root/children`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1928,8 +2026,8 @@ export const MeDriveRootChildrenApiFp = function(configuration?: Configuration) 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async meDriveRootGetChildren(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDriveItems>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.meDriveRootGetChildren(options);
+        async homeGetChildren(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDriveItems>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.homeGetChildren(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1948,8 +2046,8 @@ export const MeDriveRootChildrenApiFactory = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meDriveRootGetChildren(options?: any): AxiosPromise<CollectionOfDriveItems> {
-            return localVarFp.meDriveRootGetChildren(options).then((request) => request(axios, basePath));
+        homeGetChildren(options?: any): AxiosPromise<CollectionOfDriveItems> {
+            return localVarFp.homeGetChildren(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1968,8 +2066,8 @@ export class MeDriveRootChildrenApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MeDriveRootChildrenApi
      */
-    public meDriveRootGetChildren(options?: AxiosRequestConfig) {
-        return MeDriveRootChildrenApiFp(this.configuration).meDriveRootGetChildren(options).then((request) => request(this.axios, this.basePath));
+    public homeGetChildren(options?: AxiosRequestConfig) {
+        return MeDriveRootChildrenApiFp(this.configuration).homeGetChildren(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -1993,7 +2091,7 @@ export const MeDrivesApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meListDrives: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listMyDrives: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/me/drives`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2068,8 +2166,8 @@ export const MeDrivesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async meListDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.meListDrives($top, $skip, $search, $filter, $count, $select, $expand, options);
+        async listMyDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listMyDrives($top, $skip, $search, $filter, $count, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2095,8 +2193,8 @@ export const MeDrivesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meListDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: any): AxiosPromise<CollectionOfDrives> {
-            return localVarFp.meListDrives($top, $skip, $search, $filter, $count, $select, $expand, options).then((request) => request(axios, basePath));
+        listMyDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: any): AxiosPromise<CollectionOfDrives> {
+            return localVarFp.listMyDrives($top, $skip, $search, $filter, $count, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2122,8 +2220,8 @@ export class MeDrivesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MeDrivesApi
      */
-    public meListDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig) {
-        return MeDrivesApiFp(this.configuration).meListDrives($top, $skip, $search, $filter, $count, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    public listMyDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig) {
+        return MeDrivesApiFp(this.configuration).listMyDrives($top, $skip, $search, $filter, $count, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
