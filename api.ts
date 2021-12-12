@@ -1039,7 +1039,7 @@ export const DrivesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createDrive(drive: Drive, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createDrive(drive: Drive, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createDrive(drive, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1076,7 +1076,7 @@ export const DrivesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDrive(driveId: string, drive: Drive, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateDrive(driveId: string, drive: Drive, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateDrive(driveId, drive, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1097,7 +1097,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createDrive(drive: Drive, options?: any): AxiosPromise<void> {
+        createDrive(drive: Drive, options?: any): AxiosPromise<Drive> {
             return localVarFp.createDrive(drive, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1131,7 +1131,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDrive(driveId: string, drive: Drive, options?: any): AxiosPromise<void> {
+        updateDrive(driveId: string, drive: Drive, options?: any): AxiosPromise<Drive> {
             return localVarFp.updateDrive(driveId, drive, options).then((request) => request(axios, basePath));
         },
     };
