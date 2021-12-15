@@ -60,6 +60,44 @@ export interface CollectionOfDrives {
     '@odata.nextLink'?: string;
 }
 /**
+ * 
+ * @export
+ * @interface CollectionOfGroup
+ */
+export interface CollectionOfGroup {
+    /**
+     * 
+     * @type {Array<Group>}
+     * @memberof CollectionOfGroup
+     */
+    'value'?: Array<Group>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CollectionOfGroup
+     */
+    '@odata.nextLink'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CollectionOfUser
+ */
+export interface CollectionOfUser {
+    /**
+     * 
+     * @type {Array<User>}
+     * @memberof CollectionOfUser
+     */
+    'value'?: Array<User>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CollectionOfUser
+     */
+    '@odata.nextLink'?: string;
+}
+/**
  * Information about the deleted state of the item. Read-only.
  * @export
  * @interface Deleted
@@ -71,6 +109,25 @@ export interface Deleted {
      * @memberof Deleted
      */
     'state'?: string;
+}
+/**
+ * Represents a Directory object. Read-only.
+ * @export
+ * @interface DirectoryObject
+ */
+export interface DirectoryObject {
+    /**
+     * The unique identifier for the object. 12345678-9abc-def0-1234-56789abcde. The value of the ID property is often, but not exclusively, in the form of a GUID. The value should be treated as an opaque identifier and not based in being a GUID. Null values are not allowed. Read-only.
+     * @type {string}
+     * @memberof DirectoryObject
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DirectoryObject
+     */
+    'deletedDateTime'?: string;
 }
 /**
  * Storage Space. Read-only.
@@ -394,6 +451,145 @@ export interface FolderView {
      * @memberof FolderView
      */
     'viewType'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface Group
+ */
+export interface Group {
+    /**
+     * Read-only.
+     * @type {string}
+     * @memberof Group
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Group
+     */
+    'deletedDateTime'?: string;
+    /**
+     * Timestamp of when the group was created. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
+     * @type {string}
+     * @memberof Group
+     */
+    'createdDateTime'?: string | null;
+    /**
+     * An optional description for the group. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
+     * @type {string}
+     * @memberof Group
+     */
+    'description'?: string | null;
+    /**
+     * The display name for the group. This property is required when a group is created and cannot be cleared during updates. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+     * @type {string}
+     * @memberof Group
+     */
+    'displayName'?: string | null;
+    /**
+     * Timestamp of when the group is set to expire. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
+     * @type {string}
+     * @memberof Group
+     */
+    'expirationDateTime'?: string | null;
+    /**
+     * The SMTP address for the group, for example, \'serviceadmins@owncloud.com\'. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+     * @type {string}
+     * @memberof Group
+     */
+    'mail'?: string | null;
+    /**
+     * Contains the on-premises domain FQDN, also called dnsDomainName synchronized from the on-premises directory.
+     * @type {string}
+     * @memberof Group
+     */
+    'onPremisesDomainName'?: string | null;
+    /**
+     * Indicates the last time at which the group was synced with the on-premises directory.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in).
+     * @type {string}
+     * @memberof Group
+     */
+    'onPremisesLastSyncDateTime'?: string | null;
+    /**
+     * Contains the on-premises SAM account name synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect.Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith). Read-only.
+     * @type {string}
+     * @memberof Group
+     */
+    'onPremisesSamAccountName'?: string | null;
+    /**
+     * true if this group is synced from an on-premises directory; false if this group was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Returned by default. Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+     * @type {boolean}
+     * @memberof Group
+     */
+    'onPremisesSyncEnabled'?: boolean | null;
+    /**
+     * The preferred language for a group. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+     * @type {string}
+     * @memberof Group
+     */
+    'preferredLanguage'?: string | null;
+    /**
+     * Specifies whether the group is a security group. Required. Returned by default. Supports $filter (eq, ne, not, in).
+     * @type {boolean}
+     * @memberof Group
+     */
+    'securityEnabled'?: boolean | null;
+    /**
+     * Security identifier of the group, used in Windows scenarios. Returned by default.
+     * @type {string}
+     * @memberof Group
+     */
+    'securityIdentifier'?: string | null;
+    /**
+     * Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or Hiddenmembership. It can\'t be updated later. Other values of visibility can be updated after group creation. Groups assignable to roles are always Private. See group visibility options to learn more. Returned by default. Nullable.
+     * @type {string}
+     * @memberof Group
+     */
+    'visibility'?: string | null;
+    /**
+     * 
+     * @type {DirectoryObject}
+     * @memberof Group
+     */
+    'createdOnBehalfOf'?: DirectoryObject | null;
+    /**
+     * Groups that this group is a member of. HTTP Methods: GET (supported for all groups). Read-only. Nullable. Supports $expand.
+     * @type {Array<DirectoryObject>}
+     * @memberof Group
+     */
+    'memberOf'?: Array<DirectoryObject>;
+    /**
+     * Users and groups that are members of this group. HTTP Methods: GET (supported for all groups), Nullable. Supports $expand.
+     * @type {Array<DirectoryObject>}
+     * @memberof Group
+     */
+    'members'?: Array<DirectoryObject>;
+    /**
+     * The owners of the group. The owners are a set of non-admin users who are allowed to modify this object. Limited to 100 owners. Nullable. Supports $expand.
+     * @type {Array<DirectoryObject>}
+     * @memberof Group
+     */
+    'owners'?: Array<DirectoryObject>;
+    /**
+     * 
+     * @type {Drive}
+     * @memberof Group
+     */
+    'drive'?: Drive;
+    /**
+     * The group\'s drives. Read-only.
+     * @type {Array<Drive>}
+     * @memberof Group
+     */
+    'drives'?: Array<Drive>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Group
+     */
+    'isArchived'?: boolean | null;
 }
 /**
  * Hashes of the file\'s binary content, if available. Read-only.
@@ -778,6 +974,48 @@ export interface User {
      */
     'mobilePhone'?: string;
     /**
+     * Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
+     * @type {string}
+     * @memberof User
+     */
+    'onPremisesDistinguishedName'?: string | null;
+    /**
+     * Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
+     * @type {string}
+     * @memberof User
+     */
+    'onPremisesDomainName'?: string | null;
+    /**
+     * This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user\'s userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
+     * @type {string}
+     * @memberof User
+     */
+    'onPremisesImmutableId'?: string | null;
+    /**
+     * true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
+     * @type {boolean}
+     * @memberof User
+     */
+    'onPremisesSyncEnabled'?: boolean | null;
+    /**
+     * Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
+     * @type {string}
+     * @memberof User
+     */
+    'onPremisesLastSyncDateTime'?: string | null;
+    /**
+     * Contains the on-premises SAM account name synchronized from the on-premises directory. Read-only.
+     * @type {string}
+     * @memberof User
+     */
+    'onPremisesSamAccountName'?: string | null;
+    /**
+     * Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
+     * @type {string}
+     * @memberof User
+     */
+    'onPremisesUserPrincipalName'?: string | null;
+    /**
      * The office location in the user\'s place of business. Returned by default.
      * @type {string}
      * @memberof User
@@ -843,6 +1081,12 @@ export interface User {
      * @memberof User
      */
     'birthday'?: string;
+    /**
+     * The preferred name for the user. Returned only on $select.
+     * @type {string}
+     * @memberof User
+     */
+    'preferredName'?: string | null;
     /**
      * 
      * @type {Drive}
@@ -1297,6 +1541,493 @@ export class DrivesRootApi extends BaseAPI {
 
 
 /**
+ * GroupApi - axios parameter creator
+ * @export
+ */
+export const GroupApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Delete entity from groups
+         * @param {string} groupId key: id of group
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteGroup: async (groupId: string, ifMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupId' is not null or undefined
+            assertParamExists('deleteGroup', 'groupId', groupId)
+            const localVarPath = `/groups/{group-id}`
+                .replace(`{${"group-id"}}`, encodeURIComponent(String(groupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (ifMatch !== undefined && ifMatch !== null) {
+                localVarHeaderParameter['If-Match'] = String(ifMatch);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get entity from groups by key
+         * @param {string} groupId key: id of group
+         * @param {Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGroup: async (groupId: string, $select?: Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupId' is not null or undefined
+            assertParamExists('getGroup', 'groupId', groupId)
+            const localVarPath = `/groups/{group-id}`
+                .replace(`{${"group-id"}}`, encodeURIComponent(String(groupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if ($select) {
+                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update entity in groups
+         * @param {string} groupId key: id of group
+         * @param {Group} group New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateGroup: async (groupId: string, group: Group, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupId' is not null or undefined
+            assertParamExists('updateGroup', 'groupId', groupId)
+            // verify required parameter 'group' is not null or undefined
+            assertParamExists('updateGroup', 'group', group)
+            const localVarPath = `/groups/{group-id}`
+                .replace(`{${"group-id"}}`, encodeURIComponent(String(groupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(group, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * GroupApi - functional programming interface
+ * @export
+ */
+export const GroupApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = GroupApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Delete entity from groups
+         * @param {string} groupId key: id of group
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteGroup(groupId: string, ifMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGroup(groupId, ifMatch, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get entity from groups by key
+         * @param {string} groupId key: id of group
+         * @param {Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getGroup(groupId: string, $select?: Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getGroup(groupId, $select, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update entity in groups
+         * @param {string} groupId key: id of group
+         * @param {Group} group New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateGroup(groupId: string, group: Group, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateGroup(groupId, group, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * GroupApi - factory interface
+ * @export
+ */
+export const GroupApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = GroupApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Delete entity from groups
+         * @param {string} groupId key: id of group
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteGroup(groupId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteGroup(groupId, ifMatch, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get entity from groups by key
+         * @param {string} groupId key: id of group
+         * @param {Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getGroup(groupId: string, $select?: Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>, options?: any): AxiosPromise<Group> {
+            return localVarFp.getGroup(groupId, $select, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update entity in groups
+         * @param {string} groupId key: id of group
+         * @param {Group} group New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateGroup(groupId: string, group: Group, options?: any): AxiosPromise<void> {
+            return localVarFp.updateGroup(groupId, group, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * GroupApi - object-oriented interface
+ * @export
+ * @class GroupApi
+ * @extends {BaseAPI}
+ */
+export class GroupApi extends BaseAPI {
+    /**
+     * 
+     * @summary Delete entity from groups
+     * @param {string} groupId key: id of group
+     * @param {string} [ifMatch] ETag
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupApi
+     */
+    public deleteGroup(groupId: string, ifMatch?: string, options?: AxiosRequestConfig) {
+        return GroupApiFp(this.configuration).deleteGroup(groupId, ifMatch, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get entity from groups by key
+     * @param {string} groupId key: id of group
+     * @param {Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>} [$select] Select properties to be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupApi
+     */
+    public getGroup(groupId: string, $select?: Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>, options?: AxiosRequestConfig) {
+        return GroupApiFp(this.configuration).getGroup(groupId, $select, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update entity in groups
+     * @param {string} groupId key: id of group
+     * @param {Group} group New property values
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupApi
+     */
+    public updateGroup(groupId: string, group: Group, options?: AxiosRequestConfig) {
+        return GroupApiFp(this.configuration).updateGroup(groupId, group, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * GroupsApi - axios parameter creator
+ * @export
+ */
+export const GroupsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Add new entity to groups
+         * @param {Group} group New entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createGroup: async (group: Group, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'group' is not null or undefined
+            assertParamExists('createGroup', 'group', group)
+            const localVarPath = `/groups`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(group, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get entities from groups
+         * @param {number} [$top] Show only the first n items
+         * @param {number} [$skip] Skip the first n items
+         * @param {string} [$search] Search items by search phrases
+         * @param {string} [$filter] Filter items by property values
+         * @param {boolean} [$count] Include count of items
+         * @param {Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'createdDateTime' | 'createdDateTime desc' | 'description' | 'description desc' | 'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'securityEnabled' | 'securityEnabled desc' | 'securityIdentifier' | 'securityIdentifier desc' | 'visibility' | 'visibility desc' | 'isArchived' | 'isArchived desc'>} [$orderby] Order items by property values
+         * @param {Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listGroups: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'createdDateTime' | 'createdDateTime desc' | 'description' | 'description desc' | 'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'securityEnabled' | 'securityEnabled desc' | 'securityIdentifier' | 'securityIdentifier desc' | 'visibility' | 'visibility desc' | 'isArchived' | 'isArchived desc'>, $select?: Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/groups`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if ($top !== undefined) {
+                localVarQueryParameter['$top'] = $top;
+            }
+
+            if ($skip !== undefined) {
+                localVarQueryParameter['$skip'] = $skip;
+            }
+
+            if ($search !== undefined) {
+                localVarQueryParameter['$search'] = $search;
+            }
+
+            if ($filter !== undefined) {
+                localVarQueryParameter['$filter'] = $filter;
+            }
+
+            if ($count !== undefined) {
+                localVarQueryParameter['$count'] = $count;
+            }
+
+            if ($orderby) {
+                localVarQueryParameter['$orderby'] = Array.from($orderby).join(COLLECTION_FORMATS.csv);
+            }
+
+            if ($select) {
+                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * GroupsApi - functional programming interface
+ * @export
+ */
+export const GroupsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = GroupsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Add new entity to groups
+         * @param {Group} group New entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createGroup(group: Group, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createGroup(group, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get entities from groups
+         * @param {number} [$top] Show only the first n items
+         * @param {number} [$skip] Skip the first n items
+         * @param {string} [$search] Search items by search phrases
+         * @param {string} [$filter] Filter items by property values
+         * @param {boolean} [$count] Include count of items
+         * @param {Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'createdDateTime' | 'createdDateTime desc' | 'description' | 'description desc' | 'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'securityEnabled' | 'securityEnabled desc' | 'securityIdentifier' | 'securityIdentifier desc' | 'visibility' | 'visibility desc' | 'isArchived' | 'isArchived desc'>} [$orderby] Order items by property values
+         * @param {Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'createdDateTime' | 'createdDateTime desc' | 'description' | 'description desc' | 'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'securityEnabled' | 'securityEnabled desc' | 'securityIdentifier' | 'securityIdentifier desc' | 'visibility' | 'visibility desc' | 'isArchived' | 'isArchived desc'>, $select?: Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfGroup>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listGroups($top, $skip, $search, $filter, $count, $orderby, $select, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * GroupsApi - factory interface
+ * @export
+ */
+export const GroupsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = GroupsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Add new entity to groups
+         * @param {Group} group New entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createGroup(group: Group, options?: any): AxiosPromise<Group> {
+            return localVarFp.createGroup(group, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get entities from groups
+         * @param {number} [$top] Show only the first n items
+         * @param {number} [$skip] Skip the first n items
+         * @param {string} [$search] Search items by search phrases
+         * @param {string} [$filter] Filter items by property values
+         * @param {boolean} [$count] Include count of items
+         * @param {Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'createdDateTime' | 'createdDateTime desc' | 'description' | 'description desc' | 'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'securityEnabled' | 'securityEnabled desc' | 'securityIdentifier' | 'securityIdentifier desc' | 'visibility' | 'visibility desc' | 'isArchived' | 'isArchived desc'>} [$orderby] Order items by property values
+         * @param {Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'createdDateTime' | 'createdDateTime desc' | 'description' | 'description desc' | 'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'securityEnabled' | 'securityEnabled desc' | 'securityIdentifier' | 'securityIdentifier desc' | 'visibility' | 'visibility desc' | 'isArchived' | 'isArchived desc'>, $select?: Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>, options?: any): AxiosPromise<CollectionOfGroup> {
+            return localVarFp.listGroups($top, $skip, $search, $filter, $count, $orderby, $select, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * GroupsApi - object-oriented interface
+ * @export
+ * @class GroupsApi
+ * @extends {BaseAPI}
+ */
+export class GroupsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Add new entity to groups
+     * @param {Group} group New entity
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    public createGroup(group: Group, options?: AxiosRequestConfig) {
+        return GroupsApiFp(this.configuration).createGroup(group, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get entities from groups
+     * @param {number} [$top] Show only the first n items
+     * @param {number} [$skip] Skip the first n items
+     * @param {string} [$search] Search items by search phrases
+     * @param {string} [$filter] Filter items by property values
+     * @param {boolean} [$count] Include count of items
+     * @param {Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'createdDateTime' | 'createdDateTime desc' | 'description' | 'description desc' | 'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'securityEnabled' | 'securityEnabled desc' | 'securityIdentifier' | 'securityIdentifier desc' | 'visibility' | 'visibility desc' | 'isArchived' | 'isArchived desc'>} [$orderby] Order items by property values
+     * @param {Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>} [$select] Select properties to be returned
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupsApi
+     */
+    public listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'createdDateTime' | 'createdDateTime desc' | 'description' | 'description desc' | 'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'securityEnabled' | 'securityEnabled desc' | 'securityIdentifier' | 'securityIdentifier desc' | 'visibility' | 'visibility desc' | 'isArchived' | 'isArchived desc'>, $select?: Set<'id' | 'deletedDateTime' | 'createdDateTime' | 'description' | 'displayName' | 'expirationDateTime' | 'mail' | 'onPremisesDomainName' | 'onPremisesLastSyncDateTime' | 'onPremisesNetBiosName' | 'onPremisesProvisioningErrors' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'preferredLanguage' | 'renewedDateTime' | 'securityEnabled' | 'securityIdentifier' | 'visibility' | 'isArchived' | 'createdOnBehalfOf' | 'memberOf' | 'members' | 'owners' | 'drive' | 'drives'>, options?: AxiosRequestConfig) {
+        return GroupsApiFp(this.configuration).listGroups($top, $skip, $search, $filter, $count, $orderby, $select, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
  * MeDriveApi - axios parameter creator
  * @export
  */
@@ -1740,6 +2471,509 @@ export class MeDrivesApi extends BaseAPI {
      */
     public listMyDrives($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root'>, $expand?: Set<'*' | 'root'>, options?: AxiosRequestConfig) {
         return MeDrivesApiFp(this.configuration).listMyDrives($top, $skip, $search, $filter, $count, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * UserApi - axios parameter creator
+ * @export
+ */
+export const UserApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Delete entity from users
+         * @param {string} userId key: id of user
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteUser: async (userId: string, ifMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('deleteUser', 'userId', userId)
+            const localVarPath = `/users/{user-id}`
+                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (ifMatch !== undefined && ifMatch !== null) {
+                localVarHeaderParameter['If-Match'] = String(ifMatch);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get entity from users by key
+         * @param {string} userId key: id of user
+         * @param {Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {Set<'*' | 'drive' | 'drives'>} [$expand] Expand related entities
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUser: async (userId: string, $select?: Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>, $expand?: Set<'*' | 'drive' | 'drives'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('getUser', 'userId', userId)
+            const localVarPath = `/users/{user-id}`
+                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if ($select) {
+                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
+            }
+
+            if ($expand) {
+                localVarQueryParameter['$expand'] = Array.from($expand).join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update entity in users
+         * @param {string} userId key: id of user
+         * @param {User} user New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateUser: async (userId: string, user: User, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('updateUser', 'userId', userId)
+            // verify required parameter 'user' is not null or undefined
+            assertParamExists('updateUser', 'user', user)
+            const localVarPath = `/users/{user-id}`
+                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(user, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * UserApi - functional programming interface
+ * @export
+ */
+export const UserApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = UserApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Delete entity from users
+         * @param {string} userId key: id of user
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteUser(userId: string, ifMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUser(userId, ifMatch, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get entity from users by key
+         * @param {string} userId key: id of user
+         * @param {Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {Set<'*' | 'drive' | 'drives'>} [$expand] Expand related entities
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUser(userId: string, $select?: Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>, $expand?: Set<'*' | 'drive' | 'drives'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUser(userId, $select, $expand, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update entity in users
+         * @param {string} userId key: id of user
+         * @param {User} user New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateUser(userId: string, user: User, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(userId, user, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * UserApi - factory interface
+ * @export
+ */
+export const UserApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = UserApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Delete entity from users
+         * @param {string} userId key: id of user
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteUser(userId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteUser(userId, ifMatch, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get entity from users by key
+         * @param {string} userId key: id of user
+         * @param {Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {Set<'*' | 'drive' | 'drives'>} [$expand] Expand related entities
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUser(userId: string, $select?: Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>, $expand?: Set<'*' | 'drive' | 'drives'>, options?: any): AxiosPromise<User> {
+            return localVarFp.getUser(userId, $select, $expand, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update entity in users
+         * @param {string} userId key: id of user
+         * @param {User} user New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateUser(userId: string, user: User, options?: any): AxiosPromise<User> {
+            return localVarFp.updateUser(userId, user, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * UserApi - object-oriented interface
+ * @export
+ * @class UserApi
+ * @extends {BaseAPI}
+ */
+export class UserApi extends BaseAPI {
+    /**
+     * 
+     * @summary Delete entity from users
+     * @param {string} userId key: id of user
+     * @param {string} [ifMatch] ETag
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public deleteUser(userId: string, ifMatch?: string, options?: AxiosRequestConfig) {
+        return UserApiFp(this.configuration).deleteUser(userId, ifMatch, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get entity from users by key
+     * @param {string} userId key: id of user
+     * @param {Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>} [$select] Select properties to be returned
+     * @param {Set<'*' | 'drive' | 'drives'>} [$expand] Expand related entities
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public getUser(userId: string, $select?: Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>, $expand?: Set<'*' | 'drive' | 'drives'>, options?: AxiosRequestConfig) {
+        return UserApiFp(this.configuration).getUser(userId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update entity in users
+     * @param {string} userId key: id of user
+     * @param {User} user New property values
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public updateUser(userId: string, user: User, options?: AxiosRequestConfig) {
+        return UserApiFp(this.configuration).updateUser(userId, user, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * UsersApi - axios parameter creator
+ * @export
+ */
+export const UsersApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Add new entity to users
+         * @param {User} user New entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createUser: async (user: User, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'user' is not null or undefined
+            assertParamExists('createUser', 'user', user)
+            const localVarPath = `/users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(user, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get entities from users
+         * @param {number} [$top] Show only the first n items
+         * @param {number} [$skip] Skip the first n items
+         * @param {string} [$search] Search items by search phrases
+         * @param {string} [$filter] Filter items by property values
+         * @param {boolean} [$count] Include count of items
+         * @param {Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'accountEnabled' | 'accountEnabled desc' | 'businessPhones' | 'businessPhones desc' | 'city' | 'city desc' | 'companyName' | 'companyName desc' | 'country' | 'country desc' | 'createdDateTime' | 'createdDateTime desc' | 'department' | 'department desc' | 'displayName' | 'displayName desc' | 'faxNumber' | 'faxNumber desc' | 'givenName' | 'givenName desc' | 'lastPasswordChangeDateTime' | 'lastPasswordChangeDateTime desc' | 'legalAgeGroupClassification' | 'legalAgeGroupClassification desc' | 'mail' | 'mail desc' | 'mailNickname' | 'mailNickname desc' | 'mobilePhone' | 'mobilePhone desc' | 'officeLocation' | 'officeLocation desc' | 'onPremisesDistinguishedName' | 'onPremisesDistinguishedName desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesImmutableId' | 'onPremisesImmutableId desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'onPremisesUserPrincipalName' | 'onPremisesUserPrincipalName desc' | 'postalCode' | 'postalCode desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'state' | 'state desc' | 'streetAddress' | 'streetAddress desc' | 'surname' | 'surname desc' | 'usageLocation' | 'usageLocation desc' | 'userPrincipalName' | 'userPrincipalName desc' | 'userType' | 'userType desc' | 'aboutMe' | 'aboutMe desc' | 'birthday' | 'birthday desc' | 'preferredName' | 'preferredName desc'>} [$orderby] Order items by property values
+         * @param {Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'licenseAssignmentStates' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {Set<'*' | 'drive' | 'drives'>} [$expand] Expand related entities
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listUsers: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'accountEnabled' | 'accountEnabled desc' | 'businessPhones' | 'businessPhones desc' | 'city' | 'city desc' | 'companyName' | 'companyName desc' | 'country' | 'country desc' | 'createdDateTime' | 'createdDateTime desc' | 'department' | 'department desc' | 'displayName' | 'displayName desc' | 'faxNumber' | 'faxNumber desc' | 'givenName' | 'givenName desc' | 'lastPasswordChangeDateTime' | 'lastPasswordChangeDateTime desc' | 'legalAgeGroupClassification' | 'legalAgeGroupClassification desc' | 'mail' | 'mail desc' | 'mailNickname' | 'mailNickname desc' | 'mobilePhone' | 'mobilePhone desc' | 'officeLocation' | 'officeLocation desc' | 'onPremisesDistinguishedName' | 'onPremisesDistinguishedName desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesImmutableId' | 'onPremisesImmutableId desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'onPremisesUserPrincipalName' | 'onPremisesUserPrincipalName desc' | 'postalCode' | 'postalCode desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'state' | 'state desc' | 'streetAddress' | 'streetAddress desc' | 'surname' | 'surname desc' | 'usageLocation' | 'usageLocation desc' | 'userPrincipalName' | 'userPrincipalName desc' | 'userType' | 'userType desc' | 'aboutMe' | 'aboutMe desc' | 'birthday' | 'birthday desc' | 'preferredName' | 'preferredName desc'>, $select?: Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'licenseAssignmentStates' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>, $expand?: Set<'*' | 'drive' | 'drives'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/users`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if ($top !== undefined) {
+                localVarQueryParameter['$top'] = $top;
+            }
+
+            if ($skip !== undefined) {
+                localVarQueryParameter['$skip'] = $skip;
+            }
+
+            if ($search !== undefined) {
+                localVarQueryParameter['$search'] = $search;
+            }
+
+            if ($filter !== undefined) {
+                localVarQueryParameter['$filter'] = $filter;
+            }
+
+            if ($count !== undefined) {
+                localVarQueryParameter['$count'] = $count;
+            }
+
+            if ($orderby) {
+                localVarQueryParameter['$orderby'] = Array.from($orderby).join(COLLECTION_FORMATS.csv);
+            }
+
+            if ($select) {
+                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
+            }
+
+            if ($expand) {
+                localVarQueryParameter['$expand'] = Array.from($expand).join(COLLECTION_FORMATS.csv);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * UsersApi - functional programming interface
+ * @export
+ */
+export const UsersApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = UsersApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Add new entity to users
+         * @param {User} user New entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createUser(user: User, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createUser(user, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get entities from users
+         * @param {number} [$top] Show only the first n items
+         * @param {number} [$skip] Skip the first n items
+         * @param {string} [$search] Search items by search phrases
+         * @param {string} [$filter] Filter items by property values
+         * @param {boolean} [$count] Include count of items
+         * @param {Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'accountEnabled' | 'accountEnabled desc' | 'businessPhones' | 'businessPhones desc' | 'city' | 'city desc' | 'companyName' | 'companyName desc' | 'country' | 'country desc' | 'createdDateTime' | 'createdDateTime desc' | 'department' | 'department desc' | 'displayName' | 'displayName desc' | 'faxNumber' | 'faxNumber desc' | 'givenName' | 'givenName desc' | 'lastPasswordChangeDateTime' | 'lastPasswordChangeDateTime desc' | 'legalAgeGroupClassification' | 'legalAgeGroupClassification desc' | 'mail' | 'mail desc' | 'mailNickname' | 'mailNickname desc' | 'mobilePhone' | 'mobilePhone desc' | 'officeLocation' | 'officeLocation desc' | 'onPremisesDistinguishedName' | 'onPremisesDistinguishedName desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesImmutableId' | 'onPremisesImmutableId desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'onPremisesUserPrincipalName' | 'onPremisesUserPrincipalName desc' | 'postalCode' | 'postalCode desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'state' | 'state desc' | 'streetAddress' | 'streetAddress desc' | 'surname' | 'surname desc' | 'usageLocation' | 'usageLocation desc' | 'userPrincipalName' | 'userPrincipalName desc' | 'userType' | 'userType desc' | 'aboutMe' | 'aboutMe desc' | 'birthday' | 'birthday desc' | 'preferredName' | 'preferredName desc'>} [$orderby] Order items by property values
+         * @param {Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'licenseAssignmentStates' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {Set<'*' | 'drive' | 'drives'>} [$expand] Expand related entities
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'accountEnabled' | 'accountEnabled desc' | 'businessPhones' | 'businessPhones desc' | 'city' | 'city desc' | 'companyName' | 'companyName desc' | 'country' | 'country desc' | 'createdDateTime' | 'createdDateTime desc' | 'department' | 'department desc' | 'displayName' | 'displayName desc' | 'faxNumber' | 'faxNumber desc' | 'givenName' | 'givenName desc' | 'lastPasswordChangeDateTime' | 'lastPasswordChangeDateTime desc' | 'legalAgeGroupClassification' | 'legalAgeGroupClassification desc' | 'mail' | 'mail desc' | 'mailNickname' | 'mailNickname desc' | 'mobilePhone' | 'mobilePhone desc' | 'officeLocation' | 'officeLocation desc' | 'onPremisesDistinguishedName' | 'onPremisesDistinguishedName desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesImmutableId' | 'onPremisesImmutableId desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'onPremisesUserPrincipalName' | 'onPremisesUserPrincipalName desc' | 'postalCode' | 'postalCode desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'state' | 'state desc' | 'streetAddress' | 'streetAddress desc' | 'surname' | 'surname desc' | 'usageLocation' | 'usageLocation desc' | 'userPrincipalName' | 'userPrincipalName desc' | 'userType' | 'userType desc' | 'aboutMe' | 'aboutMe desc' | 'birthday' | 'birthday desc' | 'preferredName' | 'preferredName desc'>, $select?: Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'licenseAssignmentStates' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>, $expand?: Set<'*' | 'drive' | 'drives'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfUser>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * UsersApi - factory interface
+ * @export
+ */
+export const UsersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = UsersApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Add new entity to users
+         * @param {User} user New entity
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createUser(user: User, options?: any): AxiosPromise<User> {
+            return localVarFp.createUser(user, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get entities from users
+         * @param {number} [$top] Show only the first n items
+         * @param {number} [$skip] Skip the first n items
+         * @param {string} [$search] Search items by search phrases
+         * @param {string} [$filter] Filter items by property values
+         * @param {boolean} [$count] Include count of items
+         * @param {Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'accountEnabled' | 'accountEnabled desc' | 'businessPhones' | 'businessPhones desc' | 'city' | 'city desc' | 'companyName' | 'companyName desc' | 'country' | 'country desc' | 'createdDateTime' | 'createdDateTime desc' | 'department' | 'department desc' | 'displayName' | 'displayName desc' | 'faxNumber' | 'faxNumber desc' | 'givenName' | 'givenName desc' | 'lastPasswordChangeDateTime' | 'lastPasswordChangeDateTime desc' | 'legalAgeGroupClassification' | 'legalAgeGroupClassification desc' | 'mail' | 'mail desc' | 'mailNickname' | 'mailNickname desc' | 'mobilePhone' | 'mobilePhone desc' | 'officeLocation' | 'officeLocation desc' | 'onPremisesDistinguishedName' | 'onPremisesDistinguishedName desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesImmutableId' | 'onPremisesImmutableId desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'onPremisesUserPrincipalName' | 'onPremisesUserPrincipalName desc' | 'postalCode' | 'postalCode desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'state' | 'state desc' | 'streetAddress' | 'streetAddress desc' | 'surname' | 'surname desc' | 'usageLocation' | 'usageLocation desc' | 'userPrincipalName' | 'userPrincipalName desc' | 'userType' | 'userType desc' | 'aboutMe' | 'aboutMe desc' | 'birthday' | 'birthday desc' | 'preferredName' | 'preferredName desc'>} [$orderby] Order items by property values
+         * @param {Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'licenseAssignmentStates' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>} [$select] Select properties to be returned
+         * @param {Set<'*' | 'drive' | 'drives'>} [$expand] Expand related entities
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'accountEnabled' | 'accountEnabled desc' | 'businessPhones' | 'businessPhones desc' | 'city' | 'city desc' | 'companyName' | 'companyName desc' | 'country' | 'country desc' | 'createdDateTime' | 'createdDateTime desc' | 'department' | 'department desc' | 'displayName' | 'displayName desc' | 'faxNumber' | 'faxNumber desc' | 'givenName' | 'givenName desc' | 'lastPasswordChangeDateTime' | 'lastPasswordChangeDateTime desc' | 'legalAgeGroupClassification' | 'legalAgeGroupClassification desc' | 'mail' | 'mail desc' | 'mailNickname' | 'mailNickname desc' | 'mobilePhone' | 'mobilePhone desc' | 'officeLocation' | 'officeLocation desc' | 'onPremisesDistinguishedName' | 'onPremisesDistinguishedName desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesImmutableId' | 'onPremisesImmutableId desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'onPremisesUserPrincipalName' | 'onPremisesUserPrincipalName desc' | 'postalCode' | 'postalCode desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'state' | 'state desc' | 'streetAddress' | 'streetAddress desc' | 'surname' | 'surname desc' | 'usageLocation' | 'usageLocation desc' | 'userPrincipalName' | 'userPrincipalName desc' | 'userType' | 'userType desc' | 'aboutMe' | 'aboutMe desc' | 'birthday' | 'birthday desc' | 'preferredName' | 'preferredName desc'>, $select?: Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'licenseAssignmentStates' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>, $expand?: Set<'*' | 'drive' | 'drives'>, options?: any): AxiosPromise<CollectionOfUser> {
+            return localVarFp.listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * UsersApi - object-oriented interface
+ * @export
+ * @class UsersApi
+ * @extends {BaseAPI}
+ */
+export class UsersApi extends BaseAPI {
+    /**
+     * 
+     * @summary Add new entity to users
+     * @param {User} user New entity
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public createUser(user: User, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).createUser(user, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get entities from users
+     * @param {number} [$top] Show only the first n items
+     * @param {number} [$skip] Skip the first n items
+     * @param {string} [$search] Search items by search phrases
+     * @param {string} [$filter] Filter items by property values
+     * @param {boolean} [$count] Include count of items
+     * @param {Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'accountEnabled' | 'accountEnabled desc' | 'businessPhones' | 'businessPhones desc' | 'city' | 'city desc' | 'companyName' | 'companyName desc' | 'country' | 'country desc' | 'createdDateTime' | 'createdDateTime desc' | 'department' | 'department desc' | 'displayName' | 'displayName desc' | 'faxNumber' | 'faxNumber desc' | 'givenName' | 'givenName desc' | 'lastPasswordChangeDateTime' | 'lastPasswordChangeDateTime desc' | 'legalAgeGroupClassification' | 'legalAgeGroupClassification desc' | 'mail' | 'mail desc' | 'mailNickname' | 'mailNickname desc' | 'mobilePhone' | 'mobilePhone desc' | 'officeLocation' | 'officeLocation desc' | 'onPremisesDistinguishedName' | 'onPremisesDistinguishedName desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesImmutableId' | 'onPremisesImmutableId desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'onPremisesUserPrincipalName' | 'onPremisesUserPrincipalName desc' | 'postalCode' | 'postalCode desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'state' | 'state desc' | 'streetAddress' | 'streetAddress desc' | 'surname' | 'surname desc' | 'usageLocation' | 'usageLocation desc' | 'userPrincipalName' | 'userPrincipalName desc' | 'userType' | 'userType desc' | 'aboutMe' | 'aboutMe desc' | 'birthday' | 'birthday desc' | 'preferredName' | 'preferredName desc'>} [$orderby] Order items by property values
+     * @param {Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'licenseAssignmentStates' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>} [$select] Select properties to be returned
+     * @param {Set<'*' | 'drive' | 'drives'>} [$expand] Expand related entities
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'id' | 'id desc' | 'deletedDateTime' | 'deletedDateTime desc' | 'accountEnabled' | 'accountEnabled desc' | 'businessPhones' | 'businessPhones desc' | 'city' | 'city desc' | 'companyName' | 'companyName desc' | 'country' | 'country desc' | 'createdDateTime' | 'createdDateTime desc' | 'department' | 'department desc' | 'displayName' | 'displayName desc' | 'faxNumber' | 'faxNumber desc' | 'givenName' | 'givenName desc' | 'lastPasswordChangeDateTime' | 'lastPasswordChangeDateTime desc' | 'legalAgeGroupClassification' | 'legalAgeGroupClassification desc' | 'mail' | 'mail desc' | 'mailNickname' | 'mailNickname desc' | 'mobilePhone' | 'mobilePhone desc' | 'officeLocation' | 'officeLocation desc' | 'onPremisesDistinguishedName' | 'onPremisesDistinguishedName desc' | 'onPremisesDomainName' | 'onPremisesDomainName desc' | 'onPremisesImmutableId' | 'onPremisesImmutableId desc' | 'onPremisesLastSyncDateTime' | 'onPremisesLastSyncDateTime desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc' | 'onPremisesSyncEnabled' | 'onPremisesSyncEnabled desc' | 'onPremisesUserPrincipalName' | 'onPremisesUserPrincipalName desc' | 'postalCode' | 'postalCode desc' | 'preferredLanguage' | 'preferredLanguage desc' | 'state' | 'state desc' | 'streetAddress' | 'streetAddress desc' | 'surname' | 'surname desc' | 'usageLocation' | 'usageLocation desc' | 'userPrincipalName' | 'userPrincipalName desc' | 'userType' | 'userType desc' | 'aboutMe' | 'aboutMe desc' | 'birthday' | 'birthday desc' | 'preferredName' | 'preferredName desc'>, $select?: Set<'id' | 'deletedDateTime' | 'accountEnabled' | 'businessPhones' | 'city' | 'companyName' | 'country' | 'createdDateTime' | 'creationType' | 'department' | 'displayName' | 'faxNumber' | 'givenName' | 'lastPasswordChangeDateTime' | 'legalAgeGroupClassification' | 'licenseAssignmentStates' | 'mail' | 'mailNickname' | 'mobilePhone' | 'officeLocation' | 'onPremisesDistinguishedName' | 'onPremisesDomainName' | 'onPremisesImmutableId' | 'onPremisesLastSyncDateTime' | 'onPremisesSamAccountName' | 'onPremisesSyncEnabled' | 'onPremisesUserPrincipalName' | 'postalCode' | 'preferredLanguage' | 'state' | 'streetAddress' | 'surname' | 'usageLocation' | 'userPrincipalName' | 'userType' | 'aboutMe' | 'birthday' | 'preferredName' | 'drive' | 'drives'>, $expand?: Set<'*' | 'drive' | 'drives'>, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
