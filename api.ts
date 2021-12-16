@@ -475,85 +475,85 @@ export interface Group {
      * @type {string}
      * @memberof Group
      */
-    'createdDateTime'?: string | null;
+    'createdDateTime'?: string;
     /**
      * An optional description for the group. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
      * @type {string}
      * @memberof Group
      */
-    'description'?: string | null;
+    'description'?: string;
     /**
      * The display name for the group. This property is required when a group is created and cannot be cleared during updates. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
      * @type {string}
      * @memberof Group
      */
-    'displayName'?: string | null;
+    'displayName'?: string;
     /**
      * Timestamp of when the group is set to expire. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
      * @type {string}
      * @memberof Group
      */
-    'expirationDateTime'?: string | null;
+    'expirationDateTime'?: string;
     /**
      * The SMTP address for the group, for example, \'serviceadmins@owncloud.com\'. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
      * @type {string}
      * @memberof Group
      */
-    'mail'?: string | null;
+    'mail'?: string;
     /**
      * Contains the on-premises domain FQDN, also called dnsDomainName synchronized from the on-premises directory.
      * @type {string}
      * @memberof Group
      */
-    'onPremisesDomainName'?: string | null;
+    'onPremisesDomainName'?: string;
     /**
      * Indicates the last time at which the group was synced with the on-premises directory.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in).
      * @type {string}
      * @memberof Group
      */
-    'onPremisesLastSyncDateTime'?: string | null;
+    'onPremisesLastSyncDateTime'?: string;
     /**
      * Contains the on-premises SAM account name synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect.Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith). Read-only.
      * @type {string}
      * @memberof Group
      */
-    'onPremisesSamAccountName'?: string | null;
+    'onPremisesSamAccountName'?: string;
     /**
      * true if this group is synced from an on-premises directory; false if this group was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Returned by default. Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
      * @type {boolean}
      * @memberof Group
      */
-    'onPremisesSyncEnabled'?: boolean | null;
+    'onPremisesSyncEnabled'?: boolean;
     /**
      * The preferred language for a group. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
      * @type {string}
      * @memberof Group
      */
-    'preferredLanguage'?: string | null;
+    'preferredLanguage'?: string;
     /**
      * Specifies whether the group is a security group. Required. Returned by default. Supports $filter (eq, ne, not, in).
      * @type {boolean}
      * @memberof Group
      */
-    'securityEnabled'?: boolean | null;
+    'securityEnabled'?: boolean;
     /**
      * Security identifier of the group, used in Windows scenarios. Returned by default.
      * @type {string}
      * @memberof Group
      */
-    'securityIdentifier'?: string | null;
+    'securityIdentifier'?: string;
     /**
      * Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or Hiddenmembership. It can\'t be updated later. Other values of visibility can be updated after group creation. Groups assignable to roles are always Private. See group visibility options to learn more. Returned by default. Nullable.
      * @type {string}
      * @memberof Group
      */
-    'visibility'?: string | null;
+    'visibility'?: string;
     /**
      * 
      * @type {DirectoryObject}
      * @memberof Group
      */
-    'createdOnBehalfOf'?: DirectoryObject | null;
+    'createdOnBehalfOf'?: DirectoryObject;
     /**
      * Groups that this group is a member of. HTTP Methods: GET (supported for all groups). Read-only. Nullable. Supports $expand.
      * @type {Array<DirectoryObject>}
@@ -589,7 +589,7 @@ export interface Group {
      * @type {boolean}
      * @memberof Group
      */
-    'isArchived'?: boolean | null;
+    'isArchived'?: boolean;
 }
 /**
  * Hashes of the file\'s binary content, if available. Read-only.
@@ -978,43 +978,43 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    'onPremisesDistinguishedName'?: string | null;
+    'onPremisesDistinguishedName'?: string;
     /**
      * Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
      * @type {string}
      * @memberof User
      */
-    'onPremisesDomainName'?: string | null;
+    'onPremisesDomainName'?: string;
     /**
      * This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user\'s userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
      * @type {string}
      * @memberof User
      */
-    'onPremisesImmutableId'?: string | null;
+    'onPremisesImmutableId'?: string;
     /**
      * true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
      * @type {boolean}
      * @memberof User
      */
-    'onPremisesSyncEnabled'?: boolean | null;
+    'onPremisesSyncEnabled'?: boolean;
     /**
      * Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
      * @type {string}
      * @memberof User
      */
-    'onPremisesLastSyncDateTime'?: string | null;
+    'onPremisesLastSyncDateTime'?: string;
     /**
      * Contains the on-premises SAM account name synchronized from the on-premises directory. Read-only.
      * @type {string}
      * @memberof User
      */
-    'onPremisesSamAccountName'?: string | null;
+    'onPremisesSamAccountName'?: string;
     /**
      * Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
      * @type {string}
      * @memberof User
      */
-    'onPremisesUserPrincipalName'?: string | null;
+    'onPremisesUserPrincipalName'?: string;
     /**
      * The office location in the user\'s place of business. Returned by default.
      * @type {string}
@@ -1086,7 +1086,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    'preferredName'?: string | null;
+    'preferredName'?: string;
     /**
      * 
      * @type {Drive}
