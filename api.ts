@@ -829,6 +829,25 @@ export interface OpenGraphFile {
     'processingMetadata'?: boolean;
 }
 /**
+ * Password Profile associated with a user
+ * @export
+ * @interface PasswordProfile
+ */
+export interface PasswordProfile {
+    /**
+     * If true the user is required to change their password upon the next login
+     * @type {boolean}
+     * @memberof PasswordProfile
+     */
+    'forceChangePasswordNextSignIn'?: boolean;
+    /**
+     * The user\'s password
+     * @type {string}
+     * @memberof PasswordProfile
+     */
+    'password'?: string;
+}
+/**
  * Optional. Information about the drive\'s storage space quota. Read-only.
  * @export
  * @interface Quota
@@ -1021,6 +1040,12 @@ export interface User {
      * @memberof User
      */
     'officeLocation'?: string;
+    /**
+     * 
+     * @type {PasswordProfile}
+     * @memberof User
+     */
+    'passwordProfile'?: PasswordProfile;
     /**
      * The postal code for the user\'s postal address. The postal code is specific to the user\'s country/region. In the United States of America, this attribute contains the ZIP code. Returned only on $select.
      * @type {string}
