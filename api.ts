@@ -377,6 +377,12 @@ export interface DriveItem {
      */
     'trash'?: Trash;
     /**
+     * 
+     * @type {SpecialFolder}
+     * @memberof DriveItem
+     */
+    'specialFolder'?: SpecialFolder;
+    /**
      * Size of the item in bytes. Read-only.
      * @type {number}
      * @memberof DriveItem
@@ -895,6 +901,19 @@ export interface Quota {
      * @memberof Quota
      */
     'used'?: number;
+}
+/**
+ * If the current item is also available as a special folder, this facet is returned. Read-only
+ * @export
+ * @interface SpecialFolder
+ */
+export interface SpecialFolder {
+    /**
+     * The unique identifier for this item in the /drive/special collection
+     * @type {string}
+     * @memberof SpecialFolder
+     */
+    'name'?: string;
 }
 /**
  * Metadata for trashed drive Items
