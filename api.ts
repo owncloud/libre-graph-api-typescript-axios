@@ -400,6 +400,12 @@ export interface DriveItem {
      * @memberof DriveItem
      */
     'children'?: Array<DriveItem>;
+    /**
+     * The set of permissions for the item. Read-only. Nullable.
+     * @type {Array<Permission>}
+     * @memberof DriveItem
+     */
+    'permissions'?: Array<Permission>;
 }
 /**
  * File system information on client. Read-write.
@@ -883,6 +889,25 @@ export interface PasswordProfile {
      * @memberof PasswordProfile
      */
     'password'?: string;
+}
+/**
+ * The Permission resource provides information about a sharing permission granted for a DriveItem resource.
+ * @export
+ * @interface Permission
+ */
+export interface Permission {
+    /**
+     * 
+     * @type {Array<IdentitySet>}
+     * @memberof Permission
+     */
+    'grantedTo'?: Array<IdentitySet>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Permission
+     */
+    'roles'?: Array<string>;
 }
 /**
  * Optional. Information about the drive\'s storage space quota. Read-only.
