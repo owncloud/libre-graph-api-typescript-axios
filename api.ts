@@ -208,7 +208,7 @@ export interface Drive {
      */
     'lastModifiedByUser'?: User;
     /**
-     * Describes the type of drive represented by this resource. Values are \"personal\" for users home spaces, \"project\" or \"share\". Read-only.
+     * Describes the type of drive represented by this resource. Values are \"personal\" for users home spaces, \"project\", \"virtual\" or \"share\". Read-only.
      * @type {string}
      * @memberof Drive
      */
@@ -928,7 +928,7 @@ export interface Quota {
      */
     'remaining'?: number;
     /**
-     * Enumeration value that indicates the state of the storage space. Read-only.
+     * Enumeration value that indicates the state of the storage space. Either \"normal\", \"nearing\", \"critical\" or \"exceeded\". Read-only.
      * @type {string}
      * @memberof Quota
      */
