@@ -214,6 +214,12 @@ export interface Drive {
      */
     'driveType'?: string;
     /**
+     * The drive alias can be used in clients to make the urls user friendly. Example: \'personal/einstein\'. This will be used to resolve to the correct driveID.
+     * @type {string}
+     * @memberof Drive
+     */
+    'driveAlias'?: string;
+    /**
      * 
      * @type {IdentitySet}
      * @memberof Drive
