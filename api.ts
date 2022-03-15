@@ -389,6 +389,12 @@ export interface DriveItem {
      */
     'specialFolder'?: SpecialFolder;
     /**
+     * 
+     * @type {RemoteItem}
+     * @memberof DriveItem
+     */
+    'remoteItem'?: RemoteItem | null;
+    /**
      * Size of the item in bytes. Read-only.
      * @type {number}
      * @memberof DriveItem
@@ -951,6 +957,140 @@ export interface Quota {
      * @memberof Quota
      */
     'used'?: number;
+}
+/**
+ * Remote item data, if the item is shared from a drive other than the one being accessed. Read-only.
+ * @export
+ * @interface RemoteItem
+ */
+export interface RemoteItem {
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof RemoteItem
+     */
+    'createdBy'?: IdentitySet;
+    /**
+     * Date and time of item creation. Read-only.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'createdDateTime'?: string | null;
+    /**
+     * 
+     * @type {OpenGraphFile}
+     * @memberof RemoteItem
+     */
+    'file'?: OpenGraphFile;
+    /**
+     * 
+     * @type {FileSystemInfo}
+     * @memberof RemoteItem
+     */
+    'fileSystemInfo'?: FileSystemInfo;
+    /**
+     * 
+     * @type {Folder}
+     * @memberof RemoteItem
+     */
+    'folder'?: Folder;
+    /**
+     * Unique identifier for the remote item in its drive. Read-only.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'id'?: string | null;
+    /**
+     * 
+     * @type {Image}
+     * @memberof RemoteItem
+     */
+    'image'?: Image;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof RemoteItem
+     */
+    'lastModifiedBy'?: IdentitySet;
+    /**
+     * Date and time the item was last modified. Read-only.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'lastModifiedDateTime'?: string | null;
+    /**
+     * Optional. Filename of the remote item. Read-only.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {ItemReference}
+     * @memberof RemoteItem
+     */
+    'parentReference'?: ItemReference;
+    /**
+     * 
+     * @type {Shared}
+     * @memberof RemoteItem
+     */
+    'shared'?: Shared;
+    /**
+     * Size of the remote item. Read-only.
+     * @type {number}
+     * @memberof RemoteItem
+     */
+    'size'?: number | null;
+    /**
+     * 
+     * @type {SpecialFolder}
+     * @memberof RemoteItem
+     */
+    'specialFolder'?: SpecialFolder;
+    /**
+     * DAV compatible URL for the item.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'webDavUrl'?: string | null;
+    /**
+     * URL that displays the resource in the browser. Read-only.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'webUrl'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface Shared
+ */
+export interface Shared {
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof Shared
+     */
+    'owner'?: IdentitySet;
+    /**
+     * Indicates the scope of how the item is shared: anonymous, organization, or users. Read-only.
+     * @type {string}
+     * @memberof Shared
+     */
+    'scope'?: string | null;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof Shared
+     */
+    'sharedBy'?: IdentitySet;
+    /**
+     * The UTC date and time when the item was shared. Read-only.
+     * @type {string}
+     * @memberof Shared
+     */
+    'sharedDateTime'?: string | null;
 }
 /**
  * If the current item is also available as a special folder, this facet is returned. Read-only
