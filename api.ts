@@ -393,7 +393,7 @@ export interface DriveItem {
      * @type {RemoteItem}
      * @memberof DriveItem
      */
-    'remoteItem'?: RemoteItem | null;
+    'remoteItem'?: RemoteItem;
     /**
      * Size of the item in bytes. Read-only.
      * @type {number}
@@ -975,7 +975,7 @@ export interface RemoteItem {
      * @type {string}
      * @memberof RemoteItem
      */
-    'createdDateTime'?: string | null;
+    'createdDateTime'?: string;
     /**
      * 
      * @type {OpenGraphFile}
@@ -999,7 +999,7 @@ export interface RemoteItem {
      * @type {string}
      * @memberof RemoteItem
      */
-    'id'?: string | null;
+    'id'?: string;
     /**
      * 
      * @type {Image}
@@ -1017,13 +1017,13 @@ export interface RemoteItem {
      * @type {string}
      * @memberof RemoteItem
      */
-    'lastModifiedDateTime'?: string | null;
+    'lastModifiedDateTime'?: string;
     /**
      * Optional. Filename of the remote item. Read-only.
      * @type {string}
      * @memberof RemoteItem
      */
-    'name'?: string | null;
+    'name'?: string;
     /**
      * 
      * @type {ItemReference}
@@ -1041,7 +1041,7 @@ export interface RemoteItem {
      * @type {number}
      * @memberof RemoteItem
      */
-    'size'?: number | null;
+    'size'?: number;
     /**
      * 
      * @type {SpecialFolder}
@@ -1053,13 +1053,13 @@ export interface RemoteItem {
      * @type {string}
      * @memberof RemoteItem
      */
-    'webDavUrl'?: string | null;
+    'webDavUrl'?: string;
     /**
      * URL that displays the resource in the browser. Read-only.
      * @type {string}
      * @memberof RemoteItem
      */
-    'webUrl'?: string | null;
+    'webUrl'?: string;
 }
 /**
  * 
@@ -1078,7 +1078,7 @@ export interface Shared {
      * @type {string}
      * @memberof Shared
      */
-    'scope'?: string | null;
+    'scope'?: string;
     /**
      * 
      * @type {IdentitySet}
@@ -1090,7 +1090,7 @@ export interface Shared {
      * @type {string}
      * @memberof Shared
      */
-    'sharedDateTime'?: string | null;
+    'sharedDateTime'?: string;
 }
 /**
  * If the current item is also available as a special folder, this facet is returned. Read-only
