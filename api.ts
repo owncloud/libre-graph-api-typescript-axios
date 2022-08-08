@@ -1084,6 +1084,12 @@ export interface User {
      */
     'drives'?: Array<Drive>;
     /**
+     * 
+     * @type {Drive}
+     * @memberof User
+     */
+    'drive'?: Drive;
+    /**
      * The SMTP address for the user, for example, \'jeff@contoso.onowncloud.com\'. Returned by default. Supports $filter and endsWith.
      * @type {string}
      * @memberof User
