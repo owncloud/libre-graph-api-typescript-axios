@@ -2938,10 +2938,12 @@ export const MeUserApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * 
+         * @summary Get current user
+         * @param {Set<'memberOf'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getOwnUser: async ($expand?: Set<'memberOf'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/me`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2953,6 +2955,10 @@ export const MeUserApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if ($expand) {
+                localVarQueryParameter['$expand'] = Array.from($expand).join(COLLECTION_FORMATS.csv);
+            }
 
 
     
@@ -2977,11 +2983,13 @@ export const MeUserApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Get current user
+         * @param {Set<'memberOf'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async meGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.meGet(options);
+        async getOwnUser($expand?: Set<'memberOf'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getOwnUser($expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2996,11 +3004,13 @@ export const MeUserApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * 
+         * @summary Get current user
+         * @param {Set<'memberOf'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        meGet(options?: any): AxiosPromise<User> {
-            return localVarFp.meGet(options).then((request) => request(axios, basePath));
+        getOwnUser($expand?: Set<'memberOf'>, options?: any): AxiosPromise<User> {
+            return localVarFp.getOwnUser($expand, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3014,12 +3024,14 @@ export const MeUserApiFactory = function (configuration?: Configuration, basePat
 export class MeUserApi extends BaseAPI {
     /**
      * 
+     * @summary Get current user
+     * @param {Set<'memberOf'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MeUserApi
      */
-    public meGet(options?: AxiosRequestConfig) {
-        return MeUserApiFp(this.configuration).meGet(options).then((request) => request(this.axios, this.basePath));
+    public getOwnUser($expand?: Set<'memberOf'>, options?: AxiosRequestConfig) {
+        return MeUserApiFp(this.configuration).getOwnUser($expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
