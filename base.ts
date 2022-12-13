@@ -18,7 +18,7 @@ import { Configuration } from "./configuration";
 // @ts-ignore
 import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 
-export const BASE_PATH = "https://ocis.ocis-traefik.latest.owncloud.works".replace(/\/+$/, "");
+export const BASE_PATH = "https://ocis.ocis-traefik.latest.owncloud.works/graph/v1.0".replace(/\/+$/, "");
 
 /**
  *
