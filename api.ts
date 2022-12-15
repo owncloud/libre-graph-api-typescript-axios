@@ -146,6 +146,19 @@ export interface CollectionOfSchools {
 /**
  * 
  * @export
+ * @interface CollectionOfTags
+ */
+export interface CollectionOfTags {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CollectionOfTags
+     */
+    'value'?: Array<string>;
+}
+/**
+ * 
+ * @export
  * @interface CollectionOfUser
  */
 export interface CollectionOfUser {
@@ -1347,6 +1360,44 @@ export interface SpecialFolder {
      * @memberof SpecialFolder
      */
     'name'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface TagAssignment
+ */
+export interface TagAssignment {
+    /**
+     * 
+     * @type {string}
+     * @memberof TagAssignment
+     */
+    'resourceId': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof TagAssignment
+     */
+    'tags': Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface TagUnassignment
+ */
+export interface TagUnassignment {
+    /**
+     * 
+     * @type {string}
+     * @memberof TagUnassignment
+     */
+    'resourceId': string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof TagUnassignment
+     */
+    'tags': Array<string>;
 }
 /**
  * Metadata for trashed drive Items
@@ -4963,6 +5014,238 @@ export class MeUserApi extends BaseAPI {
      */
     public getOwnUser($expand?: Set<'memberOf'>, options?: AxiosRequestConfig) {
         return MeUserApiFp(this.configuration).getOwnUser($expand, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * TagsApi - axios parameter creator
+ * @export
+ */
+export const TagsApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Assign tags to a resource
+         * @param {TagAssignment} [tagAssignment] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        assignTags: async (tagAssignment?: TagAssignment, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/extensions/org.libregraph/tags`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tagAssignment, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all known tags
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTags: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/extensions/org.libregraph/tags`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Unassign tags from a resource
+         * @param {TagUnassignment} [tagUnassignment] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        unassignTags: async (tagUnassignment?: TagUnassignment, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/extensions/org.libregraph/tags`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(tagUnassignment, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * TagsApi - functional programming interface
+ * @export
+ */
+export const TagsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = TagsApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Assign tags to a resource
+         * @param {TagAssignment} [tagAssignment] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async assignTags(tagAssignment?: TagAssignment, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.assignTags(tagAssignment, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get all known tags
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTags(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfTags>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTags(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Unassign tags from a resource
+         * @param {TagUnassignment} [tagUnassignment] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async unassignTags(tagUnassignment?: TagUnassignment, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.unassignTags(tagUnassignment, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * TagsApi - factory interface
+ * @export
+ */
+export const TagsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = TagsApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Assign tags to a resource
+         * @param {TagAssignment} [tagAssignment] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        assignTags(tagAssignment?: TagAssignment, options?: any): AxiosPromise<void> {
+            return localVarFp.assignTags(tagAssignment, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all known tags
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTags(options?: any): AxiosPromise<CollectionOfTags> {
+            return localVarFp.getTags(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Unassign tags from a resource
+         * @param {TagUnassignment} [tagUnassignment] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        unassignTags(tagUnassignment?: TagUnassignment, options?: any): AxiosPromise<void> {
+            return localVarFp.unassignTags(tagUnassignment, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * TagsApi - object-oriented interface
+ * @export
+ * @class TagsApi
+ * @extends {BaseAPI}
+ */
+export class TagsApi extends BaseAPI {
+    /**
+     * 
+     * @summary Assign tags to a resource
+     * @param {TagAssignment} [tagAssignment] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TagsApi
+     */
+    public assignTags(tagAssignment?: TagAssignment, options?: AxiosRequestConfig) {
+        return TagsApiFp(this.configuration).assignTags(tagAssignment, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all known tags
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TagsApi
+     */
+    public getTags(options?: AxiosRequestConfig) {
+        return TagsApiFp(this.configuration).getTags(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Unassign tags from a resource
+     * @param {TagUnassignment} [tagUnassignment] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TagsApi
+     */
+    public unassignTags(tagUnassignment?: TagUnassignment, options?: AxiosRequestConfig) {
+        return TagsApiFp(this.configuration).unassignTags(tagUnassignment, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
