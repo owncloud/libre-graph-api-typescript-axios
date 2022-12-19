@@ -2002,11 +2002,15 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Get root from arbitrary space
+         * @param {string} driveId key: id of drive
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRoot: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/drives/{drive-id}/root`;
+        getRoot: async (driveId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('getRoot', 'driveId', driveId)
+            const localVarPath = `/drives/{drive-id}/root`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -2042,11 +2046,12 @@ export const DrivesRootApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get root from arbitrary space
+         * @param {string} driveId key: id of drive
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRoot(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getRoot(options);
+        async getRoot(driveId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRoot(driveId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2062,11 +2067,12 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Get root from arbitrary space
+         * @param {string} driveId key: id of drive
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRoot(options?: any): AxiosPromise<DriveItem> {
-            return localVarFp.getRoot(options).then((request) => request(axios, basePath));
+        getRoot(driveId: string, options?: any): AxiosPromise<DriveItem> {
+            return localVarFp.getRoot(driveId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2081,12 +2087,13 @@ export class DrivesRootApi extends BaseAPI {
     /**
      * 
      * @summary Get root from arbitrary space
+     * @param {string} driveId key: id of drive
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DrivesRootApi
      */
-    public getRoot(options?: AxiosRequestConfig) {
-        return DrivesRootApiFp(this.configuration).getRoot(options).then((request) => request(this.axios, this.basePath));
+    public getRoot(driveId: string, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).getRoot(driveId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -2744,18 +2751,18 @@ export const EducationSchoolApiAxiosParamCreator = function (configuration?: Con
          * 
          * @summary Unassign class from a school
          * @param {string} schoolId key: id of school
-         * @param {string} userId key: id of the class to unassign from school
+         * @param {string} classId key: id of the class to unassign from school
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteClassFromSchool: async (schoolId: string, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteClassFromSchool: async (schoolId: string, classId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'schoolId' is not null or undefined
             assertParamExists('deleteClassFromSchool', 'schoolId', schoolId)
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('deleteClassFromSchool', 'userId', userId)
+            // verify required parameter 'classId' is not null or undefined
+            assertParamExists('deleteClassFromSchool', 'classId', classId)
             const localVarPath = `/education/schools/{school-id}/classes/{class-id}/$ref`
                 .replace(`{${"school-id"}}`, encodeURIComponent(String(schoolId)))
-                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)));
+                .replace(`{${"class-id"}}`, encodeURIComponent(String(classId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3003,12 +3010,12 @@ export const EducationSchoolApiFp = function(configuration?: Configuration) {
          * 
          * @summary Unassign class from a school
          * @param {string} schoolId key: id of school
-         * @param {string} userId key: id of the class to unassign from school
+         * @param {string} classId key: id of the class to unassign from school
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteClassFromSchool(schoolId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteClassFromSchool(schoolId, userId, options);
+        async deleteClassFromSchool(schoolId: string, classId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteClassFromSchool(schoolId, classId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -3113,12 +3120,12 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * 
          * @summary Unassign class from a school
          * @param {string} schoolId key: id of school
-         * @param {string} userId key: id of the class to unassign from school
+         * @param {string} classId key: id of the class to unassign from school
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteClassFromSchool(schoolId: string, userId: string, options?: any): AxiosPromise<void> {
-            return localVarFp.deleteClassFromSchool(schoolId, userId, options).then((request) => request(axios, basePath));
+        deleteClassFromSchool(schoolId: string, classId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteClassFromSchool(schoolId, classId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3223,13 +3230,13 @@ export class EducationSchoolApi extends BaseAPI {
      * 
      * @summary Unassign class from a school
      * @param {string} schoolId key: id of school
-     * @param {string} userId key: id of the class to unassign from school
+     * @param {string} classId key: id of the class to unassign from school
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationSchoolApi
      */
-    public deleteClassFromSchool(schoolId: string, userId: string, options?: AxiosRequestConfig) {
-        return EducationSchoolApiFp(this.configuration).deleteClassFromSchool(schoolId, userId, options).then((request) => request(this.axios, this.basePath));
+    public deleteClassFromSchool(schoolId: string, classId: string, options?: AxiosRequestConfig) {
+        return EducationSchoolApiFp(this.configuration).deleteClassFromSchool(schoolId, classId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
