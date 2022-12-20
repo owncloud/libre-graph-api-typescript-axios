@@ -101,6 +101,19 @@ export interface CollectionOfDrives {
 /**
  * 
  * @export
+ * @interface CollectionOfDrives1
+ */
+export interface CollectionOfDrives1 {
+    /**
+     * 
+     * @type {Array<Drive>}
+     * @memberof CollectionOfDrives1
+     */
+    'value'?: Array<Drive>;
+}
+/**
+ * 
+ * @export
  * @interface CollectionOfEducationUser
  */
 export interface CollectionOfEducationUser {
@@ -208,13 +221,13 @@ export interface DirectoryObject {
     'deletedDateTime'?: string;
 }
 /**
- * Storage Space. Read-only.
+ * The drive represents a space on the storage.
  * @export
  * @interface Drive
  */
 export interface Drive {
     /**
-     * Read-only.
+     * The unique idenfier for this drive.
      * @type {string}
      * @memberof Drive
      */
@@ -260,7 +273,7 @@ export interface Drive {
      * @type {string}
      * @memberof Drive
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {ItemReference}
@@ -881,7 +894,7 @@ export interface Identity {
      * @type {string}
      * @memberof Identity
      */
-    'displayName'?: string;
+    'displayName': string;
     /**
      * Unique identifier for the identity.
      * @type {string}
@@ -1119,13 +1132,13 @@ export interface PasswordChange {
      * @type {string}
      * @memberof PasswordChange
      */
-    'currentPassword'?: string;
+    'currentPassword': string;
     /**
      * 
      * @type {string}
      * @memberof PasswordChange
      */
-    'newPassword'?: string;
+    'newPassword': string;
 }
 /**
  * Password Profile associated with a user
@@ -1506,7 +1519,7 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * 
-         * @summary Create a new space of a specific type
+         * @summary Create a new drive of a specific type
          * @param {Drive} drive New space property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1583,12 +1596,10 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
          * 
          * @summary Get drive by id
          * @param {string} driveId key: id of drive
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDrive: async (driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'special'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDrive: async (driveId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'driveId' is not null or undefined
             assertParamExists('getDrive', 'driveId', driveId)
             const localVarPath = `/drives/{drive-id}`
@@ -1604,14 +1615,6 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if ($select) {
-                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
-            }
-
-            if ($expand) {
-                localVarQueryParameter['$expand'] = Array.from($expand).join(COLLECTION_FORMATS.csv);
-            }
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -1625,7 +1628,7 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
         },
         /**
          * 
-         * @summary Update the space
+         * @summary Update the drive
          * @param {string} driveId key: id of drive
          * @param {Drive} drive New space values
          * @param {*} [options] Override http request option.
@@ -1675,7 +1678,7 @@ export const DrivesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Create a new space of a specific type
+         * @summary Create a new drive of a specific type
          * @param {Drive} drive New space property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1700,18 +1703,16 @@ export const DrivesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get drive by id
          * @param {string} driveId key: id of drive
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'special'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDrive(driveId, $select, $expand, options);
+        async getDrive(driveId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDrive(driveId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Update the space
+         * @summary Update the drive
          * @param {string} driveId key: id of drive
          * @param {Drive} drive New space values
          * @param {*} [options] Override http request option.
@@ -1733,7 +1734,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * 
-         * @summary Create a new space of a specific type
+         * @summary Create a new drive of a specific type
          * @param {Drive} drive New space property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1756,17 +1757,15 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * 
          * @summary Get drive by id
          * @param {string} driveId key: id of drive
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'special'>, options?: any): AxiosPromise<Drive> {
-            return localVarFp.getDrive(driveId, $select, $expand, options).then((request) => request(axios, basePath));
+        getDrive(driveId: string, options?: any): AxiosPromise<Drive> {
+            return localVarFp.getDrive(driveId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Update the space
+         * @summary Update the drive
          * @param {string} driveId key: id of drive
          * @param {Drive} drive New space values
          * @param {*} [options] Override http request option.
@@ -1787,7 +1786,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
 export class DrivesApi extends BaseAPI {
     /**
      * 
-     * @summary Create a new space of a specific type
+     * @summary Create a new drive of a specific type
      * @param {Drive} drive New space property values
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1814,19 +1813,17 @@ export class DrivesApi extends BaseAPI {
      * 
      * @summary Get drive by id
      * @param {string} driveId key: id of drive
-     * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-     * @param {Set<'*' | 'root' | 'special'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DrivesApi
      */
-    public getDrive(driveId: string, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'special'>, options?: AxiosRequestConfig) {
-        return DrivesApiFp(this.configuration).getDrive(driveId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    public getDrive(driveId: string, options?: AxiosRequestConfig) {
+        return DrivesApiFp(this.configuration).getDrive(driveId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Update the space
+     * @summary Update the drive
      * @param {string} driveId key: id of drive
      * @param {Drive} drive New space values
      * @param {*} [options] Override http request option.
@@ -1847,18 +1844,13 @@ export const DrivesGetDrivesApiAxiosParamCreator = function (configuration?: Con
     return {
         /**
          * 
-         * @summary Get All drives
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
+         * @summary Get all available drives
          * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
          * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listAllDrives: async ($top?: number, $skip?: number, $orderby?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listAllDrives: async ($orderby?: string, $filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/drives`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1871,32 +1863,12 @@ export const DrivesGetDrivesApiAxiosParamCreator = function (configuration?: Con
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if ($top !== undefined) {
-                localVarQueryParameter['$top'] = $top;
-            }
-
-            if ($skip !== undefined) {
-                localVarQueryParameter['$skip'] = $skip;
-            }
-
             if ($orderby !== undefined) {
                 localVarQueryParameter['$orderby'] = $orderby;
             }
 
             if ($filter !== undefined) {
                 localVarQueryParameter['$filter'] = $filter;
-            }
-
-            if ($count !== undefined) {
-                localVarQueryParameter['$count'] = $count;
-            }
-
-            if ($select) {
-                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
-            }
-
-            if ($expand) {
-                localVarQueryParameter['$expand'] = Array.from($expand).join(COLLECTION_FORMATS.csv);
             }
 
 
@@ -1922,19 +1894,14 @@ export const DrivesGetDrivesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Get All drives
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
+         * @summary Get all available drives
          * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
          * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listAllDrives($top?: number, $skip?: number, $orderby?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listAllDrives($top, $skip, $orderby, $filter, $count, $select, $expand, options);
+        async listAllDrives($orderby?: string, $filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives1>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listAllDrives($orderby, $filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1949,19 +1916,14 @@ export const DrivesGetDrivesApiFactory = function (configuration?: Configuration
     return {
         /**
          * 
-         * @summary Get All drives
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
+         * @summary Get all available drives
          * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
          * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listAllDrives($top?: number, $skip?: number, $orderby?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>, options?: any): AxiosPromise<CollectionOfDrives> {
-            return localVarFp.listAllDrives($top, $skip, $orderby, $filter, $count, $select, $expand, options).then((request) => request(axios, basePath));
+        listAllDrives($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives1> {
+            return localVarFp.listAllDrives($orderby, $filter, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1975,20 +1937,15 @@ export const DrivesGetDrivesApiFactory = function (configuration?: Configuration
 export class DrivesGetDrivesApi extends BaseAPI {
     /**
      * 
-     * @summary Get All drives
-     * @param {number} [$top] Show only the first n items
-     * @param {number} [$skip] Skip the first n items
+     * @summary Get all available drives
      * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
      * @param {string} [$filter] Filter items by property values
-     * @param {boolean} [$count] Include count of items
-     * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-     * @param {Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DrivesGetDrivesApi
      */
-    public listAllDrives($top?: number, $skip?: number, $orderby?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>, options?: AxiosRequestConfig) {
-        return DrivesGetDrivesApiFp(this.configuration).listAllDrives($top, $skip, $orderby, $filter, $count, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    public listAllDrives($orderby?: string, $filter?: string, options?: AxiosRequestConfig) {
+        return DrivesGetDrivesApiFp(this.configuration).listAllDrives($orderby, $filter, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -4773,18 +4730,13 @@ export const MeDrivesApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          * 
-         * @summary Get drives from me
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
+         * @summary Get all drives where the current user is a regular member of
          * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
          * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listMyDrives: async ($top?: number, $skip?: number, $orderby?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listMyDrives: async ($orderby?: string, $filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/me/drives`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4797,32 +4749,12 @@ export const MeDrivesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if ($top !== undefined) {
-                localVarQueryParameter['$top'] = $top;
-            }
-
-            if ($skip !== undefined) {
-                localVarQueryParameter['$skip'] = $skip;
-            }
-
             if ($orderby !== undefined) {
                 localVarQueryParameter['$orderby'] = $orderby;
             }
 
             if ($filter !== undefined) {
                 localVarQueryParameter['$filter'] = $filter;
-            }
-
-            if ($count !== undefined) {
-                localVarQueryParameter['$count'] = $count;
-            }
-
-            if ($select) {
-                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
-            }
-
-            if ($expand) {
-                localVarQueryParameter['$expand'] = Array.from($expand).join(COLLECTION_FORMATS.csv);
             }
 
 
@@ -4848,19 +4780,14 @@ export const MeDrivesApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Get drives from me
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
+         * @summary Get all drives where the current user is a regular member of
          * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
          * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listMyDrives($top?: number, $skip?: number, $orderby?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listMyDrives($top, $skip, $orderby, $filter, $count, $select, $expand, options);
+        async listMyDrives($orderby?: string, $filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listMyDrives($orderby, $filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -4875,19 +4802,14 @@ export const MeDrivesApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
-         * @summary Get drives from me
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
+         * @summary Get all drives where the current user is a regular member of
          * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
          * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
-         * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-         * @param {Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listMyDrives($top?: number, $skip?: number, $orderby?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>, options?: any): AxiosPromise<CollectionOfDrives> {
-            return localVarFp.listMyDrives($top, $skip, $orderby, $filter, $count, $select, $expand, options).then((request) => request(axios, basePath));
+        listMyDrives($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives> {
+            return localVarFp.listMyDrives($orderby, $filter, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -4901,20 +4823,15 @@ export const MeDrivesApiFactory = function (configuration?: Configuration, baseP
 export class MeDrivesApi extends BaseAPI {
     /**
      * 
-     * @summary Get drives from me
-     * @param {number} [$top] Show only the first n items
-     * @param {number} [$skip] Skip the first n items
+     * @summary Get all drives where the current user is a regular member of
      * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
      * @param {string} [$filter] Filter items by property values
-     * @param {boolean} [$count] Include count of items
-     * @param {Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>} [$select] Select properties to be returned
-     * @param {Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MeDrivesApi
      */
-    public listMyDrives($top?: number, $skip?: number, $orderby?: string, $filter?: string, $count?: boolean, $select?: Set<'id' | 'createdBy' | 'createdDateTime' | 'description' | 'eTag' | 'lastModifiedBy' | 'lastModifiedDateTime' | 'name' | 'parentReference' | 'webUrl' | 'driveType' | 'owner' | 'quota' | 'createdByUser' | 'lastModifiedByUser' | 'root' | 'special'>, $expand?: Set<'*' | 'root' | 'root/permissions/grantedTo/user' | 'special'>, options?: AxiosRequestConfig) {
-        return MeDrivesApiFp(this.configuration).listMyDrives($top, $skip, $orderby, $filter, $count, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    public listMyDrives($orderby?: string, $filter?: string, options?: AxiosRequestConfig) {
+        return MeDrivesApiFp(this.configuration).listMyDrives($orderby, $filter, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
