@@ -926,6 +926,12 @@ export interface IdentitySet {
      * @memberof IdentitySet
      */
     'user'?: Identity;
+    /**
+     * 
+     * @type {Identity}
+     * @memberof IdentitySet
+     */
+    'group'?: Identity;
 }
 /**
  * Image metadata, if the item is an image. Read-only.
