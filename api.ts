@@ -1176,7 +1176,7 @@ export interface Permission {
      * @type {Array<IdentitySet>}
      * @memberof Permission
      */
-    'grantedTo'?: Array<IdentitySet>;
+    'grantedToIdentities'?: Array<IdentitySet>;
     /**
      * 
      * @type {Array<string>}
