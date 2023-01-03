@@ -24,6 +24,123 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 /**
  * 
  * @export
+ * @interface AppRole
+ */
+export interface AppRole {
+    /**
+     * Specifies whether this app role can be assigned to users and groups (by setting to [\'User\']), to other application\'s (by setting to [\'Application\'], or both (by setting to [\'User\', \'Application\']). App roles supporting assignment to other applications\' service principals are also known as application permissions. The \'Application\' value is only supported for app roles defined on application entities.
+     * @type {Array<string>}
+     * @memberof AppRole
+     */
+    'allowedMemberTypes'?: Array<string>;
+    /**
+     * The description for the app role. This is displayed when the app role is being assigned and, if the app role functions as an application permission, during  consent experiences.
+     * @type {string}
+     * @memberof AppRole
+     */
+    'description'?: string | null;
+    /**
+     * Display name for the permission that appears in the app role assignment and consent experiences.
+     * @type {string}
+     * @memberof AppRole
+     */
+    'displayName'?: string | null;
+    /**
+     * Unique role identifier inside the appRoles collection. When creating a new app role, a new GUID identifier must be provided.
+     * @type {string}
+     * @memberof AppRole
+     */
+    'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface AppRoleAssignment
+ */
+export interface AppRoleAssignment {
+    /**
+     * The unique identifier for the object. 12345678-9abc-def0-1234-56789abcde. The value of the ID property is often, but not exclusively, in the form of a GUID. The value should be treated as an opaque identifier and not based in being a GUID. Null values are not allowed. Read-only.
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'deletedDateTime'?: string;
+    /**
+     * The identifier (id) for the app role which is assigned to the user. Required on create.
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'appRoleId': string;
+    /**
+     * The time when the app role assignment was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'createdDateTime'?: string | null;
+    /**
+     * The display name of the user, group, or service principal that was granted the app role assignment. Read-only.
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'principalDisplayName'?: string | null;
+    /**
+     * The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'principalId': string | null;
+    /**
+     * The type of the assigned principal. This can either be User, Group, or ServicePrincipal. Read-only.
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'principalType'?: string | null;
+    /**
+     * The display name of the resource app\'s service principal to which the assignment is made.
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'resourceDisplayName'?: string | null;
+    /**
+     * The unique identifier (id) for the resource service principal for which the assignment is made. Required on create.
+     * @type {string}
+     * @memberof AppRoleAssignment
+     */
+    'resourceId': string | null;
+}
+/**
+ * 
+ * @export
+ * @interface Application
+ */
+export interface Application {
+    /**
+     * The unique identifier for the object. 12345678-9abc-def0-1234-56789abcde. The value of the ID property is often, but not exclusively, in the form of a GUID. The value should be treated as an opaque identifier and not based in being a GUID. Null values are not allowed. Read-only.
+     * @type {string}
+     * @memberof Application
+     */
+    'id': string;
+    /**
+     * The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
+     * @type {Array<AppRole>}
+     * @memberof Application
+     */
+    'appRoles'?: Array<AppRole>;
+    /**
+     * The display name for the application.
+     * @type {string}
+     * @memberof Application
+     */
+    'displayName'?: string | null;
+}
+/**
+ * 
+ * @export
  * @interface ClassMemberReference
  */
 export interface ClassMemberReference {
@@ -46,6 +163,25 @@ export interface ClassReference {
      * @memberof ClassReference
      */
     '@odata.id'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CollectionOfAppRoleAssignments
+ */
+export interface CollectionOfAppRoleAssignments {
+    /**
+     * 
+     * @type {Array<AppRoleAssignment>}
+     * @memberof CollectionOfAppRoleAssignments
+     */
+    'value'?: Array<AppRoleAssignment>;
+    /**
+     * 
+     * @type {string}
+     * @memberof CollectionOfAppRoleAssignments
+     */
+    '@odata.nextLink'?: string;
 }
 /**
  * 
@@ -1516,6 +1652,107 @@ export interface User {
      */
     'givenName'?: string;
 }
+
+/**
+ * DefaultApi - axios parameter creator
+ * @export
+ */
+export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Get properties of an application by id
+         * @param {string} applicationId key: id of application
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationApplicationIdGet: async (applicationId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'applicationId' is not null or undefined
+            assertParamExists('applicationApplicationIdGet', 'applicationId', applicationId)
+            const localVarPath = `/application/{application-id}`
+                .replace(`{${"application-id"}}`, encodeURIComponent(String(applicationId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Get properties of an application by id
+         * @param {string} applicationId key: id of application
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async applicationApplicationIdGet(applicationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Application>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.applicationApplicationIdGet(applicationId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = DefaultApiFp(configuration)
+    return {
+        /**
+         * Get properties of an application by id
+         * @param {string} applicationId key: id of application
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        applicationApplicationIdGet(applicationId: string, options?: any): AxiosPromise<Application> {
+            return localVarFp.applicationApplicationIdGet(applicationId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+    /**
+     * Get properties of an application by id
+     * @param {string} applicationId key: id of application
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public applicationApplicationIdGet(applicationId: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).applicationApplicationIdGet(applicationId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
 
 /**
  * DrivesApi - axios parameter creator
@@ -5314,11 +5551,11 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
          * @summary Get entity from users by key
          * @param {string} userId key: id of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf'>} [$expand] Expand related entities
+         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUser: async (userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUser: async (userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getUser', 'userId', userId)
             const localVarPath = `/users/{user-id}`
@@ -5420,11 +5657,11 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @summary Get entity from users by key
          * @param {string} userId key: id of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf'>} [$expand] Expand related entities
+         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUser(userId, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -5466,11 +5703,11 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @summary Get entity from users by key
          * @param {string} userId key: id of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf'>} [$expand] Expand related entities
+         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf'>, options?: any): AxiosPromise<User> {
+        getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: any): AxiosPromise<User> {
             return localVarFp.getUser(userId, $select, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5512,12 +5749,12 @@ export class UserApi extends BaseAPI {
      * @summary Get entity from users by key
      * @param {string} userId key: id of user
      * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-     * @param {Set<'drive' | 'drives' | 'memberOf'>} [$expand] Expand related entities
+     * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf'>, options?: AxiosRequestConfig) {
+    public getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig) {
         return UserApiFp(this.configuration).getUser(userId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5532,6 +5769,269 @@ export class UserApi extends BaseAPI {
      */
     public updateUser(userId: string, user: User, options?: AxiosRequestConfig) {
         return UserApiFp(this.configuration).updateUser(userId, user, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * UserAppRoleAssignmentApi - axios parameter creator
+ * @export
+ */
+export const UserAppRoleAssignmentApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Use this API to assign a global role to a user. To grant an app role assignment to a user, you need three identifiers: * `principalId`: The `id` of the user to whom you are assigning the app role. * `resourceId`: The `id` of the resource `servicePrincipal` or `application` that has defined the app role. * `appRoleId`: The `id` of the `appRole` (defined on the resource service principal or application) to assign to the user. 
+         * @summary Grant an appRoleAssignment to a user
+         * @param {string} userId key: id of user
+         * @param {AppRoleAssignment} appRoleAssignment New app role assignment value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userCreateAppRoleAssignments: async (userId: string, appRoleAssignment: AppRoleAssignment, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('userCreateAppRoleAssignments', 'userId', userId)
+            // verify required parameter 'appRoleAssignment' is not null or undefined
+            assertParamExists('userCreateAppRoleAssignments', 'appRoleAssignment', appRoleAssignment)
+            const localVarPath = `/users/{user-id}/appRoleAssignments`
+                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(appRoleAssignment, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete the appRoleAssignment from a user
+         * @param {string} userId key: id of user
+         * @param {string} appRoleAssignmentId key: id of appRoleAssignment. This is the concatenated {user-id}:{appRole-id} separated by a colon.
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userDeleteAppRoleAssignments: async (userId: string, appRoleAssignmentId: string, ifMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('userDeleteAppRoleAssignments', 'userId', userId)
+            // verify required parameter 'appRoleAssignmentId' is not null or undefined
+            assertParamExists('userDeleteAppRoleAssignments', 'appRoleAssignmentId', appRoleAssignmentId)
+            const localVarPath = `/users/{user-id}/appRoleAssignments/{appRoleAssignment-id}`
+                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"appRoleAssignment-id"}}`, encodeURIComponent(String(appRoleAssignmentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (ifMatch !== undefined && ifMatch !== null) {
+                localVarHeaderParameter['If-Match'] = String(ifMatch);
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Represents the global roles a user has been granted for an application.
+         * @summary Get appRoleAssignments from a user
+         * @param {string} userId key: id of user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userListAppRoleAssignments: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('userListAppRoleAssignments', 'userId', userId)
+            const localVarPath = `/users/{user-id}/appRoleAssignments`
+                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * UserAppRoleAssignmentApi - functional programming interface
+ * @export
+ */
+export const UserAppRoleAssignmentApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = UserAppRoleAssignmentApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Use this API to assign a global role to a user. To grant an app role assignment to a user, you need three identifiers: * `principalId`: The `id` of the user to whom you are assigning the app role. * `resourceId`: The `id` of the resource `servicePrincipal` or `application` that has defined the app role. * `appRoleId`: The `id` of the `appRole` (defined on the resource service principal or application) to assign to the user. 
+         * @summary Grant an appRoleAssignment to a user
+         * @param {string} userId key: id of user
+         * @param {AppRoleAssignment} appRoleAssignment New app role assignment value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userCreateAppRoleAssignments(userId: string, appRoleAssignment: AppRoleAssignment, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AppRoleAssignment>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userCreateAppRoleAssignments(userId, appRoleAssignment, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Delete the appRoleAssignment from a user
+         * @param {string} userId key: id of user
+         * @param {string} appRoleAssignmentId key: id of appRoleAssignment. This is the concatenated {user-id}:{appRole-id} separated by a colon.
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userDeleteAppRoleAssignments(userId: string, appRoleAssignmentId: string, ifMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userDeleteAppRoleAssignments(userId, appRoleAssignmentId, ifMatch, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Represents the global roles a user has been granted for an application.
+         * @summary Get appRoleAssignments from a user
+         * @param {string} userId key: id of user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userListAppRoleAssignments(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfAppRoleAssignments>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userListAppRoleAssignments(userId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * UserAppRoleAssignmentApi - factory interface
+ * @export
+ */
+export const UserAppRoleAssignmentApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = UserAppRoleAssignmentApiFp(configuration)
+    return {
+        /**
+         * Use this API to assign a global role to a user. To grant an app role assignment to a user, you need three identifiers: * `principalId`: The `id` of the user to whom you are assigning the app role. * `resourceId`: The `id` of the resource `servicePrincipal` or `application` that has defined the app role. * `appRoleId`: The `id` of the `appRole` (defined on the resource service principal or application) to assign to the user. 
+         * @summary Grant an appRoleAssignment to a user
+         * @param {string} userId key: id of user
+         * @param {AppRoleAssignment} appRoleAssignment New app role assignment value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userCreateAppRoleAssignments(userId: string, appRoleAssignment: AppRoleAssignment, options?: any): AxiosPromise<AppRoleAssignment> {
+            return localVarFp.userCreateAppRoleAssignments(userId, appRoleAssignment, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete the appRoleAssignment from a user
+         * @param {string} userId key: id of user
+         * @param {string} appRoleAssignmentId key: id of appRoleAssignment. This is the concatenated {user-id}:{appRole-id} separated by a colon.
+         * @param {string} [ifMatch] ETag
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userDeleteAppRoleAssignments(userId: string, appRoleAssignmentId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.userDeleteAppRoleAssignments(userId, appRoleAssignmentId, ifMatch, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Represents the global roles a user has been granted for an application.
+         * @summary Get appRoleAssignments from a user
+         * @param {string} userId key: id of user
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userListAppRoleAssignments(userId: string, options?: any): AxiosPromise<CollectionOfAppRoleAssignments> {
+            return localVarFp.userListAppRoleAssignments(userId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * UserAppRoleAssignmentApi - object-oriented interface
+ * @export
+ * @class UserAppRoleAssignmentApi
+ * @extends {BaseAPI}
+ */
+export class UserAppRoleAssignmentApi extends BaseAPI {
+    /**
+     * Use this API to assign a global role to a user. To grant an app role assignment to a user, you need three identifiers: * `principalId`: The `id` of the user to whom you are assigning the app role. * `resourceId`: The `id` of the resource `servicePrincipal` or `application` that has defined the app role. * `appRoleId`: The `id` of the `appRole` (defined on the resource service principal or application) to assign to the user. 
+     * @summary Grant an appRoleAssignment to a user
+     * @param {string} userId key: id of user
+     * @param {AppRoleAssignment} appRoleAssignment New app role assignment value
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserAppRoleAssignmentApi
+     */
+    public userCreateAppRoleAssignments(userId: string, appRoleAssignment: AppRoleAssignment, options?: AxiosRequestConfig) {
+        return UserAppRoleAssignmentApiFp(this.configuration).userCreateAppRoleAssignments(userId, appRoleAssignment, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete the appRoleAssignment from a user
+     * @param {string} userId key: id of user
+     * @param {string} appRoleAssignmentId key: id of appRoleAssignment. This is the concatenated {user-id}:{appRole-id} separated by a colon.
+     * @param {string} [ifMatch] ETag
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserAppRoleAssignmentApi
+     */
+    public userDeleteAppRoleAssignments(userId: string, appRoleAssignmentId: string, ifMatch?: string, options?: AxiosRequestConfig) {
+        return UserAppRoleAssignmentApiFp(this.configuration).userDeleteAppRoleAssignments(userId, appRoleAssignmentId, ifMatch, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Represents the global roles a user has been granted for an application.
+     * @summary Get appRoleAssignments from a user
+     * @param {string} userId key: id of user
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserAppRoleAssignmentApi
+     */
+    public userListAppRoleAssignments(userId: string, options?: AxiosRequestConfig) {
+        return UserAppRoleAssignmentApiFp(this.configuration).userListAppRoleAssignments(userId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -5588,11 +6088,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf'>} [$expand] Expand related entities
+         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listUsers: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5679,11 +6179,11 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf'>} [$expand] Expand related entities
+         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfUser>> {
+        async listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfUser>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -5717,11 +6217,11 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf'>} [$expand] Expand related entities
+         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf'>, options?: any): AxiosPromise<CollectionOfUser> {
+        listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: any): AxiosPromise<CollectionOfUser> {
             return localVarFp.listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
@@ -5756,12 +6256,12 @@ export class UsersApi extends BaseAPI {
      * @param {boolean} [$count] Include count of items
      * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
      * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-     * @param {Set<'drive' | 'drives' | 'memberOf'>} [$expand] Expand related entities
+     * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf'>, options?: AxiosRequestConfig) {
+    public listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
