@@ -1665,10 +1665,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        applicationApplicationIdGet: async (applicationId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        applicationsApplicationIdGet: async (applicationId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'applicationId' is not null or undefined
-            assertParamExists('applicationApplicationIdGet', 'applicationId', applicationId)
-            const localVarPath = `/application/{application-id}`
+            assertParamExists('applicationsApplicationIdGet', 'applicationId', applicationId)
+            const localVarPath = `/applications/{application-id}`
                 .replace(`{${"application-id"}}`, encodeURIComponent(String(applicationId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1708,8 +1708,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async applicationApplicationIdGet(applicationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Application>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.applicationApplicationIdGet(applicationId, options);
+        async applicationsApplicationIdGet(applicationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Application>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.applicationsApplicationIdGet(applicationId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1728,8 +1728,8 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        applicationApplicationIdGet(applicationId: string, options?: any): AxiosPromise<Application> {
-            return localVarFp.applicationApplicationIdGet(applicationId, options).then((request) => request(axios, basePath));
+        applicationsApplicationIdGet(applicationId: string, options?: any): AxiosPromise<Application> {
+            return localVarFp.applicationsApplicationIdGet(applicationId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1748,8 +1748,8 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public applicationApplicationIdGet(applicationId: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).applicationApplicationIdGet(applicationId, options).then((request) => request(this.axios, this.basePath));
+    public applicationsApplicationIdGet(applicationId: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).applicationsApplicationIdGet(applicationId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
