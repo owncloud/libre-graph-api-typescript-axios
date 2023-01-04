@@ -1820,7 +1820,7 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (ifMatch !== undefined && ifMatch !== null) {
+            if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
 
@@ -2308,7 +2308,7 @@ export const EducationClassApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary Assign a user to a class
          * @param {string} classId key: id of class
-         * @param {ClassMemberReference} classMemberReference 
+         * @param {ClassMemberReference} classMemberReference educationUser to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2598,7 +2598,7 @@ export const EducationClassApiFp = function(configuration?: Configuration) {
          * 
          * @summary Assign a user to a class
          * @param {string} classId key: id of class
-         * @param {ClassMemberReference} classMemberReference 
+         * @param {ClassMemberReference} classMemberReference educationUser to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2687,7 +2687,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * 
          * @summary Assign a user to a class
          * @param {string} classId key: id of class
-         * @param {ClassMemberReference} classMemberReference 
+         * @param {ClassMemberReference} classMemberReference educationUser to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2769,7 +2769,7 @@ export class EducationClassApi extends BaseAPI {
      * 
      * @summary Assign a user to a class
      * @param {string} classId key: id of class
-     * @param {ClassMemberReference} classMemberReference 
+     * @param {ClassMemberReference} classMemberReference educationUser to be added as member
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationClassApi
@@ -2863,7 +2863,7 @@ export const EducationSchoolApiAxiosParamCreator = function (configuration?: Con
          * 
          * @summary Assign a class to a school
          * @param {string} schoolId key: id of school
-         * @param {ClassReference} classReference 
+         * @param {ClassReference} classReference educationClass to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2907,7 +2907,7 @@ export const EducationSchoolApiAxiosParamCreator = function (configuration?: Con
          * 
          * @summary Assign a user to a school
          * @param {string} schoolId key: id of school
-         * @param {EducationUserReference} educationUserReference 
+         * @param {EducationUserReference} educationUserReference educationUser to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3239,7 +3239,7 @@ export const EducationSchoolApiFp = function(configuration?: Configuration) {
          * 
          * @summary Assign a class to a school
          * @param {string} schoolId key: id of school
-         * @param {ClassReference} classReference 
+         * @param {ClassReference} classReference educationClass to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3251,7 +3251,7 @@ export const EducationSchoolApiFp = function(configuration?: Configuration) {
          * 
          * @summary Assign a user to a school
          * @param {string} schoolId key: id of school
-         * @param {EducationUserReference} educationUserReference 
+         * @param {EducationUserReference} educationUserReference educationUser to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3352,7 +3352,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * 
          * @summary Assign a class to a school
          * @param {string} schoolId key: id of school
-         * @param {ClassReference} classReference 
+         * @param {ClassReference} classReference educationClass to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3363,7 +3363,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * 
          * @summary Assign a user to a school
          * @param {string} schoolId key: id of school
-         * @param {EducationUserReference} educationUserReference 
+         * @param {EducationUserReference} educationUserReference educationUser to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3456,7 +3456,7 @@ export class EducationSchoolApi extends BaseAPI {
      * 
      * @summary Assign a class to a school
      * @param {string} schoolId key: id of school
-     * @param {ClassReference} classReference 
+     * @param {ClassReference} classReference educationClass to be added as member
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationSchoolApi
@@ -3469,7 +3469,7 @@ export class EducationSchoolApi extends BaseAPI {
      * 
      * @summary Assign a user to a school
      * @param {string} schoolId key: id of school
-     * @param {EducationUserReference} educationUserReference 
+     * @param {EducationUserReference} educationUserReference educationUser to be added as member
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationSchoolApi
@@ -3997,7 +3997,7 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add a member to a group
          * @param {string} groupId key: id of group
-         * @param {MemberReference} memberReference 
+         * @param {MemberReference} memberReference Object to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4057,7 +4057,7 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (ifMatch !== undefined && ifMatch !== null) {
+            if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
 
@@ -4100,7 +4100,7 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (ifMatch !== undefined && ifMatch !== null) {
+            if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
 
@@ -4213,7 +4213,7 @@ export const GroupApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add a member to a group
          * @param {string} groupId key: id of group
-         * @param {MemberReference} memberReference 
+         * @param {MemberReference} memberReference Object to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4285,7 +4285,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Add a member to a group
          * @param {string} groupId key: id of group
-         * @param {MemberReference} memberReference 
+         * @param {MemberReference} memberReference Object to be added as member
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4352,7 +4352,7 @@ export class GroupApi extends BaseAPI {
      * 
      * @summary Add a member to a group
      * @param {string} groupId key: id of group
-     * @param {MemberReference} memberReference 
+     * @param {MemberReference} memberReference Object to be added as member
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupApi
@@ -4657,7 +4657,7 @@ export const MeChangepasswordApiAxiosParamCreator = function (configuration?: Co
         /**
          * 
          * @summary Chanage your own password
-         * @param {PasswordChange} passwordChange 
+         * @param {PasswordChange} passwordChange Password change request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4703,7 +4703,7 @@ export const MeChangepasswordApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Chanage your own password
-         * @param {PasswordChange} passwordChange 
+         * @param {PasswordChange} passwordChange Password change request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4724,7 +4724,7 @@ export const MeChangepasswordApiFactory = function (configuration?: Configuratio
         /**
          * 
          * @summary Chanage your own password
-         * @param {PasswordChange} passwordChange 
+         * @param {PasswordChange} passwordChange Password change request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4744,7 +4744,7 @@ export class MeChangepasswordApi extends BaseAPI {
     /**
      * 
      * @summary Chanage your own password
-     * @param {PasswordChange} passwordChange 
+     * @param {PasswordChange} passwordChange Password change request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MeChangepasswordApi
@@ -5531,7 +5531,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (ifMatch !== undefined && ifMatch !== null) {
+            if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
 
@@ -5847,7 +5847,7 @@ export const UserAppRoleAssignmentApiAxiosParamCreator = function (configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (ifMatch !== undefined && ifMatch !== null) {
+            if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
 
