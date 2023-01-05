@@ -423,18 +423,6 @@ export interface Drive {
      */
     'webUrl'?: string;
     /**
-     * 
-     * @type {User}
-     * @memberof Drive
-     */
-    'createdByUser'?: User;
-    /**
-     * 
-     * @type {User}
-     * @memberof Drive
-     */
-    'lastModifiedByUser'?: User;
-    /**
      * Describes the type of drive represented by this resource. Values are \"personal\" for users home spaces, \"project\", \"virtual\" or \"share\". Read-only.
      * @type {string}
      * @memberof Drive
@@ -543,18 +531,6 @@ export interface DriveItem {
      * @memberof DriveItem
      */
     'webUrl'?: string;
-    /**
-     * 
-     * @type {User}
-     * @memberof DriveItem
-     */
-    'createdByUser'?: User;
-    /**
-     * 
-     * @type {User}
-     * @memberof DriveItem
-     */
-    'lastModifiedByUser'?: User;
     /**
      * The content stream, if the item represents a file.
      * @type {string}
