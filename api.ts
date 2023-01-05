@@ -692,18 +692,6 @@ export interface EducationClass {
      */
     'members'?: Array<User>;
     /**
-     * Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
-     * @type {string}
-     * @memberof EducationClass
-     */
-    'onPremisesDomainName'?: string;
-    /**
-     * Contains the on-premises SAM account name synchronized from the on-premises directory. Read-only.
-     * @type {string}
-     * @memberof EducationClass
-     */
-    'onPremisesSamAccountName'?: string;
-    /**
      * A list of member references to the members to be added. Up to 20 members can be added with a single request
      * @type {Set<string>}
      * @memberof EducationClass
@@ -984,18 +972,6 @@ export interface Group {
      * @memberof Group
      */
     'members'?: Array<User>;
-    /**
-     * Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
-     * @type {string}
-     * @memberof Group
-     */
-    'onPremisesDomainName'?: string;
-    /**
-     * Contains the on-premises SAM account name synchronized from the on-premises directory. Read-only.
-     * @type {string}
-     * @memberof Group
-     */
-    'onPremisesSamAccountName'?: string;
     /**
      * A list of member references to the members to be added. Up to 20 members can be added with a single request
      * @type {Set<string>}
@@ -4353,12 +4329,12 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Get entity from groups by key
          * @param {string} groupId key: id of group
-         * @param {Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>} [$select] Select properties to be returned
+         * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGroup: async (groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getGroup: async (groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members'>, $expand?: Set<'members'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('getGroup', 'groupId', groupId)
             const localVarPath = `/groups/{group-id}`
@@ -4518,12 +4494,12 @@ export const GroupApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get entity from groups by key
          * @param {string} groupId key: id of group
-         * @param {Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>} [$select] Select properties to be returned
+         * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
+        async getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGroup(groupId, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4598,12 +4574,12 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Get entity from groups by key
          * @param {string} groupId key: id of group
-         * @param {Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>} [$select] Select properties to be returned
+         * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options?: any): AxiosPromise<Group> {
+        getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members'>, $expand?: Set<'members'>, options?: any): AxiosPromise<Group> {
             return localVarFp.getGroup(groupId, $select, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4681,13 +4657,13 @@ export class GroupApi extends BaseAPI {
      * 
      * @summary Get entity from groups by key
      * @param {string} groupId key: id of group
-     * @param {Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>} [$select] Select properties to be returned
+     * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
      * @param {Set<'members'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupApi
      */
-    public getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
+    public getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
         return GroupApiFp(this.configuration).getGroup(groupId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -4769,12 +4745,12 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {string} [$filter] Filter items by property values
          * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>} [$select] Select properties to be returned
+         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGroups: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listGroups: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/groups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4860,12 +4836,12 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {string} [$filter] Filter items by property values
          * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>} [$select] Select properties to be returned
+         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfGroup>> {
+        async listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfGroup>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listGroups($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4898,12 +4874,12 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          * @param {string} [$filter] Filter items by property values
          * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>} [$select] Select properties to be returned
+         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options?: any): AxiosPromise<CollectionOfGroup> {
+        listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: any): AxiosPromise<CollectionOfGroup> {
             return localVarFp.listGroups($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
@@ -4937,13 +4913,13 @@ export class GroupsApi extends BaseAPI {
      * @param {string} [$filter] Filter items by property values
      * @param {boolean} [$count] Include count of items
      * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
-     * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>} [$select] Select properties to be returned
+     * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
      * @param {Set<'members'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
+    public listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
         return GroupsApiFp(this.configuration).listGroups($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
