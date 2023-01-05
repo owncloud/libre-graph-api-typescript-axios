@@ -250,6 +250,19 @@ export interface CollectionOfDrives1 {
 /**
  * 
  * @export
+ * @interface CollectionOfEducationClass
+ */
+export interface CollectionOfEducationClass {
+    /**
+     * 
+     * @type {Array<EducationClass>}
+     * @memberof CollectionOfEducationClass
+     */
+    'value'?: Array<EducationClass>;
+}
+/**
+ * 
+ * @export
  * @interface CollectionOfEducationUser
  */
 export interface CollectionOfEducationUser {
@@ -259,6 +272,19 @@ export interface CollectionOfEducationUser {
      * @memberof CollectionOfEducationUser
      */
     'value'?: Array<EducationUser>;
+}
+/**
+ * 
+ * @export
+ * @interface CollectionOfEducationUser1
+ */
+export interface CollectionOfEducationUser1 {
+    /**
+     * 
+     * @type {Array<EducationClass>}
+     * @memberof CollectionOfEducationUser1
+     */
+    'value'?: Array<EducationClass>;
 }
 /**
  * 
@@ -323,6 +349,19 @@ export interface CollectionOfUser {
      * @memberof CollectionOfUser
      */
     '@odata.nextLink'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CollectionOfUsers
+ */
+export interface CollectionOfUsers {
+    /**
+     * 
+     * @type {Array<User>}
+     * @memberof CollectionOfUsers
+     */
+    'value'?: Array<User>;
 }
 /**
  * Information about the deleted state of the item. Read-only.
@@ -2490,6 +2529,44 @@ export const EducationClassApiAxiosParamCreator = function (configuration?: Conf
         },
         /**
          * 
+         * @summary Get the educationClass resources owned by an educationSchool
+         * @param {string} classId key: id of class
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listClassMembers: async (classId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'classId' is not null or undefined
+            assertParamExists('listClassMembers', 'classId', classId)
+            const localVarPath = `/education/classes/{class-id}/members`
+                .replace(`{${"class-id"}}`, encodeURIComponent(String(classId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary list education classes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2635,6 +2712,17 @@ export const EducationClassApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get the educationClass resources owned by an educationSchool
+         * @param {string} classId key: id of class
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listClassMembers(classId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfEducationUser>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listClassMembers(classId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary list education classes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2716,6 +2804,16 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          */
         getClass(classId: string, options?: any): AxiosPromise<EducationClass> {
             return localVarFp.getClass(classId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the educationClass resources owned by an educationSchool
+         * @param {string} classId key: id of class
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listClassMembers(classId: string, options?: any): AxiosPromise<CollectionOfEducationUser> {
+            return localVarFp.listClassMembers(classId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2807,6 +2905,18 @@ export class EducationClassApi extends BaseAPI {
      */
     public getClass(classId: string, options?: AxiosRequestConfig) {
         return EducationClassApiFp(this.configuration).getClass(classId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the educationClass resources owned by an educationSchool
+     * @param {string} classId key: id of class
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EducationClassApi
+     */
+    public listClassMembers(classId: string, options?: AxiosRequestConfig) {
+        return EducationClassApiFp(this.configuration).listClassMembers(classId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3131,6 +3241,82 @@ export const EducationSchoolApiAxiosParamCreator = function (configuration?: Con
         },
         /**
          * 
+         * @summary Get the educationClass resources owned by an educationSchool
+         * @param {string} schoolId key: id of school
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSchoolClasses: async (schoolId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'schoolId' is not null or undefined
+            assertParamExists('listSchoolClasses', 'schoolId', schoolId)
+            const localVarPath = `/education/schools/{school-id}/classes`
+                .replace(`{${"school-id"}}`, encodeURIComponent(String(schoolId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get the educationUser resources associated with an educationSchool
+         * @param {string} schoolId key: id of school
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSchoolUsers: async (schoolId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'schoolId' is not null or undefined
+            assertParamExists('listSchoolUsers', 'schoolId', schoolId)
+            const localVarPath = `/education/schools/{school-id}/users`
+                .replace(`{${"school-id"}}`, encodeURIComponent(String(schoolId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get a list of schools and their properties
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3300,6 +3486,28 @@ export const EducationSchoolApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get the educationClass resources owned by an educationSchool
+         * @param {string} schoolId key: id of school
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listSchoolClasses(schoolId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfEducationClass>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listSchoolClasses(schoolId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get the educationUser resources associated with an educationSchool
+         * @param {string} schoolId key: id of school
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listSchoolUsers(schoolId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfEducationUser1>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listSchoolUsers(schoolId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Get a list of schools and their properties
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -3403,6 +3611,26 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          */
         getSchool(schoolId: string, options?: any): AxiosPromise<EducationSchool> {
             return localVarFp.getSchool(schoolId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the educationClass resources owned by an educationSchool
+         * @param {string} schoolId key: id of school
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSchoolClasses(schoolId: string, options?: any): AxiosPromise<CollectionOfEducationClass> {
+            return localVarFp.listSchoolClasses(schoolId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the educationUser resources associated with an educationSchool
+         * @param {string} schoolId key: id of school
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSchoolUsers(schoolId: string, options?: any): AxiosPromise<CollectionOfEducationUser1> {
+            return localVarFp.listSchoolUsers(schoolId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3520,6 +3748,30 @@ export class EducationSchoolApi extends BaseAPI {
      */
     public getSchool(schoolId: string, options?: AxiosRequestConfig) {
         return EducationSchoolApiFp(this.configuration).getSchool(schoolId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the educationClass resources owned by an educationSchool
+     * @param {string} schoolId key: id of school
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EducationSchoolApi
+     */
+    public listSchoolClasses(schoolId: string, options?: AxiosRequestConfig) {
+        return EducationSchoolApiFp(this.configuration).listSchoolClasses(schoolId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the educationUser resources associated with an educationSchool
+     * @param {string} schoolId key: id of school
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EducationSchoolApi
+     */
+    public listSchoolUsers(schoolId: string, options?: AxiosRequestConfig) {
+        return EducationSchoolApiFp(this.configuration).listSchoolUsers(schoolId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4143,6 +4395,40 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Get a list of the group\'s direct members
+         * @param {string} groupId key: id of group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMembers: async (groupId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'groupId' is not null or undefined
+            assertParamExists('listMembers', 'groupId', groupId)
+            const localVarPath = `/groups/{group-id}/members`
+                .replace(`{${"group-id"}}`, encodeURIComponent(String(groupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update entity in groups
          * @param {string} groupId key: id of group
          * @param {Group} group New property values
@@ -4243,6 +4529,17 @@ export const GroupApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get a list of the group\'s direct members
+         * @param {string} groupId key: id of group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listMembers(groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfUsers>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listMembers(groupId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Update entity in groups
          * @param {string} groupId key: id of group
          * @param {Group} group New property values
@@ -4308,6 +4605,16 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          */
         getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options?: any): AxiosPromise<Group> {
             return localVarFp.getGroup(groupId, $select, $expand, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get a list of the group\'s direct members
+         * @param {string} groupId key: id of group
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMembers(groupId: string, options?: any): AxiosPromise<CollectionOfUsers> {
+            return localVarFp.listMembers(groupId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4382,6 +4689,18 @@ export class GroupApi extends BaseAPI {
      */
     public getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members' | 'onPremisesDomainName' | 'onPremisesSamAccountName'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
         return GroupApiFp(this.configuration).getGroup(groupId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get a list of the group\'s direct members
+     * @param {string} groupId key: id of group
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GroupApi
+     */
+    public listMembers(groupId: string, options?: AxiosRequestConfig) {
+        return GroupApiFp(this.configuration).listMembers(groupId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
