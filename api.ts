@@ -186,6 +186,19 @@ export interface CollectionOfAppRoleAssignments {
 /**
  * 
  * @export
+ * @interface CollectionOfApplications
+ */
+export interface CollectionOfApplications {
+    /**
+     * 
+     * @type {Array<Application>}
+     * @memberof CollectionOfApplications
+     */
+    'value'?: Array<Application>;
+}
+/**
+ * 
+ * @export
  * @interface CollectionOfClass
  */
 export interface CollectionOfClass {
@@ -1651,22 +1664,53 @@ export interface User {
 }
 
 /**
- * DefaultApi - axios parameter creator
+ * ApplicationsApi - axios parameter creator
  * @export
  */
-export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
+export const ApplicationsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Get properties of an application by id
+         * 
+         * @summary Get application by id
          * @param {string} applicationId key: id of application
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        applicationsApplicationIdGet: async (applicationId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getApplication: async (applicationId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'applicationId' is not null or undefined
-            assertParamExists('applicationsApplicationIdGet', 'applicationId', applicationId)
+            assertParamExists('getApplication', 'applicationId', applicationId)
             const localVarPath = `/applications/{application-id}`
                 .replace(`{${"application-id"}}`, encodeURIComponent(String(applicationId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get all applications
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listApplications: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/applications`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1693,60 +1737,93 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 };
 
 /**
- * DefaultApi - functional programming interface
+ * ApplicationsApi - functional programming interface
  * @export
  */
-export const DefaultApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
+export const ApplicationsApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ApplicationsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Get properties of an application by id
+         * 
+         * @summary Get application by id
          * @param {string} applicationId key: id of application
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async applicationsApplicationIdGet(applicationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Application>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.applicationsApplicationIdGet(applicationId, options);
+        async getApplication(applicationId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Application>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getApplication(applicationId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get all applications
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listApplications(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfApplications>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listApplications(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
 };
 
 /**
- * DefaultApi - factory interface
+ * ApplicationsApi - factory interface
  * @export
  */
-export const DefaultApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = DefaultApiFp(configuration)
+export const ApplicationsApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ApplicationsApiFp(configuration)
     return {
         /**
-         * Get properties of an application by id
+         * 
+         * @summary Get application by id
          * @param {string} applicationId key: id of application
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        applicationsApplicationIdGet(applicationId: string, options?: any): AxiosPromise<Application> {
-            return localVarFp.applicationsApplicationIdGet(applicationId, options).then((request) => request(axios, basePath));
+        getApplication(applicationId: string, options?: any): AxiosPromise<Application> {
+            return localVarFp.getApplication(applicationId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all applications
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listApplications(options?: any): AxiosPromise<CollectionOfApplications> {
+            return localVarFp.listApplications(options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * DefaultApi - object-oriented interface
+ * ApplicationsApi - object-oriented interface
  * @export
- * @class DefaultApi
+ * @class ApplicationsApi
  * @extends {BaseAPI}
  */
-export class DefaultApi extends BaseAPI {
+export class ApplicationsApi extends BaseAPI {
     /**
-     * Get properties of an application by id
+     * 
+     * @summary Get application by id
      * @param {string} applicationId key: id of application
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
+     * @memberof ApplicationsApi
      */
-    public applicationsApplicationIdGet(applicationId: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).applicationsApplicationIdGet(applicationId, options).then((request) => request(this.axios, this.basePath));
+    public getApplication(applicationId: string, options?: AxiosRequestConfig) {
+        return ApplicationsApiFp(this.configuration).getApplication(applicationId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all applications
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ApplicationsApi
+     */
+    public listApplications(options?: AxiosRequestConfig) {
+        return ApplicationsApiFp(this.configuration).listApplications(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
