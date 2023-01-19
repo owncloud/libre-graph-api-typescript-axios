@@ -1312,6 +1312,12 @@ export interface PasswordProfile {
  */
 export interface Permission {
     /**
+     * An optional expiration date which limits the permission in time.
+     * @type {string}
+     * @memberof Permission
+     */
+    'expirationDateTime'?: string;
+    /**
      * 
      * @type {Array<IdentitySet>}
      * @memberof Permission
