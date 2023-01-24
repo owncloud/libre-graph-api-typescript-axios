@@ -167,6 +167,19 @@ export interface ClassReference {
 /**
  * 
  * @export
+ * @interface ClassTeacherReference
+ */
+export interface ClassTeacherReference {
+    /**
+     * 
+     * @type {string}
+     * @memberof ClassTeacherReference
+     */
+    '@odata.id'?: string;
+}
+/**
+ * 
+ * @export
  * @interface CollectionOfAppRoleAssignments
  */
 export interface CollectionOfAppRoleAssignments {
@@ -3000,6 +3013,273 @@ export class EducationClassApi extends BaseAPI {
      */
     public updateClass(classId: string, educationClass: EducationClass, options?: AxiosRequestConfig) {
         return EducationClassApiFp(this.configuration).updateClass(classId, educationClass, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * EducationClassTeachersApi - axios parameter creator
+ * @export
+ */
+export const EducationClassTeachersApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Assign a teacher to a class
+         * @param {string} classId key: id of class
+         * @param {ClassTeacherReference} classTeacherReference educationUser to be added as teacher
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addTeacherToClass: async (classId: string, classTeacherReference: ClassTeacherReference, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'classId' is not null or undefined
+            assertParamExists('addTeacherToClass', 'classId', classId)
+            // verify required parameter 'classTeacherReference' is not null or undefined
+            assertParamExists('addTeacherToClass', 'classTeacherReference', classTeacherReference)
+            const localVarPath = `/education/classes/{class-id}/teachers/$ref`
+                .replace(`{${"class-id"}}`, encodeURIComponent(String(classId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(classTeacherReference, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Unassign user as teacher of a class
+         * @param {string} classId key: id of class
+         * @param {string} userId key: id of the user to unassign as teacher
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTeacherFromClass: async (classId: string, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'classId' is not null or undefined
+            assertParamExists('deleteTeacherFromClass', 'classId', classId)
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('deleteTeacherFromClass', 'userId', userId)
+            const localVarPath = `/education/classes/{class-id}/teachers/{user-id}/$ref`
+                .replace(`{${"class-id"}}`, encodeURIComponent(String(classId)))
+                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get the teachers for a class
+         * @param {string} classId key: id of class
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTeachers: async (classId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'classId' is not null or undefined
+            assertParamExists('getTeachers', 'classId', classId)
+            const localVarPath = `/education/classes/{class-id}/teachers`
+                .replace(`{${"class-id"}}`, encodeURIComponent(String(classId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * EducationClassTeachersApi - functional programming interface
+ * @export
+ */
+export const EducationClassTeachersApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = EducationClassTeachersApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Assign a teacher to a class
+         * @param {string} classId key: id of class
+         * @param {ClassTeacherReference} classTeacherReference educationUser to be added as teacher
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addTeacherToClass(classId: string, classTeacherReference: ClassTeacherReference, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addTeacherToClass(classId, classTeacherReference, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Unassign user as teacher of a class
+         * @param {string} classId key: id of class
+         * @param {string} userId key: id of the user to unassign as teacher
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteTeacherFromClass(classId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteTeacherFromClass(classId, userId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Get the teachers for a class
+         * @param {string} classId key: id of class
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTeachers(classId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfEducationUser>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTeachers(classId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * EducationClassTeachersApi - factory interface
+ * @export
+ */
+export const EducationClassTeachersApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = EducationClassTeachersApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Assign a teacher to a class
+         * @param {string} classId key: id of class
+         * @param {ClassTeacherReference} classTeacherReference educationUser to be added as teacher
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addTeacherToClass(classId: string, classTeacherReference: ClassTeacherReference, options?: any): AxiosPromise<void> {
+            return localVarFp.addTeacherToClass(classId, classTeacherReference, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Unassign user as teacher of a class
+         * @param {string} classId key: id of class
+         * @param {string} userId key: id of the user to unassign as teacher
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteTeacherFromClass(classId: string, userId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteTeacherFromClass(classId, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get the teachers for a class
+         * @param {string} classId key: id of class
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTeachers(classId: string, options?: any): AxiosPromise<CollectionOfEducationUser> {
+            return localVarFp.getTeachers(classId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * EducationClassTeachersApi - object-oriented interface
+ * @export
+ * @class EducationClassTeachersApi
+ * @extends {BaseAPI}
+ */
+export class EducationClassTeachersApi extends BaseAPI {
+    /**
+     * 
+     * @summary Assign a teacher to a class
+     * @param {string} classId key: id of class
+     * @param {ClassTeacherReference} classTeacherReference educationUser to be added as teacher
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EducationClassTeachersApi
+     */
+    public addTeacherToClass(classId: string, classTeacherReference: ClassTeacherReference, options?: AxiosRequestConfig) {
+        return EducationClassTeachersApiFp(this.configuration).addTeacherToClass(classId, classTeacherReference, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Unassign user as teacher of a class
+     * @param {string} classId key: id of class
+     * @param {string} userId key: id of the user to unassign as teacher
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EducationClassTeachersApi
+     */
+    public deleteTeacherFromClass(classId: string, userId: string, options?: AxiosRequestConfig) {
+        return EducationClassTeachersApiFp(this.configuration).deleteTeacherFromClass(classId, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get the teachers for a class
+     * @param {string} classId key: id of class
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EducationClassTeachersApi
+     */
+    public getTeachers(classId: string, options?: AxiosRequestConfig) {
+        return EducationClassTeachersApiFp(this.configuration).getTeachers(classId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
