@@ -700,13 +700,13 @@ export interface EducationClass {
      */
     'id'?: string;
     /**
-     * An optional description for the group. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
+     * An optional description for the group. Returned by default.
      * @type {string}
      * @memberof EducationClass
      */
     'description'?: string;
     /**
-     * The display name for the group. This property is required when a group is created and cannot be cleared during updates. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+     * The display name for the group. This property is required when a group is created and cannot be cleared during updates. Returned by default. Supports $search and $orderBy.
      * @type {string}
      * @memberof EducationClass
      */
@@ -807,7 +807,7 @@ export interface EducationUser {
      */
     'accountEnabled'?: boolean;
     /**
-     * The name displayed in the address book for the user. This value is usually the combination of the user\'s first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Returned by default. Supports $filter and $orderby.
+     * The name displayed in the address book for the user. This value is usually the combination of the user\'s first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Returned by default. Supports $orderby.
      * @type {string}
      * @memberof EducationUser
      */
@@ -831,7 +831,7 @@ export interface EducationUser {
      */
     'identities'?: Array<ObjectIdentity>;
     /**
-     * The SMTP address for the user, for example, \'jeff@contoso.onowncloud.com\'. Returned by default. Supports $filter and endsWith.
+     * The SMTP address for the user, for example, \'jeff@contoso.onowncloud.com\'. Returned by default.
      * @type {string}
      * @memberof EducationUser
      */
@@ -855,13 +855,13 @@ export interface EducationUser {
      */
     'passwordProfile'?: PasswordProfile;
     /**
-     * The user\'s surname (family name or last name). Returned by default. Supports $filter.
+     * The user\'s surname (family name or last name). Returned by default.
      * @type {string}
      * @memberof EducationUser
      */
     'surname'?: string;
     /**
-     * The user\'s givenName. Returned by default. Supports $filter.
+     * The user\'s givenName. Returned by default.
      * @type {string}
      * @memberof EducationUser
      */
@@ -981,13 +981,13 @@ export interface Group {
      */
     'id'?: string;
     /**
-     * An optional description for the group. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
+     * An optional description for the group. Returned by default.
      * @type {string}
      * @memberof Group
      */
     'description'?: string;
     /**
-     * The display name for the group. This property is required when a group is created and cannot be cleared during updates. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+     * The display name for the group. This property is required when a group is created and cannot be cleared during updates. Returned by default. Supports $search and $orderBy.
      * @type {string}
      * @memberof Group
      */
@@ -1621,7 +1621,7 @@ export interface User {
      */
     'appRoleAssignments'?: Array<AppRoleAssignment>;
     /**
-     * The name displayed in the address book for the user. This value is usually the combination of the user\'s first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Returned by default. Supports $filter and $orderby.
+     * The name displayed in the address book for the user. This value is usually the combination of the user\'s first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Returned by default. Supports $orderby.
      * @type {string}
      * @memberof User
      */
@@ -1645,7 +1645,7 @@ export interface User {
      */
     'identities'?: Array<ObjectIdentity>;
     /**
-     * The SMTP address for the user, for example, \'jeff@contoso.onowncloud.com\'. Returned by default. Supports $filter and endsWith.
+     * The SMTP address for the user, for example, \'jeff@contoso.onowncloud.com\'. Returned by default.
      * @type {string}
      * @memberof User
      */
@@ -1669,13 +1669,13 @@ export interface User {
      */
     'passwordProfile'?: PasswordProfile;
     /**
-     * The user\'s surname (family name or last name). Returned by default. Supports $filter.
+     * The user\'s surname (family name or last name). Returned by default.
      * @type {string}
      * @memberof User
      */
     'surname'?: string;
     /**
-     * The user\'s givenName. Returned by default. Supports $filter.
+     * The user\'s givenName. Returned by default.
      * @type {string}
      * @memberof User
      */
@@ -4691,7 +4691,7 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Get entity from groups by key
-         * @param {string} groupId key: id of group
+         * @param {string} groupId key: id or name of group
          * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
@@ -4735,7 +4735,7 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Get a list of the group\'s direct members
-         * @param {string} groupId key: id of group
+         * @param {string} groupId key: id or name of group
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4856,7 +4856,7 @@ export const GroupApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get entity from groups by key
-         * @param {string} groupId key: id of group
+         * @param {string} groupId key: id or name of group
          * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
@@ -4869,7 +4869,7 @@ export const GroupApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get a list of the group\'s direct members
-         * @param {string} groupId key: id of group
+         * @param {string} groupId key: id or name of group
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4936,7 +4936,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Get entity from groups by key
-         * @param {string} groupId key: id of group
+         * @param {string} groupId key: id or name of group
          * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
@@ -4948,7 +4948,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Get a list of the group\'s direct members
-         * @param {string} groupId key: id of group
+         * @param {string} groupId key: id or name of group
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -5019,7 +5019,7 @@ export class GroupApi extends BaseAPI {
     /**
      * 
      * @summary Get entity from groups by key
-     * @param {string} groupId key: id of group
+     * @param {string} groupId key: id or name of group
      * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
      * @param {Set<'members'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
@@ -5033,7 +5033,7 @@ export class GroupApi extends BaseAPI {
     /**
      * 
      * @summary Get a list of the group\'s direct members
-     * @param {string} groupId key: id of group
+     * @param {string} groupId key: id or name of group
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupApi
@@ -5102,18 +5102,14 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Get entities from groups
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
          * @param {string} [$search] Search items by search phrases
-         * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGroups: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listGroups: async ($search?: string, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/groups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5126,24 +5122,8 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if ($top !== undefined) {
-                localVarQueryParameter['$top'] = $top;
-            }
-
-            if ($skip !== undefined) {
-                localVarQueryParameter['$skip'] = $skip;
-            }
-
             if ($search !== undefined) {
                 localVarQueryParameter['$search'] = $search;
-            }
-
-            if ($filter !== undefined) {
-                localVarQueryParameter['$filter'] = $filter;
-            }
-
-            if ($count !== undefined) {
-                localVarQueryParameter['$count'] = $count;
             }
 
             if ($orderby) {
@@ -5193,19 +5173,15 @@ export const GroupsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get entities from groups
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
          * @param {string} [$search] Search items by search phrases
-         * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfGroup>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listGroups($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options);
+        async listGroups($search?: string, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfGroup>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listGroups($search, $orderby, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -5231,19 +5207,15 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Get entities from groups
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
          * @param {string} [$search] Search items by search phrases
-         * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
          * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
          * @param {Set<'members'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: any): AxiosPromise<CollectionOfGroup> {
-            return localVarFp.listGroups($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
+        listGroups($search?: string, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: any): AxiosPromise<CollectionOfGroup> {
+            return localVarFp.listGroups($search, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -5270,11 +5242,7 @@ export class GroupsApi extends BaseAPI {
     /**
      * 
      * @summary Get entities from groups
-     * @param {number} [$top] Show only the first n items
-     * @param {number} [$skip] Skip the first n items
      * @param {string} [$search] Search items by search phrases
-     * @param {string} [$filter] Filter items by property values
-     * @param {boolean} [$count] Include count of items
      * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
      * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
      * @param {Set<'members'>} [$expand] Expand related entities
@@ -5282,8 +5250,8 @@ export class GroupsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public listGroups($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
-        return GroupsApiFp(this.configuration).listGroups($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    public listGroups($search?: string, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
+        return GroupsApiFp(this.configuration).listGroups($search, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -6150,7 +6118,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @summary Delete entity from users
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or name of user
          * @param {string} [ifMatch] ETag
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6189,7 +6157,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
         /**
          * 
          * @summary Get entity from users by key
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or name of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
          * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
@@ -6283,7 +6251,7 @@ export const UserApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Delete entity from users
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or name of user
          * @param {string} [ifMatch] ETag
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6295,7 +6263,7 @@ export const UserApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get entity from users by key
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or name of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
          * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
@@ -6330,7 +6298,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @summary Delete entity from users
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or name of user
          * @param {string} [ifMatch] ETag
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6341,7 +6309,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
         /**
          * 
          * @summary Get entity from users by key
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or name of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
          * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
@@ -6374,7 +6342,7 @@ export class UserApi extends BaseAPI {
     /**
      * 
      * @summary Delete entity from users
-     * @param {string} userId key: id of user
+     * @param {string} userId key: id or name of user
      * @param {string} [ifMatch] ETag
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6387,7 +6355,7 @@ export class UserApi extends BaseAPI {
     /**
      * 
      * @summary Get entity from users by key
-     * @param {string} userId key: id of user
+     * @param {string} userId key: id or name of user
      * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
      * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
@@ -6721,18 +6689,15 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Get entities from users
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
          * @param {string} [$search] Search items by search phrases
-         * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
+         * @param {string} [$filter] Filter users by property values and relationship attributes
          * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
          * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers: async ($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listUsers: async ($search?: string, $filter?: string, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6745,24 +6710,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if ($top !== undefined) {
-                localVarQueryParameter['$top'] = $top;
-            }
-
-            if ($skip !== undefined) {
-                localVarQueryParameter['$skip'] = $skip;
-            }
-
             if ($search !== undefined) {
                 localVarQueryParameter['$search'] = $search;
             }
 
             if ($filter !== undefined) {
                 localVarQueryParameter['$filter'] = $filter;
-            }
-
-            if ($count !== undefined) {
-                localVarQueryParameter['$count'] = $count;
             }
 
             if ($orderby) {
@@ -6812,19 +6765,16 @@ export const UsersApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get entities from users
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
          * @param {string} [$search] Search items by search phrases
-         * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
+         * @param {string} [$filter] Filter users by property values and relationship attributes
          * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
          * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfUser>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options);
+        async listUsers($search?: string, $filter?: string, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfUser>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listUsers($search, $filter, $orderby, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -6850,19 +6800,16 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Get entities from users
-         * @param {number} [$top] Show only the first n items
-         * @param {number} [$skip] Skip the first n items
          * @param {string} [$search] Search items by search phrases
-         * @param {string} [$filter] Filter items by property values
-         * @param {boolean} [$count] Include count of items
+         * @param {string} [$filter] Filter users by property values and relationship attributes
          * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
          * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
          * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: any): AxiosPromise<CollectionOfUser> {
-            return localVarFp.listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
+        listUsers($search?: string, $filter?: string, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: any): AxiosPromise<CollectionOfUser> {
+            return localVarFp.listUsers($search, $filter, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -6889,11 +6836,8 @@ export class UsersApi extends BaseAPI {
     /**
      * 
      * @summary Get entities from users
-     * @param {number} [$top] Show only the first n items
-     * @param {number} [$skip] Skip the first n items
      * @param {string} [$search] Search items by search phrases
-     * @param {string} [$filter] Filter items by property values
-     * @param {boolean} [$count] Include count of items
+     * @param {string} [$filter] Filter users by property values and relationship attributes
      * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
      * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
      * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
@@ -6901,8 +6845,8 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public listUsers($top?: number, $skip?: number, $search?: string, $filter?: string, $count?: boolean, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig) {
-        return UsersApiFp(this.configuration).listUsers($top, $skip, $search, $filter, $count, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
+    public listUsers($search?: string, $filter?: string, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig) {
+        return UsersApiFp(this.configuration).listUsers($search, $filter, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
