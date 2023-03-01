@@ -2523,7 +2523,7 @@ export const EducationClassApiAxiosParamCreator = function (configuration?: Conf
          * 
          * @summary Unassign user from a class
          * @param {string} classId key: id or externalId of class
-         * @param {string} userId key: id of the user to unassign from class
+         * @param {string} userId key: id or username of the user to unassign from class
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2763,7 +2763,7 @@ export const EducationClassApiFp = function(configuration?: Configuration) {
          * 
          * @summary Unassign user from a class
          * @param {string} classId key: id or externalId of class
-         * @param {string} userId key: id of the user to unassign from class
+         * @param {string} userId key: id or username of the user to unassign from class
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2860,7 +2860,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * 
          * @summary Unassign user from a class
          * @param {string} classId key: id or externalId of class
-         * @param {string} userId key: id of the user to unassign from class
+         * @param {string} userId key: id or username of the user to unassign from class
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -2958,7 +2958,7 @@ export class EducationClassApi extends BaseAPI {
      * 
      * @summary Unassign user from a class
      * @param {string} classId key: id or externalId of class
-     * @param {string} userId key: id of the user to unassign from class
+     * @param {string} userId key: id or username of the user to unassign from class
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationClassApi
@@ -3071,7 +3071,7 @@ export const EducationClassTeachersApiAxiosParamCreator = function (configuratio
          * 
          * @summary Unassign user as teacher of a class
          * @param {string} classId key: id or externalId of class
-         * @param {string} userId key: id of the user to unassign as teacher
+         * @param {string} userId key: id or username of the user to unassign as teacher
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3173,7 +3173,7 @@ export const EducationClassTeachersApiFp = function(configuration?: Configuratio
          * 
          * @summary Unassign user as teacher of a class
          * @param {string} classId key: id or externalId of class
-         * @param {string} userId key: id of the user to unassign as teacher
+         * @param {string} userId key: id or username of the user to unassign as teacher
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3217,7 +3217,7 @@ export const EducationClassTeachersApiFactory = function (configuration?: Config
          * 
          * @summary Unassign user as teacher of a class
          * @param {string} classId key: id or externalId of class
-         * @param {string} userId key: id of the user to unassign as teacher
+         * @param {string} userId key: id or username of the user to unassign as teacher
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3261,7 +3261,7 @@ export class EducationClassTeachersApi extends BaseAPI {
      * 
      * @summary Unassign user as teacher of a class
      * @param {string} classId key: id or externalId of class
-     * @param {string} userId key: id of the user to unassign as teacher
+     * @param {string} userId key: id or username of the user to unassign as teacher
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationClassTeachersApi
@@ -3502,7 +3502,7 @@ export const EducationSchoolApiAxiosParamCreator = function (configuration?: Con
          * 
          * @summary Unassign user from a school
          * @param {string} schoolId key: id or schoolNumber of school
-         * @param {string} userId key: id of the user to unassign from school
+         * @param {string} userId key: id or username of the user to unassign from school
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3804,7 +3804,7 @@ export const EducationSchoolApiFp = function(configuration?: Configuration) {
          * 
          * @summary Unassign user from a school
          * @param {string} schoolId key: id or schoolNumber of school
-         * @param {string} userId key: id of the user to unassign from school
+         * @param {string} userId key: id or username of the user to unassign from school
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -3934,7 +3934,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * 
          * @summary Unassign user from a school
          * @param {string} schoolId key: id or schoolNumber of school
-         * @param {string} userId key: id of the user to unassign from school
+         * @param {string} userId key: id or username of the user to unassign from school
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4068,7 +4068,7 @@ export class EducationSchoolApi extends BaseAPI {
      * 
      * @summary Unassign user from a school
      * @param {string} schoolId key: id or schoolNumber of school
-     * @param {string} userId key: id of the user to unassign from school
+     * @param {string} userId key: id or username of the user to unassign from school
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationSchoolApi
@@ -4188,7 +4188,7 @@ export const EducationUserApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * @summary Delete educationUser
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or username of user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4313,7 +4313,7 @@ export const EducationUserApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * @summary Update properties of educationUser
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or username of user
          * @param {EducationUser} educationUser New property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4378,7 +4378,7 @@ export const EducationUserApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Delete educationUser
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or username of user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4413,7 +4413,7 @@ export const EducationUserApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Update properties of educationUser
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or username of user
          * @param {EducationUser} educationUser New property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4445,7 +4445,7 @@ export const EducationUserApiFactory = function (configuration?: Configuration, 
         /**
          * 
          * @summary Delete educationUser
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or username of user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -4477,7 +4477,7 @@ export const EducationUserApiFactory = function (configuration?: Configuration, 
         /**
          * 
          * @summary Update properties of educationUser
-         * @param {string} userId key: id of user
+         * @param {string} userId key: id or username of user
          * @param {EducationUser} educationUser New property values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -4510,7 +4510,7 @@ export class EducationUserApi extends BaseAPI {
     /**
      * 
      * @summary Delete educationUser
-     * @param {string} userId key: id of user
+     * @param {string} userId key: id or username of user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationUserApi
@@ -4548,7 +4548,7 @@ export class EducationUserApi extends BaseAPI {
     /**
      * 
      * @summary Update properties of educationUser
-     * @param {string} userId key: id of user
+     * @param {string} userId key: id or username of user
      * @param {EducationUser} educationUser New property values
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
