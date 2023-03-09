@@ -872,6 +872,12 @@ export interface EducationUser {
      * @memberof EducationUser
      */
     'primaryRole'?: string;
+    /**
+     * The user`s type. This can be either \"Member\" for regular user, or \"Guest\" for guest users.
+     * @type {string}
+     * @memberof EducationUser
+     */
+    'userType'?: string;
 }
 /**
  * 
@@ -1680,6 +1686,12 @@ export interface User {
      * @memberof User
      */
     'givenName'?: string;
+    /**
+     * The user`s type. This can be either \"Member\" for regular user, or \"Guest\" for guest users.
+     * @type {string}
+     * @memberof User
+     */
+    'userType'?: string;
 }
 
 /**
