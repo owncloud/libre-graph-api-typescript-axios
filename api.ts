@@ -906,6 +906,19 @@ export interface Entity {
     'id'?: string;
 }
 /**
+ * 
+ * @export
+ * @interface ExportPersonalDataRequest
+ */
+export interface ExportPersonalDataRequest {
+    /**
+     * the path where the file should be created in the users personal space
+     * @type {string}
+     * @memberof ExportPersonalDataRequest
+     */
+    'storageLocation'?: string;
+}
+/**
  * File system information on client. Read-write.
  * @export
  * @interface FileSystemInfo
@@ -6168,6 +6181,44 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
         },
         /**
          * 
+         * @summary export personal data of a user
+         * @param {string} userId key: id or name of user
+         * @param {ExportPersonalDataRequest} [exportPersonalDataRequest] destination the file should be created at
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        exportPersonalData: async (userId: string, exportPersonalDataRequest?: ExportPersonalDataRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('exportPersonalData', 'userId', userId)
+            const localVarPath = `/users/{user-id}/exportPersonalData`
+                .replace(`{${"user-id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(exportPersonalDataRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get entity from users by key
          * @param {string} userId key: id or name of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
@@ -6274,6 +6325,18 @@ export const UserApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary export personal data of a user
+         * @param {string} userId key: id or name of user
+         * @param {ExportPersonalDataRequest} [exportPersonalDataRequest] destination the file should be created at
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async exportPersonalData(userId: string, exportPersonalDataRequest?: ExportPersonalDataRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.exportPersonalData(userId, exportPersonalDataRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Get entity from users by key
          * @param {string} userId key: id or name of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
@@ -6320,6 +6383,17 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
         },
         /**
          * 
+         * @summary export personal data of a user
+         * @param {string} userId key: id or name of user
+         * @param {ExportPersonalDataRequest} [exportPersonalDataRequest] destination the file should be created at
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        exportPersonalData(userId: string, exportPersonalDataRequest?: ExportPersonalDataRequest, options?: any): AxiosPromise<void> {
+            return localVarFp.exportPersonalData(userId, exportPersonalDataRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get entity from users by key
          * @param {string} userId key: id or name of user
          * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
@@ -6362,6 +6436,19 @@ export class UserApi extends BaseAPI {
      */
     public deleteUser(userId: string, ifMatch?: string, options?: AxiosRequestConfig) {
         return UserApiFp(this.configuration).deleteUser(userId, ifMatch, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary export personal data of a user
+     * @param {string} userId key: id or name of user
+     * @param {ExportPersonalDataRequest} [exportPersonalDataRequest] destination the file should be created at
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public exportPersonalData(userId: string, exportPersonalDataRequest?: ExportPersonalDataRequest, options?: AxiosRequestConfig) {
+        return UserApiFp(this.configuration).exportPersonalData(userId, exportPersonalDataRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
