@@ -1012,6 +1012,12 @@ export interface Group {
      */
     'displayName'?: string;
     /**
+     * Specifies the group types. In MS Graph a group can have multiple types, so this is an array. In libreGraph the possible group types deviate from the MS Graph. The only group type that we currently support is \"ReadOnly\", which is set for groups that cannot be modified on the current instance.
+     * @type {Array<string>}
+     * @memberof Group
+     */
+    'groupTypes'?: Array<string>;
+    /**
      * Users and groups that are members of this group. HTTP Methods: GET (supported for all groups), Nullable. Supports $expand.
      * @type {Array<User>}
      * @memberof Group
