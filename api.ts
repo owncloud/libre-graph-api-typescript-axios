@@ -1442,6 +1442,24 @@ export interface RemoteItem {
      */
     'folder'?: Folder;
     /**
+     * The drive alias can be used in clients to make the urls user friendly. Example: \'personal/einstein\'. This will be used to resolve to the correct driveID.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'driveAlias'?: string;
+    /**
+     * The relative path of the item in relation to its drive root.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'path'?: string;
+    /**
+     * Unique identifier for the drive root of this item. Read-only.
+     * @type {string}
+     * @memberof RemoteItem
+     */
+    'rootId'?: string;
+    /**
      * Unique identifier for the remote item in its drive. Read-only.
      * @type {string}
      * @memberof RemoteItem
