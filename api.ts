@@ -787,6 +787,12 @@ export interface EducationSchool {
      * @memberof EducationSchool
      */
     'schoolNumber'?: string;
+    /**
+     * Date and time at which the service for this organization is scheduled to be terminated
+     * @type {string}
+     * @memberof EducationSchool
+     */
+    'terminationDate'?: string | null;
 }
 /**
  * And extension of user with education specific attributes
@@ -3510,7 +3516,7 @@ export const EducationSchoolApiAxiosParamCreator = function (configuration?: Con
             };
         },
         /**
-         * 
+         * Deletes a school. A school can only be delete if it has the terminationDate property set. And if that termination Date is in the past.
          * @summary Delete school
          * @param {string} schoolId key: id or schoolNumber of school
          * @param {*} [options] Override http request option.
@@ -3839,7 +3845,7 @@ export const EducationSchoolApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 
+         * Deletes a school. A school can only be delete if it has the terminationDate property set. And if that termination Date is in the past.
          * @summary Delete school
          * @param {string} schoolId key: id or schoolNumber of school
          * @param {*} [options] Override http request option.
@@ -3970,7 +3976,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
             return localVarFp.deleteClassFromSchool(schoolId, classId, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
+         * Deletes a school. A school can only be delete if it has the terminationDate property set. And if that termination Date is in the past.
          * @summary Delete school
          * @param {string} schoolId key: id or schoolNumber of school
          * @param {*} [options] Override http request option.
@@ -4102,7 +4108,7 @@ export class EducationSchoolApi extends BaseAPI {
     }
 
     /**
-     * 
+     * Deletes a school. A school can only be delete if it has the terminationDate property set. And if that termination Date is in the past.
      * @summary Delete school
      * @param {string} schoolId key: id or schoolNumber of school
      * @param {*} [options] Override http request option.
