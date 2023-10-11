@@ -1646,6 +1646,62 @@ export interface Trash {
     'trashedDateTime'?: string;
 }
 /**
+ * A role definition is a collection of permissions in libre graph listing the operations that can be performed and the resources against which they can performed. 
+ * @export
+ * @interface UnifiedRoleDefinition
+ */
+export interface UnifiedRoleDefinition {
+    /**
+     * The description for the unifiedRoleDefinition.
+     * @type {string}
+     * @memberof UnifiedRoleDefinition
+     */
+    'description'?: string;
+    /**
+     * The display name for the unifiedRoleDefinition. Required. Supports $filter (`eq`, `in`).
+     * @type {string}
+     * @memberof UnifiedRoleDefinition
+     */
+    'displayName'?: string;
+    /**
+     * The unique identifier for the role definition. Key, not nullable, Read-only. Inherited from entity. Supports $filter (`eq`, `in`).
+     * @type {string}
+     * @memberof UnifiedRoleDefinition
+     */
+    'id'?: string;
+    /**
+     * List of permissions included in the role.
+     * @type {Array<UnifiedRolePermission>}
+     * @memberof UnifiedRoleDefinition
+     */
+    'rolePermissions'?: Array<UnifiedRolePermission>;
+    /**
+     * When presenting a list of roles the weight can be used to order them in a meaningful way. Lower weight gets higher precedence. So content with lower weight will come first. If set, weights should be non-zero, as 0 is interpreted as an unset weight. 
+     * @type {number}
+     * @memberof UnifiedRoleDefinition
+     */
+    'weight'?: number;
+}
+/**
+ * Represents a collection of allowed resource actions and the conditions that must be met for the action to be allowed. Resource actions are tasks that can be performed on a resource. For example, an application resource may support create, update, delete, and reset password actions. 
+ * @export
+ * @interface UnifiedRolePermission
+ */
+export interface UnifiedRolePermission {
+    /**
+     * Set of tasks that can be performed on a resource. Required.  The following is the schema for resource actions:  ```    {Namespace}/{Entity}/{PropertySet}/{Action} ```   For example: `libre.graph/applications/credentials/update`    * *{Namespace}* - The services that exposes the task. For example, all tasks in libre graph use the namespace `libre.graph`.  * *{Entity}* - The logical features or components exposed by the service in libre graph. For example, `applications`, `servicePrincipals`, or `groups`.  * *{PropertySet}* - Optional. The specific properties or aspects of the entity for which access is being granted.    For example, `libre.graph/applications/authentication/read` grants the ability to read the reply URL, logout URL,    and implicit flow property on the **application** object in libre graph. The following are reserved names for common property sets:    * `allProperties` - Designates all properties of the entity, including privileged properties.      Examples include `libre.graph/applications/allProperties/read` and `libre.graph/applications/allProperties/update`.    * `basic` - Designates common read properties but excludes privileged ones.      For example, `libre.graph/applications/basic/update` includes the ability to update standard properties like display name.    * `standard` - Designates common update properties but excludes privileged ones.      For example, `libre.graph/applications/standard/read`.  * *{Actions}* - The operations being granted. In most circumstances, permissions should be expressed in terms of CRUD operations or allTasks. Actions include:    * `create` - The ability to create a new instance of the entity.    * `read` - The ability to read a given property set (including allProperties).    * `update` - The ability to update a given property set (including allProperties).    * `delete` - The ability to delete a given entity.    * `allTasks` - Represents all CRUD operations (create, read, update, and delete).   Following the CS3 API we can represent the CS3 permissions by mapping them to driveItem properties or relations like this:  | [CS3 ResourcePermission](https://cs3org.github.io/cs3apis/#cs3.storage.provider.v1beta1.ResourcePermissions) | action | comment |  | ------------------------------------------------------------------------------------------------------------ | ------ | ------- |  | `stat` | `libre.graph/driveItem/basic/read` | `basic` because it does not include versions or trashed items |  | `get_quota` | `libre.graph/driveItem/quota/read` | read only the `quota` property |  | `get_path` | `libre.graph/driveItem/path/read` | read only the `path` property |  | `move` | `libre.graph/driveItem/path/update` | allows updating the `path` property of a CS3 resource |  | `delete` | `libre.graph/driveItem/standard/delete` | `standard` because deleting is a common update operation |  | `list_container` | `libre.graph/driveItem/children/read` | |  | `create_container` | `libre.graph/driveItem/children/create` | |  | `initiate_file_download` | `libre.graph/driveItem/content/read` | `content` is the property read when initiating a download |  | `initiate_file_upload` | `libre.graph/driveItem/upload/create` | `uploads` are a separate property. postprocessing creates the `content` |  | `add_grant` | `libre.graph/driveItem/permissions/create` | |  | `list_grant` | `libre.graph/driveItem/permissions/read` | |  | `update_grant` | `libre.graph/driveItem/permissions/update` | |  | `remove_grant` | `libre.graph/driveItem/permissions/delete` | |  | `deny_grant` | `libre.graph/driveItem/permissions/deny` | uses a non CRUD action `deny` |  | `list_file_versions` | `libre.graph/driveItem/versions/read` | `versions` is a `driveItemVersion` collection |  | `restore_file_version` | `libre.graph/driveItem/versions/update` | the only `update` action is restore |  | `list_recycle` | `libre.graph/driveItem/deleted/read` | reading a driveItem `deleted` property implies listing |  | `restore_recycle_item` | `libre.graph/driveItem/deleted/update` | the only `update` action is restore |  | `purge_recycle` | `libre.graph/driveItem/deleted/delete` | allows purging deleted `driveItems` |   Managing drives would be a different entity. A space manager role could be written as `libre.graph/drive/permission/allTasks`. 
+     * @type {Array<string>}
+     * @memberof UnifiedRolePermission
+     */
+    'allowedResourceActions'?: Array<string>;
+    /**
+     * Optional constraints that must be met for the permission to be effective. Not supported for custom roles.  Conditions define constraints that must be met. For example, a requirement that the principal be an owner of the target resource. The following are the supported conditions:  * Self: `@Subject.objectId == @Resource.objectId` * Owner: `@Subject.objectId Any_of @Resource.owners` * Grantee: `@Subject.objectId Any_of @Resource.grantee` - does not exist in MS Graph, but we use it to express permissions on shared resources.  The following is an example of a role permission with a condition that the principal be the owner of the target resource. ```json   \"rolePermissions\": [       {           \"allowedResourceActions\": [               \"libre.graph/applications/basic/update\",               \"libre.graph/applications/credentials/update\"           ],           \"condition\":  \"@Subject.objectId Any_of @Resource.owners\"       }   ] ``` Conditions aren\'t supported for custom roles. 
+     * @type {string}
+     * @memberof UnifiedRolePermission
+     */
+    'condition'?: string;
+}
+/**
  * Represents an Active Directory user object.
  * @export
  * @interface User
@@ -5928,6 +5984,171 @@ export class MeUserApi extends BaseAPI {
      */
     public getOwnUser($expand?: Set<'memberOf'>, options?: AxiosRequestConfig) {
         return MeUserApiFp(this.configuration).getOwnUser($expand, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * RoleManagementApi - axios parameter creator
+ * @export
+ */
+export const RoleManagementApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Read the properties and relationships of a `unifiedRoleDefinition` object. 
+         * @summary Get unifiedRoleDefinition
+         * @param {string} roleId key: id of roleDefinition
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPermissionRoleDefinition: async (roleId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'roleId' is not null or undefined
+            assertParamExists('getPermissionRoleDefinition', 'roleId', roleId)
+            const localVarPath = `/roleManagement/permissions/roleDefinitions/{role-id}`
+                .replace(`{${"role-id"}}`, encodeURIComponent(String(roleId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Get a list of `unifiedRoleDefinition` objects for the permissions provider. This list determines the roles that can be selected when creating sharing invites. 
+         * @summary List roleDefinitions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPermissionRoleDefinitions: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/roleManagement/permissions/roleDefinitions`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * RoleManagementApi - functional programming interface
+ * @export
+ */
+export const RoleManagementApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = RoleManagementApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Read the properties and relationships of a `unifiedRoleDefinition` object. 
+         * @summary Get unifiedRoleDefinition
+         * @param {string} roleId key: id of roleDefinition
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPermissionRoleDefinition(roleId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UnifiedRoleDefinition>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPermissionRoleDefinition(roleId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Get a list of `unifiedRoleDefinition` objects for the permissions provider. This list determines the roles that can be selected when creating sharing invites. 
+         * @summary List roleDefinitions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listPermissionRoleDefinitions(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UnifiedRoleDefinition>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPermissionRoleDefinitions(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * RoleManagementApi - factory interface
+ * @export
+ */
+export const RoleManagementApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = RoleManagementApiFp(configuration)
+    return {
+        /**
+         * Read the properties and relationships of a `unifiedRoleDefinition` object. 
+         * @summary Get unifiedRoleDefinition
+         * @param {string} roleId key: id of roleDefinition
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPermissionRoleDefinition(roleId: string, options?: any): AxiosPromise<UnifiedRoleDefinition> {
+            return localVarFp.getPermissionRoleDefinition(roleId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Get a list of `unifiedRoleDefinition` objects for the permissions provider. This list determines the roles that can be selected when creating sharing invites. 
+         * @summary List roleDefinitions
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPermissionRoleDefinitions(options?: any): AxiosPromise<UnifiedRoleDefinition> {
+            return localVarFp.listPermissionRoleDefinitions(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * RoleManagementApi - object-oriented interface
+ * @export
+ * @class RoleManagementApi
+ * @extends {BaseAPI}
+ */
+export class RoleManagementApi extends BaseAPI {
+    /**
+     * Read the properties and relationships of a `unifiedRoleDefinition` object. 
+     * @summary Get unifiedRoleDefinition
+     * @param {string} roleId key: id of roleDefinition
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RoleManagementApi
+     */
+    public getPermissionRoleDefinition(roleId: string, options?: AxiosRequestConfig) {
+        return RoleManagementApiFp(this.configuration).getPermissionRoleDefinition(roleId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get a list of `unifiedRoleDefinition` objects for the permissions provider. This list determines the roles that can be selected when creating sharing invites. 
+     * @summary List roleDefinitions
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RoleManagementApi
+     */
+    public listPermissionRoleDefinitions(options?: AxiosRequestConfig) {
+        return RoleManagementApiFp(this.configuration).listPermissionRoleDefinitions(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
