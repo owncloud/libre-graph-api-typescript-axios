@@ -139,6 +139,109 @@ export interface Application {
     'displayName'?: string | null;
 }
 /**
+ * The Audio resource groups audio-related properties on an item into a single structure.  If a DriveItem has a non-null audio facet, the item represents an audio file. The properties of the Audio resource are populated by extracting metadata from the file. 
+ * @export
+ * @interface Audio
+ */
+export interface Audio {
+    /**
+     * The title of the album for this audio file.
+     * @type {string}
+     * @memberof Audio
+     */
+    'album'?: string;
+    /**
+     * The artist named on the album for the audio file.
+     * @type {string}
+     * @memberof Audio
+     */
+    'albumArtist'?: string;
+    /**
+     * The performing artist for the audio file.
+     * @type {string}
+     * @memberof Audio
+     */
+    'artist'?: string;
+    /**
+     * Bitrate expressed in kbps.
+     * @type {number}
+     * @memberof Audio
+     */
+    'bitrate'?: number;
+    /**
+     * The name of the composer of the audio file.
+     * @type {string}
+     * @memberof Audio
+     */
+    'composers'?: string;
+    /**
+     * Copyright information for the audio file.
+     * @type {string}
+     * @memberof Audio
+     */
+    'copyright'?: string;
+    /**
+     * The number of the disc this audio file came from.
+     * @type {number}
+     * @memberof Audio
+     */
+    'disc'?: number;
+    /**
+     * The total number of discs in this album.
+     * @type {number}
+     * @memberof Audio
+     */
+    'discCount'?: number;
+    /**
+     * Duration of the audio file, expressed in milliseconds
+     * @type {number}
+     * @memberof Audio
+     */
+    'duration'?: number;
+    /**
+     * The genre of this audio file.
+     * @type {string}
+     * @memberof Audio
+     */
+    'genre'?: string;
+    /**
+     * Indicates if the file is protected with digital rights management.
+     * @type {boolean}
+     * @memberof Audio
+     */
+    'hasDrm'?: boolean;
+    /**
+     * Indicates if the file is encoded with a variable bitrate.
+     * @type {boolean}
+     * @memberof Audio
+     */
+    'isVariableBitrate'?: boolean;
+    /**
+     * The title of the audio file.
+     * @type {string}
+     * @memberof Audio
+     */
+    'title'?: string;
+    /**
+     * The number of the track on the original disc for this audio file.
+     * @type {number}
+     * @memberof Audio
+     */
+    'track'?: number;
+    /**
+     * The total number of tracks on the original disc for this audio file.
+     * @type {number}
+     * @memberof Audio
+     */
+    'trackCount'?: number;
+    /**
+     * The year the audio file was recorded.
+     * @type {number}
+     * @memberof Audio
+     */
+    'year'?: number;
+}
+/**
  * 
  * @export
  * @interface ClassMemberReference
@@ -569,7 +672,7 @@ export interface Drive {
     'special'?: Array<DriveItem>;
 }
 /**
- * Reprensents a resource inside a drive. Read-only.
+ * Represents a resource inside a drive. Read-only.
  * @export
  * @interface DriveItem
  */
@@ -736,6 +839,12 @@ export interface DriveItem {
      * @memberof DriveItem
      */
     'permissions'?: Array<Permission>;
+    /**
+     * 
+     * @type {Audio}
+     * @memberof DriveItem
+     */
+    'audio'?: Audio;
 }
 /**
  * 
