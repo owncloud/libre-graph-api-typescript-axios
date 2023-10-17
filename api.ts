@@ -677,6 +677,12 @@ export interface DriveItem {
      */
     'image'?: Image;
     /**
+     * 
+     * @type {Photo}
+     * @memberof DriveItem
+     */
+    'photo'?: Photo;
+    /**
      * If this property is non-null, it indicates that the driveItem is the top-most driveItem in the drive.
      * @type {object}
      * @memberof DriveItem
@@ -1523,6 +1529,67 @@ export interface Permission {
      * @memberof Permission
      */
     '@UI.Hidden'?: boolean;
+}
+/**
+ * The photo resource provides photo and camera properties, for example, EXIF metadata, on a driveItem. 
+ * @export
+ * @interface Photo
+ */
+export interface Photo {
+    /**
+     * Camera manufacturer. Read-only.
+     * @type {string}
+     * @memberof Photo
+     */
+    'cameraMake'?: string;
+    /**
+     * Camera model. Read-only.
+     * @type {string}
+     * @memberof Photo
+     */
+    'cameraModel'?: string;
+    /**
+     * The denominator for the exposure time fraction from the camera. Read-only.
+     * @type {number}
+     * @memberof Photo
+     */
+    'exposureDenominator'?: number;
+    /**
+     * The numerator for the exposure time fraction from the camera. Read-only.
+     * @type {number}
+     * @memberof Photo
+     */
+    'exposureNumerator'?: number;
+    /**
+     * The F-stop value from the camera. Read-only.
+     * @type {number}
+     * @memberof Photo
+     */
+    'fNumber'?: number;
+    /**
+     * The focal length from the camera. Read-only.
+     * @type {number}
+     * @memberof Photo
+     */
+    'focalLength'?: number;
+    /**
+     * The ISO value from the camera. Read-only.
+     * @type {number}
+     * @memberof Photo
+     */
+    'iso'?: number;
+    /**
+     * The orientation value from the camera. Read-only.
+     * @type {number}
+     * @memberof Photo
+     */
+    'orientation'?: number;
+    /**
+     * Represents the date and time the photo was taken. Read-only.
+     * @type {string}
+     * @memberof Photo
+     */
+    'takenDateTime'?: string;
 }
 /**
  * Optional. Information about the drive\'s storage space quota. Read-only.
