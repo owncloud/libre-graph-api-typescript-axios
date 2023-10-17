@@ -683,6 +683,12 @@ export interface DriveItem {
      */
     'photo'?: Photo;
     /**
+     * 
+     * @type {GeoCoordinates}
+     * @memberof DriveItem
+     */
+    'location'?: GeoCoordinates;
+    /**
      * If this property is non-null, it indicates that the driveItem is the top-most driveItem in the drive.
      * @type {object}
      * @memberof DriveItem
@@ -1117,6 +1123,31 @@ export interface FolderView {
      * @memberof FolderView
      */
     'viewType'?: string;
+}
+/**
+ * The GeoCoordinates resource provides geographic coordinates and elevation of a location based on metadata contained within the file. If a DriveItem has a non-null location facet, the item represents a file with a known location assocaited with it. 
+ * @export
+ * @interface GeoCoordinates
+ */
+export interface GeoCoordinates {
+    /**
+     * The altitude (height), in feet, above sea level for the item. Read-only.
+     * @type {number}
+     * @memberof GeoCoordinates
+     */
+    'altitude'?: number;
+    /**
+     * The latitude, in decimal, for the item. Read-only.
+     * @type {number}
+     * @memberof GeoCoordinates
+     */
+    'latitude'?: number;
+    /**
+     * The longitude, in decimal, for the item. Read-only.
+     * @type {number}
+     * @memberof GeoCoordinates
+     */
+    'longitude'?: number;
 }
 /**
  * 
