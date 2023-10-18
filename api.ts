@@ -13,13 +13,15 @@
  */
 
 
-import { Configuration } from './configuration';
-import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
+import type { Configuration } from './configuration';
+import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
+import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from './common';
+import type { RequestArgs } from './base';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
+import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 
 /**
  * 
@@ -877,6 +879,8 @@ export interface DriveItemCreateLink {
      */
     'displayName'?: string;
 }
+
+
 /**
  * 
  * @export
@@ -1982,6 +1986,8 @@ export interface SharingLink {
      */
     '@libre.graph.displayName'?: string;
 }
+
+
 /**
  * The type of the link created.  | Value          | Display name      | Description                                                     | | -------------- | ----------------- | --------------------------------------------------------------- | | view           | View              | Creates a read-only link to the driveItem.                      | | upload         | Upload            | Creates a read-write link to the folder driveItem.              | | edit           | Edit              | Creates a read-write link to the driveItem.                     | | createOnly     | File Drop         | Creates an upload-only link to the folder driveItem.            | | blocksDownload | Secure View       | Creates a read-only link that blocks download to the driveItem. | 
  * @export
@@ -2246,6 +2252,8 @@ export const ApplicationsApiAxiosParamCreator = function (configuration?: Config
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2275,6 +2283,8 @@ export const ApplicationsApiAxiosParamCreator = function (configuration?: Config
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -2382,6 +2392,7 @@ export class ApplicationsApi extends BaseAPI {
 }
 
 
+
 /**
  * DrivesApi - axios parameter creator
  * @export
@@ -2409,6 +2420,8 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -2448,6 +2461,8 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
@@ -2486,6 +2501,8 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2522,6 +2539,8 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -2707,6 +2726,7 @@ export class DrivesApi extends BaseAPI {
 }
 
 
+
 /**
  * DrivesGetDrivesApi - axios parameter creator
  * @export
@@ -2733,6 +2753,8 @@ export const DrivesGetDrivesApiAxiosParamCreator = function (configuration?: Con
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if ($orderby !== undefined) {
                 localVarQueryParameter['$orderby'] = $orderby;
@@ -2821,6 +2843,7 @@ export class DrivesGetDrivesApi extends BaseAPI {
 }
 
 
+
 /**
  * DrivesPermissionsApi - axios parameter creator
  * @export
@@ -2854,6 +2877,8 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -2900,6 +2925,8 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2942,6 +2969,8 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2980,6 +3009,8 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -3021,6 +3052,8 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -3066,6 +3099,8 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -3347,6 +3382,7 @@ export class DrivesPermissionsApi extends BaseAPI {
 }
 
 
+
 /**
  * DrivesRootApi - axios parameter creator
  * @export
@@ -3375,6 +3411,8 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -3450,6 +3488,7 @@ export class DrivesRootApi extends BaseAPI {
         return DrivesRootApiFp(this.configuration).getRoot(driveId, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -4078,6 +4117,7 @@ export class EducationClassApi extends BaseAPI {
 }
 
 
+
 /**
  * EducationClassTeachersApi - axios parameter creator
  * @export
@@ -4343,6 +4383,7 @@ export class EducationClassTeachersApi extends BaseAPI {
         return EducationClassTeachersApiFp(this.configuration).getTeachers(classId, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
 
 
 /**
@@ -5200,6 +5241,7 @@ export class EducationSchoolApi extends BaseAPI {
 }
 
 
+
 /**
  * EducationUserApi - axios parameter creator
  * @export
@@ -5288,11 +5330,11 @@ export const EducationUserApiAxiosParamCreator = function (configuration?: Confi
          * 
          * @summary Get properties of educationUser
          * @param {string} userId key: id or username of user
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<GetEducationUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEducationUser: async (userId: string, $expand?: Set<'memberOf'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getEducationUser: async (userId: string, $expand?: Set<GetEducationUserExpandEnum>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getEducationUser', 'userId', userId)
             const localVarPath = `/education/users/{user-id}`
@@ -5330,12 +5372,12 @@ export const EducationUserApiAxiosParamCreator = function (configuration?: Confi
         /**
          * 
          * @summary Get entities from education users
-         * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<ListEducationUsersOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListEducationUsersExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listEducationUsers: async ($orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $expand?: Set<'memberOf'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listEducationUsers: async ($orderby?: Set<ListEducationUsersOrderbyEnum>, $expand?: Set<ListEducationUsersExpandEnum>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/education/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -5451,23 +5493,23 @@ export const EducationUserApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get properties of educationUser
          * @param {string} userId key: id or username of user
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<GetEducationUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getEducationUser(userId: string, $expand?: Set<'memberOf'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EducationUser>> {
+        async getEducationUser(userId: string, $expand?: Set<GetEducationUserExpandEnum>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EducationUser>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getEducationUser(userId, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
          * @summary Get entities from education users
-         * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<ListEducationUsersOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListEducationUsersExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listEducationUsers($orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $expand?: Set<'memberOf'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfEducationUser>> {
+        async listEducationUsers($orderby?: Set<ListEducationUsersOrderbyEnum>, $expand?: Set<ListEducationUsersExpandEnum>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfEducationUser>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listEducationUsers($orderby, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -5517,22 +5559,22 @@ export const EducationUserApiFactory = function (configuration?: Configuration, 
          * 
          * @summary Get properties of educationUser
          * @param {string} userId key: id or username of user
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<GetEducationUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEducationUser(userId: string, $expand?: Set<'memberOf'>, options?: any): AxiosPromise<EducationUser> {
+        getEducationUser(userId: string, $expand?: Set<GetEducationUserExpandEnum>, options?: any): AxiosPromise<EducationUser> {
             return localVarFp.getEducationUser(userId, $expand, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get entities from education users
-         * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<ListEducationUsersOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListEducationUsersExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listEducationUsers($orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $expand?: Set<'memberOf'>, options?: any): AxiosPromise<CollectionOfEducationUser> {
+        listEducationUsers($orderby?: Set<ListEducationUsersOrderbyEnum>, $expand?: Set<ListEducationUsersExpandEnum>, options?: any): AxiosPromise<CollectionOfEducationUser> {
             return localVarFp.listEducationUsers($orderby, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5584,25 +5626,25 @@ export class EducationUserApi extends BaseAPI {
      * 
      * @summary Get properties of educationUser
      * @param {string} userId key: id or username of user
-     * @param {Set<'memberOf'>} [$expand] Expand related entities
+     * @param {Set<GetEducationUserExpandEnum>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationUserApi
      */
-    public getEducationUser(userId: string, $expand?: Set<'memberOf'>, options?: AxiosRequestConfig) {
+    public getEducationUser(userId: string, $expand?: Set<GetEducationUserExpandEnum>, options?: AxiosRequestConfig) {
         return EducationUserApiFp(this.configuration).getEducationUser(userId, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get entities from education users
-     * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
-     * @param {Set<'memberOf'>} [$expand] Expand related entities
+     * @param {Set<ListEducationUsersOrderbyEnum>} [$orderby] Order items by property values
+     * @param {Set<ListEducationUsersExpandEnum>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EducationUserApi
      */
-    public listEducationUsers($orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $expand?: Set<'memberOf'>, options?: AxiosRequestConfig) {
+    public listEducationUsers($orderby?: Set<ListEducationUsersOrderbyEnum>, $expand?: Set<ListEducationUsersExpandEnum>, options?: AxiosRequestConfig) {
         return EducationUserApiFp(this.configuration).listEducationUsers($orderby, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -5619,6 +5661,33 @@ export class EducationUserApi extends BaseAPI {
         return EducationUserApiFp(this.configuration).updateEducationUser(userId, educationUser, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetEducationUserExpandEnum = {
+    MemberOf: 'memberOf'
+} as const;
+export type GetEducationUserExpandEnum = typeof GetEducationUserExpandEnum[keyof typeof GetEducationUserExpandEnum];
+/**
+ * @export
+ */
+export const ListEducationUsersOrderbyEnum = {
+    DisplayName: 'displayName',
+    DisplayNameDesc: 'displayName desc',
+    Mail: 'mail',
+    MailDesc: 'mail desc',
+    OnPremisesSamAccountName: 'onPremisesSamAccountName',
+    OnPremisesSamAccountNameDesc: 'onPremisesSamAccountName desc'
+} as const;
+export type ListEducationUsersOrderbyEnum = typeof ListEducationUsersOrderbyEnum[keyof typeof ListEducationUsersOrderbyEnum];
+/**
+ * @export
+ */
+export const ListEducationUsersExpandEnum = {
+    MemberOf: 'memberOf'
+} as const;
+export type ListEducationUsersExpandEnum = typeof ListEducationUsersExpandEnum[keyof typeof ListEducationUsersExpandEnum];
 
 
 /**
@@ -5652,6 +5721,8 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -5690,6 +5761,8 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
@@ -5734,6 +5807,8 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
@@ -5753,12 +5828,12 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Get entity from groups by key
          * @param {string} groupId key: id or name of group
-         * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
-         * @param {Set<'members'>} [$expand] Expand related entities
+         * @param {Set<GetGroupSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<GetGroupExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGroup: async (groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members'>, $expand?: Set<'members'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getGroup: async (groupId: string, $select?: Set<GetGroupSelectEnum>, $expand?: Set<GetGroupExpandEnum>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('getGroup', 'groupId', groupId)
             const localVarPath = `/groups/{group-id}`
@@ -5773,6 +5848,8 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if ($select) {
                 localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
@@ -5816,6 +5893,8 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -5852,6 +5931,8 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -5918,12 +5999,12 @@ export const GroupApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get entity from groups by key
          * @param {string} groupId key: id or name of group
-         * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
-         * @param {Set<'members'>} [$expand] Expand related entities
+         * @param {Set<GetGroupSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<GetGroupExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
+        async getGroup(groupId: string, $select?: Set<GetGroupSelectEnum>, $expand?: Set<GetGroupExpandEnum>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Group>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGroup(groupId, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -5998,12 +6079,12 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Get entity from groups by key
          * @param {string} groupId key: id or name of group
-         * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
-         * @param {Set<'members'>} [$expand] Expand related entities
+         * @param {Set<GetGroupSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<GetGroupExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members'>, $expand?: Set<'members'>, options?: any): AxiosPromise<Group> {
+        getGroup(groupId: string, $select?: Set<GetGroupSelectEnum>, $expand?: Set<GetGroupExpandEnum>, options?: any): AxiosPromise<Group> {
             return localVarFp.getGroup(groupId, $select, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6081,13 +6162,13 @@ export class GroupApi extends BaseAPI {
      * 
      * @summary Get entity from groups by key
      * @param {string} groupId key: id or name of group
-     * @param {Set<'id' | 'description' | 'displayName' | 'members'>} [$select] Select properties to be returned
-     * @param {Set<'members'>} [$expand] Expand related entities
+     * @param {Set<GetGroupSelectEnum>} [$select] Select properties to be returned
+     * @param {Set<GetGroupExpandEnum>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupApi
      */
-    public getGroup(groupId: string, $select?: Set<'id' | 'description' | 'displayName' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
+    public getGroup(groupId: string, $select?: Set<GetGroupSelectEnum>, $expand?: Set<GetGroupExpandEnum>, options?: AxiosRequestConfig) {
         return GroupApiFp(this.configuration).getGroup(groupId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -6116,6 +6197,24 @@ export class GroupApi extends BaseAPI {
         return GroupApiFp(this.configuration).updateGroup(groupId, group, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetGroupSelectEnum = {
+    Id: 'id',
+    Description: 'description',
+    DisplayName: 'displayName',
+    Members: 'members'
+} as const;
+export type GetGroupSelectEnum = typeof GetGroupSelectEnum[keyof typeof GetGroupSelectEnum];
+/**
+ * @export
+ */
+export const GetGroupExpandEnum = {
+    Members: 'members'
+} as const;
+export type GetGroupExpandEnum = typeof GetGroupExpandEnum[keyof typeof GetGroupExpandEnum];
 
 
 /**
@@ -6146,6 +6245,8 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -6164,13 +6265,13 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
          * 
          * @summary Get entities from groups
          * @param {string} [$search] Search items by search phrases
-         * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
-         * @param {Set<'members'>} [$expand] Expand related entities
+         * @param {Set<ListGroupsOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListGroupsSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<ListGroupsExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGroups: async ($search?: string, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listGroups: async ($search?: string, $orderby?: Set<ListGroupsOrderbyEnum>, $select?: Set<ListGroupsSelectEnum>, $expand?: Set<ListGroupsExpandEnum>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/groups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6182,6 +6283,8 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if ($search !== undefined) {
                 localVarQueryParameter['$search'] = $search;
@@ -6235,13 +6338,13 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get entities from groups
          * @param {string} [$search] Search items by search phrases
-         * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
-         * @param {Set<'members'>} [$expand] Expand related entities
+         * @param {Set<ListGroupsOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListGroupsSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<ListGroupsExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listGroups($search?: string, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfGroup>> {
+        async listGroups($search?: string, $orderby?: Set<ListGroupsOrderbyEnum>, $select?: Set<ListGroupsSelectEnum>, $expand?: Set<ListGroupsExpandEnum>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfGroup>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listGroups($search, $orderby, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -6269,13 +6372,13 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          * 
          * @summary Get entities from groups
          * @param {string} [$search] Search items by search phrases
-         * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
-         * @param {Set<'members'>} [$expand] Expand related entities
+         * @param {Set<ListGroupsOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListGroupsSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<ListGroupsExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGroups($search?: string, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: any): AxiosPromise<CollectionOfGroup> {
+        listGroups($search?: string, $orderby?: Set<ListGroupsOrderbyEnum>, $select?: Set<ListGroupsSelectEnum>, $expand?: Set<ListGroupsExpandEnum>, options?: any): AxiosPromise<CollectionOfGroup> {
             return localVarFp.listGroups($search, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
@@ -6304,17 +6407,44 @@ export class GroupsApi extends BaseAPI {
      * 
      * @summary Get entities from groups
      * @param {string} [$search] Search items by search phrases
-     * @param {Set<'displayName' | 'displayName desc'>} [$orderby] Order items by property values
-     * @param {Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>} [$select] Select properties to be returned
-     * @param {Set<'members'>} [$expand] Expand related entities
+     * @param {Set<ListGroupsOrderbyEnum>} [$orderby] Order items by property values
+     * @param {Set<ListGroupsSelectEnum>} [$select] Select properties to be returned
+     * @param {Set<ListGroupsExpandEnum>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public listGroups($search?: string, $orderby?: Set<'displayName' | 'displayName desc'>, $select?: Set<'id' | 'description' | 'displayName' | 'mail' | 'members'>, $expand?: Set<'members'>, options?: AxiosRequestConfig) {
+    public listGroups($search?: string, $orderby?: Set<ListGroupsOrderbyEnum>, $select?: Set<ListGroupsSelectEnum>, $expand?: Set<ListGroupsExpandEnum>, options?: AxiosRequestConfig) {
         return GroupsApiFp(this.configuration).listGroups($search, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const ListGroupsOrderbyEnum = {
+    DisplayName: 'displayName',
+    DisplayNameDesc: 'displayName desc'
+} as const;
+export type ListGroupsOrderbyEnum = typeof ListGroupsOrderbyEnum[keyof typeof ListGroupsOrderbyEnum];
+/**
+ * @export
+ */
+export const ListGroupsSelectEnum = {
+    Id: 'id',
+    Description: 'description',
+    DisplayName: 'displayName',
+    Mail: 'mail',
+    Members: 'members'
+} as const;
+export type ListGroupsSelectEnum = typeof ListGroupsSelectEnum[keyof typeof ListGroupsSelectEnum];
+/**
+ * @export
+ */
+export const ListGroupsExpandEnum = {
+    Members: 'members'
+} as const;
+export type ListGroupsExpandEnum = typeof ListGroupsExpandEnum[keyof typeof ListGroupsExpandEnum];
 
 
 /**
@@ -6344,6 +6474,8 @@ export const MeChangepasswordApiAxiosParamCreator = function (configuration?: Co
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -6424,6 +6556,7 @@ export class MeChangepasswordApi extends BaseAPI {
 }
 
 
+
 /**
  * MeDriveApi - axios parameter creator
  * @export
@@ -6448,6 +6581,8 @@ export const MeDriveApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -6479,6 +6614,8 @@ export const MeDriveApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -6508,6 +6645,8 @@ export const MeDriveApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -6642,6 +6781,7 @@ export class MeDriveApi extends BaseAPI {
 }
 
 
+
 /**
  * MeDriveRootApi - axios parameter creator
  * @export
@@ -6666,6 +6806,8 @@ export const MeDriveRootApiAxiosParamCreator = function (configuration?: Configu
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -6740,6 +6882,7 @@ export class MeDriveRootApi extends BaseAPI {
 }
 
 
+
 /**
  * MeDriveRootChildrenApi - axios parameter creator
  * @export
@@ -6764,6 +6907,8 @@ export const MeDriveRootChildrenApiAxiosParamCreator = function (configuration?:
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -6838,6 +6983,7 @@ export class MeDriveRootChildrenApi extends BaseAPI {
 }
 
 
+
 /**
  * MeDrivesApi - axios parameter creator
  * @export
@@ -6864,6 +7010,8 @@ export const MeDrivesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if ($orderby !== undefined) {
                 localVarQueryParameter['$orderby'] = $orderby;
@@ -6952,6 +7100,7 @@ export class MeDrivesApi extends BaseAPI {
 }
 
 
+
 /**
  * MeUserApi - axios parameter creator
  * @export
@@ -6961,11 +7110,11 @@ export const MeUserApiAxiosParamCreator = function (configuration?: Configuratio
         /**
          * 
          * @summary Get current user
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<GetOwnUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOwnUser: async ($expand?: Set<'memberOf'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getOwnUser: async ($expand?: Set<GetOwnUserExpandEnum>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/me`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6977,6 +7126,8 @@ export const MeUserApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if ($expand) {
                 localVarQueryParameter['$expand'] = Array.from($expand).join(COLLECTION_FORMATS.csv);
@@ -7006,11 +7157,11 @@ export const MeUserApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get current user
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<GetOwnUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getOwnUser($expand?: Set<'memberOf'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async getOwnUser($expand?: Set<GetOwnUserExpandEnum>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOwnUser($expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -7027,11 +7178,11 @@ export const MeUserApiFactory = function (configuration?: Configuration, basePat
         /**
          * 
          * @summary Get current user
-         * @param {Set<'memberOf'>} [$expand] Expand related entities
+         * @param {Set<GetOwnUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOwnUser($expand?: Set<'memberOf'>, options?: any): AxiosPromise<User> {
+        getOwnUser($expand?: Set<GetOwnUserExpandEnum>, options?: any): AxiosPromise<User> {
             return localVarFp.getOwnUser($expand, options).then((request) => request(axios, basePath));
         },
     };
@@ -7047,15 +7198,23 @@ export class MeUserApi extends BaseAPI {
     /**
      * 
      * @summary Get current user
-     * @param {Set<'memberOf'>} [$expand] Expand related entities
+     * @param {Set<GetOwnUserExpandEnum>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MeUserApi
      */
-    public getOwnUser($expand?: Set<'memberOf'>, options?: AxiosRequestConfig) {
+    public getOwnUser($expand?: Set<GetOwnUserExpandEnum>, options?: AxiosRequestConfig) {
         return MeUserApiFp(this.configuration).getOwnUser($expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetOwnUserExpandEnum = {
+    MemberOf: 'memberOf'
+} as const;
+export type GetOwnUserExpandEnum = typeof GetOwnUserExpandEnum[keyof typeof GetOwnUserExpandEnum];
 
 
 /**
@@ -7087,6 +7246,8 @@ export const RoleManagementApiAxiosParamCreator = function (configuration?: Conf
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -7116,6 +7277,8 @@ export const RoleManagementApiAxiosParamCreator = function (configuration?: Conf
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -7223,6 +7386,7 @@ export class RoleManagementApi extends BaseAPI {
 }
 
 
+
 /**
  * TagsApi - axios parameter creator
  * @export
@@ -7248,6 +7412,8 @@ export const TagsApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -7282,6 +7448,8 @@ export const TagsApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -7312,6 +7480,8 @@ export const TagsApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -7455,6 +7625,7 @@ export class TagsApi extends BaseAPI {
 }
 
 
+
 /**
  * UserApi - axios parameter creator
  * @export
@@ -7484,6 +7655,8 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
@@ -7524,6 +7697,8 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -7542,12 +7717,12 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
          * 
          * @summary Get entity from users by key
          * @param {string} userId key: id or name of user
-         * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
+         * @param {Set<GetUserSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<GetUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUser: async (userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getUser: async (userId: string, $select?: Set<GetUserSelectEnum>, $expand?: Set<GetUserExpandEnum>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
             assertParamExists('getUser', 'userId', userId)
             const localVarPath = `/users/{user-id}`
@@ -7562,6 +7737,8 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if ($select) {
                 localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
@@ -7607,6 +7784,8 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -7660,12 +7839,12 @@ export const UserApiFp = function(configuration?: Configuration) {
          * 
          * @summary Get entity from users by key
          * @param {string} userId key: id or name of user
-         * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
+         * @param {Set<GetUserSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<GetUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+        async getUser(userId: string, $select?: Set<GetUserSelectEnum>, $expand?: Set<GetUserExpandEnum>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUser(userId, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -7717,12 +7896,12 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * 
          * @summary Get entity from users by key
          * @param {string} userId key: id or name of user
-         * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
+         * @param {Set<GetUserSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<GetUserExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: any): AxiosPromise<User> {
+        getUser(userId: string, $select?: Set<GetUserSelectEnum>, $expand?: Set<GetUserExpandEnum>, options?: any): AxiosPromise<User> {
             return localVarFp.getUser(userId, $select, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7776,13 +7955,13 @@ export class UserApi extends BaseAPI {
      * 
      * @summary Get entity from users by key
      * @param {string} userId key: id or name of user
-     * @param {Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-     * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
+     * @param {Set<GetUserSelectEnum>} [$select] Select properties to be returned
+     * @param {Set<GetUserExpandEnum>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public getUser(userId: string, $select?: Set<'id' | 'displayName' | 'drive' | 'drives' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig) {
+    public getUser(userId: string, $select?: Set<GetUserSelectEnum>, $expand?: Set<GetUserExpandEnum>, options?: AxiosRequestConfig) {
         return UserApiFp(this.configuration).getUser(userId, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -7799,6 +7978,31 @@ export class UserApi extends BaseAPI {
         return UserApiFp(this.configuration).updateUser(userId, user, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const GetUserSelectEnum = {
+    Id: 'id',
+    DisplayName: 'displayName',
+    Drive: 'drive',
+    Drives: 'drives',
+    Mail: 'mail',
+    MemberOf: 'memberOf',
+    OnPremisesSamAccountName: 'onPremisesSamAccountName',
+    Surname: 'surname'
+} as const;
+export type GetUserSelectEnum = typeof GetUserSelectEnum[keyof typeof GetUserSelectEnum];
+/**
+ * @export
+ */
+export const GetUserExpandEnum = {
+    Drive: 'drive',
+    Drives: 'drives',
+    MemberOf: 'memberOf',
+    AppRoleAssignments: 'appRoleAssignments'
+} as const;
+export type GetUserExpandEnum = typeof GetUserExpandEnum[keyof typeof GetUserExpandEnum];
 
 
 /**
@@ -7832,6 +8036,8 @@ export const UserAppRoleAssignmentApiAxiosParamCreator = function (configuration
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -7875,6 +8081,8 @@ export const UserAppRoleAssignmentApiAxiosParamCreator = function (configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
@@ -7912,6 +8120,8 @@ export const UserAppRoleAssignmentApiAxiosParamCreator = function (configuration
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
 
     
@@ -8064,6 +8274,7 @@ export class UserAppRoleAssignmentApi extends BaseAPI {
 }
 
 
+
 /**
  * UsersApi - axios parameter creator
  * @export
@@ -8092,6 +8303,8 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication openId required
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -8111,13 +8324,13 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @summary Get entities from users
          * @param {string} [$search] Search items by search phrases
          * @param {string} [$filter] Filter users by property values and relationship attributes
-         * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
+         * @param {Set<ListUsersOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListUsersSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<ListUsersExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers: async ($search?: string, $filter?: string, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listUsers: async ($search?: string, $filter?: string, $orderby?: Set<ListUsersOrderbyEnum>, $select?: Set<ListUsersSelectEnum>, $expand?: Set<ListUsersExpandEnum>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -8129,6 +8342,8 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication openId required
 
             if ($search !== undefined) {
                 localVarQueryParameter['$search'] = $search;
@@ -8187,13 +8402,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @summary Get entities from users
          * @param {string} [$search] Search items by search phrases
          * @param {string} [$filter] Filter users by property values and relationship attributes
-         * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
+         * @param {Set<ListUsersOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListUsersSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<ListUsersExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listUsers($search?: string, $filter?: string, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfUser>> {
+        async listUsers($search?: string, $filter?: string, $orderby?: Set<ListUsersOrderbyEnum>, $select?: Set<ListUsersSelectEnum>, $expand?: Set<ListUsersExpandEnum>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfUser>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listUsers($search, $filter, $orderby, $select, $expand, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -8222,13 +8437,13 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @summary Get entities from users
          * @param {string} [$search] Search items by search phrases
          * @param {string} [$filter] Filter users by property values and relationship attributes
-         * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
-         * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-         * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
+         * @param {Set<ListUsersOrderbyEnum>} [$orderby] Order items by property values
+         * @param {Set<ListUsersSelectEnum>} [$select] Select properties to be returned
+         * @param {Set<ListUsersExpandEnum>} [$expand] Expand related entities
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers($search?: string, $filter?: string, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: any): AxiosPromise<CollectionOfUser> {
+        listUsers($search?: string, $filter?: string, $orderby?: Set<ListUsersOrderbyEnum>, $select?: Set<ListUsersSelectEnum>, $expand?: Set<ListUsersExpandEnum>, options?: any): AxiosPromise<CollectionOfUser> {
             return localVarFp.listUsers($search, $filter, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
@@ -8258,16 +8473,51 @@ export class UsersApi extends BaseAPI {
      * @summary Get entities from users
      * @param {string} [$search] Search items by search phrases
      * @param {string} [$filter] Filter users by property values and relationship attributes
-     * @param {Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>} [$orderby] Order items by property values
-     * @param {Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>} [$select] Select properties to be returned
-     * @param {Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>} [$expand] Expand related entities
+     * @param {Set<ListUsersOrderbyEnum>} [$orderby] Order items by property values
+     * @param {Set<ListUsersSelectEnum>} [$select] Select properties to be returned
+     * @param {Set<ListUsersExpandEnum>} [$expand] Expand related entities
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public listUsers($search?: string, $filter?: string, $orderby?: Set<'displayName' | 'displayName desc' | 'mail' | 'mail desc' | 'onPremisesSamAccountName' | 'onPremisesSamAccountName desc'>, $select?: Set<'id' | 'displayName' | 'mail' | 'memberOf' | 'onPremisesSamAccountName' | 'surname'>, $expand?: Set<'drive' | 'drives' | 'memberOf' | 'appRoleAssignments'>, options?: AxiosRequestConfig) {
+    public listUsers($search?: string, $filter?: string, $orderby?: Set<ListUsersOrderbyEnum>, $select?: Set<ListUsersSelectEnum>, $expand?: Set<ListUsersExpandEnum>, options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).listUsers($search, $filter, $orderby, $select, $expand, options).then((request) => request(this.axios, this.basePath));
     }
 }
+
+/**
+ * @export
+ */
+export const ListUsersOrderbyEnum = {
+    DisplayName: 'displayName',
+    DisplayNameDesc: 'displayName desc',
+    Mail: 'mail',
+    MailDesc: 'mail desc',
+    OnPremisesSamAccountName: 'onPremisesSamAccountName',
+    OnPremisesSamAccountNameDesc: 'onPremisesSamAccountName desc'
+} as const;
+export type ListUsersOrderbyEnum = typeof ListUsersOrderbyEnum[keyof typeof ListUsersOrderbyEnum];
+/**
+ * @export
+ */
+export const ListUsersSelectEnum = {
+    Id: 'id',
+    DisplayName: 'displayName',
+    Mail: 'mail',
+    MemberOf: 'memberOf',
+    OnPremisesSamAccountName: 'onPremisesSamAccountName',
+    Surname: 'surname'
+} as const;
+export type ListUsersSelectEnum = typeof ListUsersSelectEnum[keyof typeof ListUsersSelectEnum];
+/**
+ * @export
+ */
+export const ListUsersExpandEnum = {
+    Drive: 'drive',
+    Drives: 'drives',
+    MemberOf: 'memberOf',
+    AppRoleAssignments: 'appRoleAssignments'
+} as const;
+export type ListUsersExpandEnum = typeof ListUsersExpandEnum[keyof typeof ListUsersExpandEnum];
 
 
