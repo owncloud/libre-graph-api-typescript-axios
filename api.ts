@@ -2896,7 +2896,7 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
         },
         /**
          * Remove access to a DriveItem.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
-         * @summary Delete entity from groups
+         * @summary Remove access to a DriveItem
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
          * @param {string} permId key: id of permission
@@ -3141,7 +3141,7 @@ export const DrivesPermissionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * Remove access to a DriveItem.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
-         * @summary Delete entity from groups
+         * @summary Remove access to a DriveItem
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
          * @param {string} permId key: id of permission
@@ -3228,7 +3228,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
         },
         /**
          * Remove access to a DriveItem.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
-         * @summary Delete entity from groups
+         * @summary Remove access to a DriveItem
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
          * @param {string} permId key: id of permission
@@ -3312,7 +3312,7 @@ export class DrivesPermissionsApi extends BaseAPI {
 
     /**
      * Remove access to a DriveItem.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
-     * @summary Delete entity from groups
+     * @summary Remove access to a DriveItem
      * @param {string} driveId key: id of drive
      * @param {string} itemId key: id of item
      * @param {string} permId key: id of permission
