@@ -2221,6 +2221,12 @@ export interface User {
      * @memberof User
      */
     'userType'?: string;
+    /**
+     * Represents the users language setting, ISO-639-1 Code
+     * @type {string}
+     * @memberof User
+     */
+    'preferredLanguage'?: string;
 }
 
 /**
@@ -7144,6 +7150,42 @@ export const MeUserApiAxiosParamCreator = function (configuration?: Configuratio
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Update the current user
+         * @param {User} [user] New user values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateOwnUser: async (user?: User, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/v1.0/me`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(user, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -7163,6 +7205,17 @@ export const MeUserApiFp = function(configuration?: Configuration) {
          */
         async getOwnUser($expand?: Set<GetOwnUserExpandEnum>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getOwnUser($expand, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Update the current user
+         * @param {User} [user] New user values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateOwnUser(user?: User, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateOwnUser(user, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -7185,6 +7238,16 @@ export const MeUserApiFactory = function (configuration?: Configuration, basePat
         getOwnUser($expand?: Set<GetOwnUserExpandEnum>, options?: any): AxiosPromise<User> {
             return localVarFp.getOwnUser($expand, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary Update the current user
+         * @param {User} [user] New user values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateOwnUser(user?: User, options?: any): AxiosPromise<User> {
+            return localVarFp.updateOwnUser(user, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -7205,6 +7268,18 @@ export class MeUserApi extends BaseAPI {
      */
     public getOwnUser($expand?: Set<GetOwnUserExpandEnum>, options?: AxiosRequestConfig) {
         return MeUserApiFp(this.configuration).getOwnUser($expand, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update the current user
+     * @param {User} [user] New user values
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MeUserApi
+     */
+    public updateOwnUser(user?: User, options?: AxiosRequestConfig) {
+        return MeUserApiFp(this.configuration).updateOwnUser(user, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
