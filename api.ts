@@ -878,6 +878,12 @@ export interface DriveItemCreateLink {
      * @memberof DriveItemCreateLink
      */
     'displayName'?: string;
+    /**
+     * The quicklink property can be assigned to only one link per resource. A quicklink can be used in the clients to provide a one-click copy to clipboard action. Optional. Libregraph only.
+     * @type {boolean}
+     * @memberof DriveItemCreateLink
+     */
+    '@libre.graph.quickLink'?: boolean;
 }
 
 
@@ -1985,16 +1991,23 @@ export interface SharingLink {
      * @memberof SharingLink
      */
     '@libre.graph.displayName'?: string;
+    /**
+     * The quicklink property can be assigned to only one link per resource. A quicklink can be used in the clients to provide a one-click copy to clipboard action. Optional. Libregraph only.
+     * @type {boolean}
+     * @memberof SharingLink
+     */
+    '@libre.graph.quickLink'?: boolean;
 }
 
 
 /**
- * The type of the link created.  | Value          | Display name      | Description                                                     | | -------------- | ----------------- | --------------------------------------------------------------- | | view           | View              | Creates a read-only link to the driveItem.                      | | upload         | Upload            | Creates a read-write link to the folder driveItem.              | | edit           | Edit              | Creates a read-write link to the driveItem.                     | | createOnly     | File Drop         | Creates an upload-only link to the folder driveItem.            | | blocksDownload | Secure View       | Creates a read-only link that blocks download to the driveItem. | 
+ * The type of the link created.  | Value          | Display name      | Description                                                     | | -------------- | ----------------- | --------------------------------------------------------------- | | internal       | Internal          | Creates an internal link without any permissions.               | | view           | View              | Creates a read-only link to the driveItem.                      | | upload         | Upload            | Creates a read-write link to the folder driveItem.              | | edit           | Edit              | Creates a read-write link to the driveItem.                     | | createOnly     | File Drop         | Creates an upload-only link to the folder driveItem.            | | blocksDownload | Secure View       | Creates a read-only link that blocks download to the driveItem. | 
  * @export
  * @enum {string}
  */
 
 export const SharingLinkType = {
+    Internal: 'internal',
     View: 'view',
     Upload: 'upload',
     Edit: 'edit',
