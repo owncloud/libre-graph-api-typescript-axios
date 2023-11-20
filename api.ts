@@ -2001,6 +2001,19 @@ export interface SharingLink {
 
 
 /**
+ * The sharing link password which should be set. 
+ * @export
+ * @interface SharingLinkPassword
+ */
+export interface SharingLinkPassword {
+    /**
+     * Password. It may require a password policy.
+     * @type {string}
+     * @memberof SharingLinkPassword
+     */
+    'password'?: string;
+}
+/**
  * The type of the link created.  | Value          | Display name      | Description                                                     | | -------------- | ----------------- | --------------------------------------------------------------- | | internal       | Internal          | Creates an internal link without any permissions.               | | view           | View              | Creates a read-only link to the driveItem.                      | | upload         | Upload            | Creates a read-write link to the folder driveItem.              | | edit           | Edit              | Creates a read-write link to the driveItem.                     | | createOnly     | File Drop         | Creates an upload-only link to the folder driveItem.            | | blocksDownload | Secure View       | Creates a read-only link that blocks download to the driveItem. | 
  * @export
  * @enum {string}
@@ -3086,6 +3099,56 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             };
         },
         /**
+         * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
+         * @summary Set sharing link password
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {string} permId key: id of permission
+         * @param {SharingLinkPassword} sharingLinkPassword New password value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setPermissionPassword: async (driveId: string, itemId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('setPermissionPassword', 'driveId', driveId)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('setPermissionPassword', 'itemId', itemId)
+            // verify required parameter 'permId' is not null or undefined
+            assertParamExists('setPermissionPassword', 'permId', permId)
+            // verify required parameter 'sharingLinkPassword' is not null or undefined
+            assertParamExists('setPermissionPassword', 'sharingLinkPassword', sharingLinkPassword)
+            const localVarPath = `/v1beta1/drives/{drive-id}/items/{item-id}/permissions/{perm-id}/setPassword`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)))
+                .replace(`{${"item-id"}}`, encodeURIComponent(String(itemId)))
+                .replace(`{${"perm-id"}}`, encodeURIComponent(String(permId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(sharingLinkPassword, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Update the properties of a sharing permission by patching the permission resource.  Only the `roles`, `expirationDateTime` and `password` properties can be modified this way. 
          * @summary Update sharing permission
          * @param {string} driveId key: id of drive
@@ -3210,6 +3273,20 @@ export const DrivesPermissionsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
+         * @summary Set sharing link password
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {string} permId key: id of permission
+         * @param {SharingLinkPassword} sharingLinkPassword New password value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async setPermissionPassword(driveId: string, itemId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Permission>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.setPermissionPassword(driveId, itemId, permId, sharingLinkPassword, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Update the properties of a sharing permission by patching the permission resource.  Only the `roles`, `expirationDateTime` and `password` properties can be modified this way. 
          * @summary Update sharing permission
          * @param {string} driveId key: id of drive
@@ -3291,6 +3368,19 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          */
         listPermissions(driveId: string, itemId: string, options?: any): AxiosPromise<CollectionOfPermissions> {
             return localVarFp.listPermissions(driveId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
+         * @summary Set sharing link password
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {string} permId key: id of permission
+         * @param {SharingLinkPassword} sharingLinkPassword New password value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setPermissionPassword(driveId: string, itemId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: any): AxiosPromise<Permission> {
+            return localVarFp.setPermissionPassword(driveId, itemId, permId, sharingLinkPassword, options).then((request) => request(axios, basePath));
         },
         /**
          * Update the properties of a sharing permission by patching the permission resource.  Only the `roles`, `expirationDateTime` and `password` properties can be modified this way. 
@@ -3382,6 +3472,21 @@ export class DrivesPermissionsApi extends BaseAPI {
      */
     public listPermissions(driveId: string, itemId: string, options?: AxiosRequestConfig) {
         return DrivesPermissionsApiFp(this.configuration).listPermissions(driveId, itemId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
+     * @summary Set sharing link password
+     * @param {string} driveId key: id of drive
+     * @param {string} itemId key: id of item
+     * @param {string} permId key: id of permission
+     * @param {SharingLinkPassword} sharingLinkPassword New password value
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesPermissionsApi
+     */
+    public setPermissionPassword(driveId: string, itemId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: AxiosRequestConfig) {
+        return DrivesPermissionsApiFp(this.configuration).setPermissionPassword(driveId, itemId, permId, sharingLinkPassword, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
