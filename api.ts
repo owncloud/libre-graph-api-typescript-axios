@@ -420,19 +420,6 @@ export interface CollectionOfEducationUser {
 /**
  * 
  * @export
- * @interface CollectionOfEducationUser1
- */
-export interface CollectionOfEducationUser1 {
-    /**
-     * 
-     * @type {Array<EducationClass>}
-     * @memberof CollectionOfEducationUser1
-     */
-    'value'?: Array<EducationClass>;
-}
-/**
- * 
- * @export
  * @interface CollectionOfGroup
  */
 export interface CollectionOfGroup {
@@ -5067,7 +5054,7 @@ export const EducationSchoolApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listSchoolUsers(schoolId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfEducationUser1>> {
+        async listSchoolUsers(schoolId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfEducationUser>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listSchoolUsers(schoolId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -5194,7 +5181,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listSchoolUsers(schoolId: string, options?: any): AxiosPromise<CollectionOfEducationUser1> {
+        listSchoolUsers(schoolId: string, options?: any): AxiosPromise<CollectionOfEducationUser> {
             return localVarFp.listSchoolUsers(schoolId, options).then((request) => request(axios, basePath));
         },
         /**
