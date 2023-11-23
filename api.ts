@@ -443,21 +443,34 @@ export interface CollectionOfGroup {
  */
 export interface CollectionOfPermissions {
     /**
+     * 
+     * @type {Array<Permission>}
+     * @memberof CollectionOfPermissions
+     */
+    'value'?: Array<Permission>;
+}
+/**
+ * 
+ * @export
+ * @interface CollectionOfPermissionsWithAllowedValues
+ */
+export interface CollectionOfPermissionsWithAllowedValues {
+    /**
      * A list of role definitions that can be chosen for the resource.
      * @type {Array<UnifiedRoleDefinition>}
-     * @memberof CollectionOfPermissions
+     * @memberof CollectionOfPermissionsWithAllowedValues
      */
     '@libre.graph.permissions.roles.allowedValues'?: Array<UnifiedRoleDefinition>;
     /**
      * A list of actions that can be chosen for a custom role.  Following the CS3 API we can represent the CS3 permissions by mapping them to driveItem properties or relations like this: | [CS3 ResourcePermission](https://cs3org.github.io/cs3apis/#cs3.storage.provider.v1beta1.ResourcePermissions) | action | comment | | ------------------------------------------------------------------------------------------------------------ | ------ | ------- | | `stat` | `libre.graph/driveItem/basic/read` | `basic` because it does not include versions or trashed items | | `get_quota` | `libre.graph/driveItem/quota/read` | read only the `quota` property | | `get_path` | `libre.graph/driveItem/path/read` | read only the `path` property | | `move` | `libre.graph/driveItem/path/update` | allows updating the `path` property of a CS3 resource | | `delete` | `libre.graph/driveItem/standard/delete` | `standard` because deleting is a common update operation | | `list_container` | `libre.graph/driveItem/children/read` | | | `create_container` | `libre.graph/driveItem/children/create` | | | `initiate_file_download` | `libre.graph/driveItem/content/read` | `content` is the property read when initiating a download | | `initiate_file_upload` | `libre.graph/driveItem/upload/create` | `uploads` are a separate property. postprocessing creates the `content` | | `add_grant` | `libre.graph/driveItem/permissions/create` | | | `list_grant` | `libre.graph/driveItem/permissions/read` | | | `update_grant` | `libre.graph/driveItem/permissions/update` | | | `remove_grant` | `libre.graph/driveItem/permissions/delete` | | | `deny_grant` | `libre.graph/driveItem/permissions/deny` | uses a non CRUD action `deny` | | `list_file_versions` | `libre.graph/driveItem/versions/read` | `versions` is a `driveItemVersion` collection | | `restore_file_version` | `libre.graph/driveItem/versions/update` | the only `update` action is restore | | `list_recycle` | `libre.graph/driveItem/deleted/read` | reading a driveItem `deleted` property implies listing | | `restore_recycle_item` | `libre.graph/driveItem/deleted/update` | the only `update` action is restore | | `purge_recycle` | `libre.graph/driveItem/deleted/delete` | allows purging deleted `driveItems` | 
      * @type {Array<string>}
-     * @memberof CollectionOfPermissions
+     * @memberof CollectionOfPermissionsWithAllowedValues
      */
     '@libre.graph.permissions.actions.allowedValues'?: Array<string>;
     /**
      * 
      * @type {Array<Permission>}
-     * @memberof CollectionOfPermissions
+     * @memberof CollectionOfPermissionsWithAllowedValues
      */
     'value'?: Array<Permission>;
 }
@@ -3243,7 +3256,7 @@ export const DrivesPermissionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async invite(driveId: string, itemId: string, driveItemInvite?: DriveItemInvite, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Permission>> {
+        async invite(driveId: string, itemId: string, driveItemInvite?: DriveItemInvite, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissions>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.invite(driveId, itemId, driveItemInvite, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3255,7 +3268,7 @@ export const DrivesPermissionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listPermissions(driveId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissions>> {
+        async listPermissions(driveId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissionsWithAllowedValues>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listPermissions(driveId, itemId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3342,7 +3355,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invite(driveId: string, itemId: string, driveItemInvite?: DriveItemInvite, options?: any): AxiosPromise<Permission> {
+        invite(driveId: string, itemId: string, driveItemInvite?: DriveItemInvite, options?: any): AxiosPromise<CollectionOfPermissions> {
             return localVarFp.invite(driveId, itemId, driveItemInvite, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3353,7 +3366,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPermissions(driveId: string, itemId: string, options?: any): AxiosPromise<CollectionOfPermissions> {
+        listPermissions(driveId: string, itemId: string, options?: any): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
             return localVarFp.listPermissions(driveId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
