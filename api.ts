@@ -1641,7 +1641,7 @@ export interface Permission {
      * @type {string}
      * @memberof Permission
      */
-    'expirationDateTime'?: string;
+    'expirationDateTime'?: string | null;
     /**
      * 
      * @type {SharePointIdentitySet}
