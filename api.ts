@@ -2145,7 +2145,7 @@ export interface UnifiedRoleDefinition {
  */
 export interface UnifiedRolePermission {
     /**
-     * Set of tasks that can be performed on a resource. Required.  The following is the schema for resource actions:  ```    {Namespace}/{Entity}/{PropertySet}/{Action} ```   For example: `libre.graph/applications/credentials/update`    * *{Namespace}* - The services that exposes the task. For example, all tasks in libre graph use the namespace `libre.graph`.  * *{Entity}* - The logical features or components exposed by the service in libre graph. For example, `applications`, `servicePrincipals`, or `groups`.  * *{PropertySet}* - Optional. The specific properties or aspects of the entity for which access is being granted.    For example, `libre.graph/applications/authentication/read` grants the ability to read the reply URL, logout URL,    and implicit flow property on the **application** object in libre graph. The following are reserved names for common property sets:    * `allProperties` - Designates all properties of the entity, including privileged properties.      Examples include `libre.graph/applications/allProperties/read` and `libre.graph/applications/allProperties/update`.    * `basic` - Designates common read properties but excludes privileged ones.      For example, `libre.graph/applications/basic/update` includes the ability to update standard properties like display name.    * `standard` - Designates common update properties but excludes privileged ones.      For example, `libre.graph/applications/standard/read`.  * *{Actions}* - The operations being granted. In most circumstances, permissions should be expressed in terms of CRUD operations or allTasks. Actions include:    * `create` - The ability to create a new instance of the entity.    * `read` - The ability to read a given property set (including allProperties).    * `update` - The ability to update a given property set (including allProperties).    * `delete` - The ability to delete a given entity.    * `allTasks` - Represents all CRUD operations (create, read, update, and delete).   Following the CS3 API we can represent the CS3 permissions by mapping them to driveItem properties or relations like this:  | [CS3 ResourcePermission](https://cs3org.github.io/cs3apis/#cs3.storage.provider.v1beta1.ResourcePermissions) | action | comment |  | ------------------------------------------------------------------------------------------------------------ | ------ | ------- |  | `stat` | `libre.graph/driveItem/basic/read` | `basic` because it does not include versions or trashed items |  | `get_quota` | `libre.graph/driveItem/quota/read` | read only the `quota` property |  | `get_path` | `libre.graph/driveItem/path/read` | read only the `path` property |  | `move` | `libre.graph/driveItem/path/update` | allows updating the `path` property of a CS3 resource |  | `delete` | `libre.graph/driveItem/standard/delete` | `standard` because deleting is a common update operation |  | `list_container` | `libre.graph/driveItem/children/read` | |  | `create_container` | `libre.graph/driveItem/children/create` | |  | `initiate_file_download` | `libre.graph/driveItem/content/read` | `content` is the property read when initiating a download |  | `initiate_file_upload` | `libre.graph/driveItem/upload/create` | `uploads` are a separate property. postprocessing creates the `content` |  | `add_grant` | `libre.graph/driveItem/permissions/create` | |  | `list_grant` | `libre.graph/driveItem/permissions/read` | |  | `update_grant` | `libre.graph/driveItem/permissions/update` | |  | `remove_grant` | `libre.graph/driveItem/permissions/delete` | |  | `deny_grant` | `libre.graph/driveItem/permissions/deny` | uses a non CRUD action `deny` |  | `list_file_versions` | `libre.graph/driveItem/versions/read` | `versions` is a `driveItemVersion` collection |  | `restore_file_version` | `libre.graph/driveItem/versions/update` | the only `update` action is restore |  | `list_recycle` | `libre.graph/driveItem/deleted/read` | reading a driveItem `deleted` property implies listing |  | `restore_recycle_item` | `libre.graph/driveItem/deleted/update` | the only `update` action is restore |  | `purge_recycle` | `libre.graph/driveItem/deleted/delete` | allows purging deleted `driveItems` |   Managing drives would be a different entity. A space manager role could be written as `libre.graph/drive/permission/allTasks`. 
+     * Set of tasks that can be performed on a resource. Required.  The following is the schema for resource actions:  ```    {Namespace}/{Entity}/{PropertySet}/{Action} ```   For example: `libre.graph/applications/credentials/update`   * *{Namespace}* - The services that exposes the task. For example, all tasks in libre graph use the namespace `libre.graph`.  * *{Entity}* - The logical features or components exposed by the service in libre graph. For example, `applications`, `servicePrincipals`, or `groups`.  * *{PropertySet}* - Optional. The specific properties or aspects of the entity for which access is being granted.    For example, `libre.graph/applications/authentication/read` grants the ability to read the reply URL, logout URL,    and implicit flow property on the **application** object in libre graph. The following are reserved names for common property sets:    * `allProperties` - Designates all properties of the entity, including privileged properties.      Examples include `libre.graph/applications/allProperties/read` and `libre.graph/applications/allProperties/update`.    * `basic` - Designates common read properties but excludes privileged ones.      For example, `libre.graph/applications/basic/update` includes the ability to update standard properties like display name.    * `standard` - Designates common update properties but excludes privileged ones.      For example, `libre.graph/applications/standard/read`.  * *{Actions}* - The operations being granted. In most circumstances, permissions should be expressed in terms of CRUD operations or allTasks. Actions include:    * `create` - The ability to create a new instance of the entity.    * `read` - The ability to read a given property set (including allProperties).    * `update` - The ability to update a given property set (including allProperties).    * `delete` - The ability to delete a given entity.    * `allTasks` - Represents all CRUD operations (create, read, update, and delete).   Following the CS3 API we can represent the CS3 permissions by mapping them to driveItem properties or relations like this:  | [CS3 ResourcePermission](https://cs3org.github.io/cs3apis/#cs3.storage.provider.v1beta1.ResourcePermissions) | action | comment |  | ------------------------------------------------------------------------------------------------------------ | ------ | ------- |  | `stat` | `libre.graph/driveItem/basic/read` | `basic` because it does not include versions or trashed items |  | `get_quota` | `libre.graph/driveItem/quota/read` | read only the `quota` property |  | `get_path` | `libre.graph/driveItem/path/read` | read only the `path` property |  | `move` | `libre.graph/driveItem/path/update` | allows updating the `path` property of a CS3 resource |  | `delete` | `libre.graph/driveItem/standard/delete` | `standard` because deleting is a common update operation |  | `list_container` | `libre.graph/driveItem/children/read` | |  | `create_container` | `libre.graph/driveItem/children/create` | |  | `initiate_file_download` | `libre.graph/driveItem/content/read` | `content` is the property read when initiating a download |  | `initiate_file_upload` | `libre.graph/driveItem/upload/create` | `uploads` are a separate property. postprocessing creates the `content` |  | `add_grant` | `libre.graph/driveItem/permissions/create` | |  | `list_grant` | `libre.graph/driveItem/permissions/read` | |  | `update_grant` | `libre.graph/driveItem/permissions/update` | |  | `remove_grant` | `libre.graph/driveItem/permissions/delete` | |  | `deny_grant` | `libre.graph/driveItem/permissions/deny` | uses a non CRUD action `deny` |  | `list_file_versions` | `libre.graph/driveItem/versions/read` | `versions` is a `driveItemVersion` collection |  | `restore_file_version` | `libre.graph/driveItem/versions/update` | the only `update` action is restore |  | `list_recycle` | `libre.graph/driveItem/deleted/read` | reading a driveItem `deleted` property implies listing |  | `restore_recycle_item` | `libre.graph/driveItem/deleted/update` | the only `update` action is restore |  | `purge_recycle` | `libre.graph/driveItem/deleted/delete` | allows purging deleted `driveItems` |   Managing drives would be a different entity. A space manager role could be written as `libre.graph/drive/permission/allTasks`. 
      * @type {Array<string>}
      * @memberof UnifiedRolePermission
      */
@@ -2807,6 +2807,48 @@ export const DrivesGetDrivesApiAxiosParamCreator = function (configuration?: Con
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Alias for \'/v1.0/drives\', the difference is that grantedtoV2 is used and roles contain unified roles instead of cs3 roles
+         * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
+         * @param {string} [$filter] Filter items by property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAllDrivesBeta: async ($orderby?: string, $filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/v1beta1/drives`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+            if ($orderby !== undefined) {
+                localVarQueryParameter['$orderby'] = $orderby;
+            }
+
+            if ($filter !== undefined) {
+                localVarQueryParameter['$filter'] = $filter;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -2827,6 +2869,18 @@ export const DrivesGetDrivesApiFp = function(configuration?: Configuration) {
          */
         async listAllDrives($orderby?: string, $filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives1>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listAllDrives($orderby, $filter, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Alias for \'/v1.0/drives\', the difference is that grantedtoV2 is used and roles contain unified roles instead of cs3 roles
+         * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
+         * @param {string} [$filter] Filter items by property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listAllDrivesBeta($orderby?: string, $filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives1>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listAllDrivesBeta($orderby, $filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -2850,6 +2904,17 @@ export const DrivesGetDrivesApiFactory = function (configuration?: Configuration
         listAllDrives($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives1> {
             return localVarFp.listAllDrives($orderby, $filter, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary Alias for \'/v1.0/drives\', the difference is that grantedtoV2 is used and roles contain unified roles instead of cs3 roles
+         * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
+         * @param {string} [$filter] Filter items by property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listAllDrivesBeta($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives1> {
+            return localVarFp.listAllDrivesBeta($orderby, $filter, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -2871,6 +2936,19 @@ export class DrivesGetDrivesApi extends BaseAPI {
      */
     public listAllDrives($orderby?: string, $filter?: string, options?: AxiosRequestConfig) {
         return DrivesGetDrivesApiFp(this.configuration).listAllDrives($orderby, $filter, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Alias for \'/v1.0/drives\', the difference is that grantedtoV2 is used and roles contain unified roles instead of cs3 roles
+     * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
+     * @param {string} [$filter] Filter items by property values
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesGetDrivesApi
+     */
+    public listAllDrivesBeta($orderby?: string, $filter?: string, options?: AxiosRequestConfig) {
+        return DrivesGetDrivesApiFp(this.configuration).listAllDrivesBeta($orderby, $filter, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3059,7 +3137,7 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             };
         },
         /**
-         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details.  * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
+         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
          * @summary List the effective sharing permissions on a driveItem.
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
@@ -3261,7 +3339,7 @@ export const DrivesPermissionsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details.  * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
+         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
          * @summary List the effective sharing permissions on a driveItem.
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
@@ -3359,7 +3437,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
             return localVarFp.invite(driveId, itemId, driveItemInvite, options).then((request) => request(axios, basePath));
         },
         /**
-         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details.  * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
+         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
          * @summary List the effective sharing permissions on a driveItem.
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
@@ -3462,7 +3540,7 @@ export class DrivesPermissionsApi extends BaseAPI {
     }
 
     /**
-     * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details.  * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
+     * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
      * @summary List the effective sharing permissions on a driveItem.
      * @param {string} driveId key: id of drive
      * @param {string} itemId key: id of item
@@ -7156,6 +7234,48 @@ export const MeDrivesApiAxiosParamCreator = function (configuration?: Configurat
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Alias for \'/v1.0/drives\', the difference is that grantedtoV2 is used and roles contain unified roles instead of cs3 roles
+         * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
+         * @param {string} [$filter] Filter items by property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMyDrivesBeta: async ($orderby?: string, $filter?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/v1beta1/me/drives`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+            if ($orderby !== undefined) {
+                localVarQueryParameter['$orderby'] = $orderby;
+            }
+
+            if ($filter !== undefined) {
+                localVarQueryParameter['$filter'] = $filter;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -7176,6 +7296,18 @@ export const MeDrivesApiFp = function(configuration?: Configuration) {
          */
         async listMyDrives($orderby?: string, $filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listMyDrives($orderby, $filter, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @summary Alias for \'/v1.0/drives\', the difference is that grantedtoV2 is used and roles contain unified roles instead of cs3 roles
+         * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
+         * @param {string} [$filter] Filter items by property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listMyDrivesBeta($orderby?: string, $filter?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfDrives>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listMyDrivesBeta($orderby, $filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -7199,6 +7331,17 @@ export const MeDrivesApiFactory = function (configuration?: Configuration, baseP
         listMyDrives($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives> {
             return localVarFp.listMyDrives($orderby, $filter, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary Alias for \'/v1.0/drives\', the difference is that grantedtoV2 is used and roles contain unified roles instead of cs3 roles
+         * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
+         * @param {string} [$filter] Filter items by property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMyDrivesBeta($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives> {
+            return localVarFp.listMyDrivesBeta($orderby, $filter, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -7220,6 +7363,19 @@ export class MeDrivesApi extends BaseAPI {
      */
     public listMyDrives($orderby?: string, $filter?: string, options?: AxiosRequestConfig) {
         return MeDrivesApiFp(this.configuration).listMyDrives($orderby, $filter, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Alias for \'/v1.0/drives\', the difference is that grantedtoV2 is used and roles contain unified roles instead of cs3 roles
+     * @param {string} [$orderby] The $orderby system query option allows clients to request resources in either ascending order using asc or descending order using desc.
+     * @param {string} [$filter] Filter items by property values
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MeDrivesApi
+     */
+    public listMyDrivesBeta($orderby?: string, $filter?: string, options?: AxiosRequestConfig) {
+        return MeDrivesApiFp(this.configuration).listMyDrivesBeta($orderby, $filter, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
