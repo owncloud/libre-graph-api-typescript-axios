@@ -847,6 +847,12 @@ export interface DriveItem {
      * @memberof DriveItem
      */
     'audio'?: Audio;
+    /**
+     * 
+     * @type {Video}
+     * @memberof DriveItem
+     */
+    'video'?: Video;
 }
 /**
  * 
@@ -2253,6 +2259,73 @@ export interface User {
      * @memberof User
      */
     'preferredLanguage'?: string;
+}
+/**
+ * The video resource groups video-related data items into a single structure.  If a driveItem has a non-null video facet, the item represents a video file. The properties of the video resource are populated by extracting metadata from the file. 
+ * @export
+ * @interface Video
+ */
+export interface Video {
+    /**
+     * Number of audio bits per sample.
+     * @type {number}
+     * @memberof Video
+     */
+    'audioBitsPerSample'?: number;
+    /**
+     * Number of audio channels.
+     * @type {number}
+     * @memberof Video
+     */
+    'audioChannels'?: number;
+    /**
+     * Name of the audio format (AAC, MP3, etc.).
+     * @type {string}
+     * @memberof Video
+     */
+    'audioFormat'?: string;
+    /**
+     * Number of audio samples per second.
+     * @type {number}
+     * @memberof Video
+     */
+    'audioSamplesPerSecond'?: number;
+    /**
+     * Bit rate of the video in bits per second.
+     * @type {number}
+     * @memberof Video
+     */
+    'bitrate'?: number;
+    /**
+     * Duration of the file in milliseconds.
+     * @type {number}
+     * @memberof Video
+     */
+    'duration'?: number;
+    /**
+     * \\\"Four character code\\\" name of the video format.
+     * @type {string}
+     * @memberof Video
+     */
+    'fourCC'?: string;
+    /**
+     * Frame rate of the video.
+     * @type {number}
+     * @memberof Video
+     */
+    'frameRate'?: number;
+    /**
+     * Height of the video, in pixels.
+     * @type {number}
+     * @memberof Video
+     */
+    'height'?: number;
+    /**
+     * Width of the video, in pixels.
+     * @type {number}
+     * @memberof Video
+     */
+    'width'?: number;
 }
 
 /**
