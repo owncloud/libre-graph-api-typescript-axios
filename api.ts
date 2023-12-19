@@ -1893,6 +1893,12 @@ export interface RemoteItem {
      */
     'shared'?: Shared;
     /**
+     * The set of permissions for the item. Read-only. Nullable.
+     * @type {Array<Permission>}
+     * @memberof RemoteItem
+     */
+    'permissions'?: Array<Permission>;
+    /**
      * Size of the remote item. Read-only.
      * @type {number}
      * @memberof RemoteItem
