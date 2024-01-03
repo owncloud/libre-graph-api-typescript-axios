@@ -1679,12 +1679,6 @@ export interface Permission {
      * @memberof Permission
      */
     '@libre.graph.permissions.actions'?: Array<string>;
-    /**
-     * Properties or facets (see UI.Facet) annotated with this term will not be rendered if the annotation evaluates to true. Users can set this to hide permissons.
-     * @type {boolean}
-     * @memberof Permission
-     */
-    '@UI.Hidden'?: boolean;
 }
 /**
  * The photo resource provides photo and camera properties, for example, EXIF metadata, on a driveItem. 
@@ -1922,6 +1916,18 @@ export interface RemoteItem {
      * @memberof RemoteItem
      */
     'webUrl'?: string;
+    /**
+     * Indicates if the item is synchronized with the underlying storage provider. Read-only.
+     * @type {boolean}
+     * @memberof RemoteItem
+     */
+    '@client.synchronize'?: boolean;
+    /**
+     * Properties or facets (see UI.Facet) annotated with this term will not be rendered if the annotation evaluates to true. Users can set this to hide permissons.
+     * @type {boolean}
+     * @memberof RemoteItem
+     */
+    '@ui.hidden'?: boolean;
 }
 /**
  * This resource is used to represent a set of identities associated with various events for an item, such as created by or last modified by.
