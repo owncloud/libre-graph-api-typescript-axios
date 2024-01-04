@@ -2511,6 +2511,121 @@ export class ApplicationsApi extends BaseAPI {
 
 
 /**
+ * DriveItemApi - axios parameter creator
+ * @export
+ */
+export const DriveItemApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Delete a DriveItem by using its ID.  Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item.  Mounted shares in the share jail are unmounted. The `@client.synchronize` property of the `remoteItem` in the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint will change to false. 
+         * @summary Delete a DriveItem.
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteDriveItem: async (driveId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('deleteDriveItem', 'driveId', driveId)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('deleteDriveItem', 'itemId', itemId)
+            const localVarPath = `/v1beta1/drives/{drive-id}/items/{item-id}`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)))
+                .replace(`{${"item-id"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * DriveItemApi - functional programming interface
+ * @export
+ */
+export const DriveItemApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = DriveItemApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Delete a DriveItem by using its ID.  Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item.  Mounted shares in the share jail are unmounted. The `@client.synchronize` property of the `remoteItem` in the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint will change to false. 
+         * @summary Delete a DriveItem.
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteDriveItem(driveId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteDriveItem(driveId, itemId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * DriveItemApi - factory interface
+ * @export
+ */
+export const DriveItemApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = DriveItemApiFp(configuration)
+    return {
+        /**
+         * Delete a DriveItem by using its ID.  Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item.  Mounted shares in the share jail are unmounted. The `@client.synchronize` property of the `remoteItem` in the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint will change to false. 
+         * @summary Delete a DriveItem.
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteDriveItem(driveId: string, itemId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteDriveItem(driveId, itemId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * DriveItemApi - object-oriented interface
+ * @export
+ * @class DriveItemApi
+ * @extends {BaseAPI}
+ */
+export class DriveItemApi extends BaseAPI {
+    /**
+     * Delete a DriveItem by using its ID.  Deleting items using this method moves the items to the recycle bin instead of permanently deleting the item.  Mounted shares in the share jail are unmounted. The `@client.synchronize` property of the `remoteItem` in the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint will change to false. 
+     * @summary Delete a DriveItem.
+     * @param {string} driveId key: id of drive
+     * @param {string} itemId key: id of item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DriveItemApi
+     */
+    public deleteDriveItem(driveId: string, itemId: string, options?: AxiosRequestConfig) {
+        return DriveItemApiFp(this.configuration).deleteDriveItem(driveId, itemId, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * DrivesApi - axios parameter creator
  * @export
  */
@@ -3677,6 +3792,46 @@ export class DrivesPermissionsApi extends BaseAPI {
 export const DrivesRootApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * You can use the root childrens endpoint to mount a remoteItem in the share jail. The `@client.synchronize` property of the `remoteItem` in the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint will change to true. 
+         * @summary Create a drive item
+         * @param {string} driveId key: id of drive
+         * @param {DriveItem} [driveItem] In the request body, provide a JSON object with the following parameters. For mounting a share the necessary remoteItem id and permission id can be taken from the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createDriveItem: async (driveId: string, driveItem?: DriveItem, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('createDriveItem', 'driveId', driveId)
+            const localVarPath = `/v1beta1/drives/{drive-id}/root/children`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(driveItem, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 
          * @summary Get root from arbitrary space
          * @param {string} driveId key: id of drive
@@ -3723,6 +3878,18 @@ export const DrivesRootApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DrivesRootApiAxiosParamCreator(configuration)
     return {
         /**
+         * You can use the root childrens endpoint to mount a remoteItem in the share jail. The `@client.synchronize` property of the `remoteItem` in the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint will change to true. 
+         * @summary Create a drive item
+         * @param {string} driveId key: id of drive
+         * @param {DriveItem} [driveItem] In the request body, provide a JSON object with the following parameters. For mounting a share the necessary remoteItem id and permission id can be taken from the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createDriveItem(driveId: string, driveItem?: DriveItem, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createDriveItem(driveId, driveItem, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * 
          * @summary Get root from arbitrary space
          * @param {string} driveId key: id of drive
@@ -3744,6 +3911,17 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
     const localVarFp = DrivesRootApiFp(configuration)
     return {
         /**
+         * You can use the root childrens endpoint to mount a remoteItem in the share jail. The `@client.synchronize` property of the `remoteItem` in the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint will change to true. 
+         * @summary Create a drive item
+         * @param {string} driveId key: id of drive
+         * @param {DriveItem} [driveItem] In the request body, provide a JSON object with the following parameters. For mounting a share the necessary remoteItem id and permission id can be taken from the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createDriveItem(driveId: string, driveItem?: DriveItem, options?: any): AxiosPromise<DriveItem> {
+            return localVarFp.createDriveItem(driveId, driveItem, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 
          * @summary Get root from arbitrary space
          * @param {string} driveId key: id of drive
@@ -3763,6 +3941,19 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
  * @extends {BaseAPI}
  */
 export class DrivesRootApi extends BaseAPI {
+    /**
+     * You can use the root childrens endpoint to mount a remoteItem in the share jail. The `@client.synchronize` property of the `remoteItem` in the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint will change to true. 
+     * @summary Create a drive item
+     * @param {string} driveId key: id of drive
+     * @param {DriveItem} [driveItem] In the request body, provide a JSON object with the following parameters. For mounting a share the necessary remoteItem id and permission id can be taken from the [sharedWithMe](#/me.drive/ListSharedWithMe) endpoint.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public createDriveItem(driveId: string, driveItem?: DriveItem, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).createDriveItem(driveId, driveItem, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Get root from arbitrary space
