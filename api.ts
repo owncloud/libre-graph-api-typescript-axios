@@ -546,25 +546,6 @@ export interface Deleted {
     'state'?: string;
 }
 /**
- * Represents a Directory object. Read-only.
- * @export
- * @interface DirectoryObject
- */
-export interface DirectoryObject {
-    /**
-     * The unique identifier for the object. 12345678-9abc-def0-1234-56789abcde. The value of the ID property is often, but not exclusively, in the form of a GUID. The value should be treated as an opaque identifier and not based in being a GUID. Null values are not allowed. Read-only.
-     * @type {string}
-     * @memberof DirectoryObject
-     */
-    'id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DirectoryObject
-     */
-    'deletedDateTime'?: string;
-}
-/**
  * The drive represents a space on the storage.
  * @export
  * @interface Drive
@@ -1001,25 +982,6 @@ export const EducationClassClassificationEnum = {
 export type EducationClassClassificationEnum = typeof EducationClassClassificationEnum[keyof typeof EducationClassClassificationEnum];
 
 /**
- * Abstract. Represents an organization in educational context
- * @export
- * @interface EducationOrganization
- */
-export interface EducationOrganization {
-    /**
-     * The unique idenfier for an entity. Read-only.
-     * @type {string}
-     * @memberof EducationOrganization
-     */
-    'id'?: string;
-    /**
-     * The organization name
-     * @type {string}
-     * @memberof EducationOrganization
-     */
-    'displayName'?: string;
-}
-/**
  * Represents a school
  * @export
  * @interface EducationSchool
@@ -1153,19 +1115,6 @@ export interface EducationUserReference {
      * @memberof EducationUserReference
      */
     '@odata.id'?: string;
-}
-/**
- * Represents an entity.
- * @export
- * @interface Entity
- */
-export interface Entity {
-    /**
-     * The unique idenfier for an entity. Read-only.
-     * @type {string}
-     * @memberof Entity
-     */
-    'id'?: string;
 }
 /**
  * 
