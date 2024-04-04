@@ -775,6 +775,12 @@ export interface DriveItem {
      */
     'location'?: GeoCoordinates;
     /**
+     * Collection containing ThumbnailSet objects associated with the item. Read-only. Nullable.
+     * @type {Array<ThumbnailSet>}
+     * @memberof DriveItem
+     */
+    'thumbnails'?: Array<ThumbnailSet>;
+    /**
      * If this property is non-null, it indicates that the driveItem is the top-most driveItem in the drive.
      * @type {object}
      * @memberof DriveItem
@@ -2030,6 +2036,80 @@ export interface TagUnassignment {
      * @memberof TagUnassignment
      */
     'tags': Array<string>;
+}
+/**
+ * The thumbnail resource type represents a thumbnail for an image, video, document, or any item that has a bitmap representation. 
+ * @export
+ * @interface Thumbnail
+ */
+export interface Thumbnail {
+    /**
+     * The content stream for the thumbnail.
+     * @type {string}
+     * @memberof Thumbnail
+     */
+    'content'?: string;
+    /**
+     * The height of the thumbnail, in pixels.
+     * @type {number}
+     * @memberof Thumbnail
+     */
+    'height'?: number;
+    /**
+     * The unique identifier of the item that provided the thumbnail. This is only available when a folder thumbnail is requested.
+     * @type {string}
+     * @memberof Thumbnail
+     */
+    'sourceItemId'?: string;
+    /**
+     * The URL used to fetch the thumbnail content.
+     * @type {string}
+     * @memberof Thumbnail
+     */
+    'url'?: string;
+    /**
+     * The width of the thumbnail, in pixels.
+     * @type {number}
+     * @memberof Thumbnail
+     */
+    'width'?: number;
+}
+/**
+ * The ThumbnailSet resource is a keyed collection of thumbnail resources. It\'s used to represent a set of thumbnails associated with a DriveItem. 
+ * @export
+ * @interface ThumbnailSet
+ */
+export interface ThumbnailSet {
+    /**
+     * The ID within the item. Read-only.
+     * @type {string}
+     * @memberof ThumbnailSet
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {Thumbnail}
+     * @memberof ThumbnailSet
+     */
+    'large'?: Thumbnail;
+    /**
+     * 
+     * @type {Thumbnail}
+     * @memberof ThumbnailSet
+     */
+    'medium'?: Thumbnail;
+    /**
+     * 
+     * @type {Thumbnail}
+     * @memberof ThumbnailSet
+     */
+    'small'?: Thumbnail;
+    /**
+     * 
+     * @type {Thumbnail}
+     * @memberof ThumbnailSet
+     */
+    'source'?: Thumbnail;
 }
 /**
  * Metadata for trashed drive Items
