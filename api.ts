@@ -3843,6 +3843,126 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
+         * You can use the createLink action to share a driveItem via a sharing link.  The response will be a permission object with the link facet containing the created link details.  ## Link types  For now, The following values are allowed for the type parameter.  | Value          | Display name      | Description                                                     | | -------------- | ----------------- | --------------------------------------------------------------- | | view           | View              | Creates a read-only link to the driveItem.                      | | upload         | Upload            | Creates a read-write link to the folder driveItem.              | | edit           | Edit              | Creates a read-write link to the driveItem.                     | | createOnly     | File Drop         | Creates an upload-only link to the folder driveItem.            | | blocksDownload | Secure View       | Creates a read-only link that blocks download to the driveItem. | 
+         * @summary Create a sharing link for the root item of a Drive
+         * @param {string} driveId key: id of drive
+         * @param {DriveItemCreateLink} [driveItemCreateLink] In the request body, provide a JSON object with the following parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkSpaceRoot: async (driveId: string, driveItemCreateLink?: DriveItemCreateLink, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('createLinkSpaceRoot', 'driveId', driveId)
+            const localVarPath = `/v1beta1/drives/{drive-id}/root/createLink`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(driveItemCreateLink, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Remove access to the root item of a drive.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
+         * @summary Remove access to a DriveItem
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermissionSpaceRoot: async (driveId: string, permId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('deletePermissionSpaceRoot', 'driveId', driveId)
+            // verify required parameter 'permId' is not null or undefined
+            assertParamExists('deletePermissionSpaceRoot', 'permId', permId)
+            const localVarPath = `/v1beta1/drives/{drive-id}/root/permissions/{perm-id}`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)))
+                .replace(`{${"perm-id"}}`, encodeURIComponent(String(permId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Return the effective sharing permission for a particular permission resource. 
+         * @summary Get a single sharing permission for the root item of a drive
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPermissionSpaceRoot: async (driveId: string, permId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('getPermissionSpaceRoot', 'driveId', driveId)
+            // verify required parameter 'permId' is not null or undefined
+            assertParamExists('getPermissionSpaceRoot', 'permId', permId)
+            const localVarPath = `/v1beta1/drives/{drive-id}/root/permissions/{perm-id}`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)))
+                .replace(`{${"perm-id"}}`, encodeURIComponent(String(permId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 
          * @summary Get root from arbitrary space
          * @param {string} driveId key: id of drive
@@ -3878,6 +3998,174 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Sends a sharing invitation for the root of a `drive`. A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link.  The response will be a permission object with the grantedToV2 property containing the created grant details.  ## Roles property values For now, roles are only identified by a uuid. There are no hardcoded aliases like `read` or `write` because role actions can be completely customized. 
+         * @summary Send a sharing invitation
+         * @param {string} driveId key: id of drive
+         * @param {DriveItemInvite} [driveItemInvite] In the request body, provide a JSON object with the following parameters. To create a custom role submit a list of actions instead of roles.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inviteSpaceRoot: async (driveId: string, driveItemInvite?: DriveItemInvite, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('inviteSpaceRoot', 'driveId', driveId)
+            const localVarPath = `/v1beta1/drives/{drive-id}/root/invite`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(driveItemInvite, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
+         * @summary List the effective permissions on the root item of a drive.
+         * @param {string} driveId key: id of drive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPermissionsSpaceRoot: async (driveId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('listPermissionsSpaceRoot', 'driveId', driveId)
+            const localVarPath = `/v1beta1/drives/{drive-id}/root/permissions`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
+         * @summary Set sharing link password for the root item of a drive
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {SharingLinkPassword} sharingLinkPassword New password value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setPermissionPasswordSpaceRoot: async (driveId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('setPermissionPasswordSpaceRoot', 'driveId', driveId)
+            // verify required parameter 'permId' is not null or undefined
+            assertParamExists('setPermissionPasswordSpaceRoot', 'permId', permId)
+            // verify required parameter 'sharingLinkPassword' is not null or undefined
+            assertParamExists('setPermissionPasswordSpaceRoot', 'sharingLinkPassword', sharingLinkPassword)
+            const localVarPath = `/v1beta1/drives/{drive-id}/root/permissions/{perm-id}/setPassword`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)))
+                .replace(`{${"perm-id"}}`, encodeURIComponent(String(permId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(sharingLinkPassword, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Update the properties of a sharing permission by patching the permission resource.  Only the `roles`, `expirationDateTime` and `password` properties can be modified this way. 
+         * @summary Update sharing permission
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {Permission} permission New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePermissionSpaceRoot: async (driveId: string, permId: string, permission: Permission, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('updatePermissionSpaceRoot', 'driveId', driveId)
+            // verify required parameter 'permId' is not null or undefined
+            assertParamExists('updatePermissionSpaceRoot', 'permId', permId)
+            // verify required parameter 'permission' is not null or undefined
+            assertParamExists('updatePermissionSpaceRoot', 'permission', permission)
+            const localVarPath = `/v1beta1/drives/{drive-id}/root/permissions/{perm-id}`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)))
+                .replace(`{${"perm-id"}}`, encodeURIComponent(String(permId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(permission, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -3901,6 +4189,42 @@ export const DrivesRootApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * You can use the createLink action to share a driveItem via a sharing link.  The response will be a permission object with the link facet containing the created link details.  ## Link types  For now, The following values are allowed for the type parameter.  | Value          | Display name      | Description                                                     | | -------------- | ----------------- | --------------------------------------------------------------- | | view           | View              | Creates a read-only link to the driveItem.                      | | upload         | Upload            | Creates a read-write link to the folder driveItem.              | | edit           | Edit              | Creates a read-write link to the driveItem.                     | | createOnly     | File Drop         | Creates an upload-only link to the folder driveItem.            | | blocksDownload | Secure View       | Creates a read-only link that blocks download to the driveItem. | 
+         * @summary Create a sharing link for the root item of a Drive
+         * @param {string} driveId key: id of drive
+         * @param {DriveItemCreateLink} [driveItemCreateLink] In the request body, provide a JSON object with the following parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createLinkSpaceRoot(driveId: string, driveItemCreateLink?: DriveItemCreateLink, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Permission>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createLinkSpaceRoot(driveId, driveItemCreateLink, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Remove access to the root item of a drive.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
+         * @summary Remove access to a DriveItem
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deletePermissionSpaceRoot(driveId: string, permId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePermissionSpaceRoot(driveId, permId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Return the effective sharing permission for a particular permission resource. 
+         * @summary Get a single sharing permission for the root item of a drive
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPermissionSpaceRoot(driveId: string, permId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Permission>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPermissionSpaceRoot(driveId, permId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * 
          * @summary Get root from arbitrary space
          * @param {string} driveId key: id of drive
@@ -3909,6 +4233,55 @@ export const DrivesRootApiFp = function(configuration?: Configuration) {
          */
         async getRoot(driveId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRoot(driveId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Sends a sharing invitation for the root of a `drive`. A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link.  The response will be a permission object with the grantedToV2 property containing the created grant details.  ## Roles property values For now, roles are only identified by a uuid. There are no hardcoded aliases like `read` or `write` because role actions can be completely customized. 
+         * @summary Send a sharing invitation
+         * @param {string} driveId key: id of drive
+         * @param {DriveItemInvite} [driveItemInvite] In the request body, provide a JSON object with the following parameters. To create a custom role submit a list of actions instead of roles.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async inviteSpaceRoot(driveId: string, driveItemInvite?: DriveItemInvite, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissions>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.inviteSpaceRoot(driveId, driveItemInvite, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
+         * @summary List the effective permissions on the root item of a drive.
+         * @param {string} driveId key: id of drive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listPermissionsSpaceRoot(driveId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissionsWithAllowedValues>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPermissionsSpaceRoot(driveId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
+         * @summary Set sharing link password for the root item of a drive
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {SharingLinkPassword} sharingLinkPassword New password value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async setPermissionPasswordSpaceRoot(driveId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Permission>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.setPermissionPasswordSpaceRoot(driveId, permId, sharingLinkPassword, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Update the properties of a sharing permission by patching the permission resource.  Only the `roles`, `expirationDateTime` and `password` properties can be modified this way. 
+         * @summary Update sharing permission
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {Permission} permission New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updatePermissionSpaceRoot(driveId: string, permId: string, permission: Permission, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Permission>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updatePermissionSpaceRoot(driveId, permId, permission, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -3933,6 +4306,39 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
             return localVarFp.createDriveItem(driveId, driveItem, options).then((request) => request(axios, basePath));
         },
         /**
+         * You can use the createLink action to share a driveItem via a sharing link.  The response will be a permission object with the link facet containing the created link details.  ## Link types  For now, The following values are allowed for the type parameter.  | Value          | Display name      | Description                                                     | | -------------- | ----------------- | --------------------------------------------------------------- | | view           | View              | Creates a read-only link to the driveItem.                      | | upload         | Upload            | Creates a read-write link to the folder driveItem.              | | edit           | Edit              | Creates a read-write link to the driveItem.                     | | createOnly     | File Drop         | Creates an upload-only link to the folder driveItem.            | | blocksDownload | Secure View       | Creates a read-only link that blocks download to the driveItem. | 
+         * @summary Create a sharing link for the root item of a Drive
+         * @param {string} driveId key: id of drive
+         * @param {DriveItemCreateLink} [driveItemCreateLink] In the request body, provide a JSON object with the following parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createLinkSpaceRoot(driveId: string, driveItemCreateLink?: DriveItemCreateLink, options?: any): AxiosPromise<Permission> {
+            return localVarFp.createLinkSpaceRoot(driveId, driveItemCreateLink, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Remove access to the root item of a drive.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
+         * @summary Remove access to a DriveItem
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePermissionSpaceRoot(driveId: string, permId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deletePermissionSpaceRoot(driveId, permId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Return the effective sharing permission for a particular permission resource. 
+         * @summary Get a single sharing permission for the root item of a drive
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPermissionSpaceRoot(driveId: string, permId: string, options?: any): AxiosPromise<Permission> {
+            return localVarFp.getPermissionSpaceRoot(driveId, permId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 
          * @summary Get root from arbitrary space
          * @param {string} driveId key: id of drive
@@ -3941,6 +4347,51 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          */
         getRoot(driveId: string, options?: any): AxiosPromise<DriveItem> {
             return localVarFp.getRoot(driveId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Sends a sharing invitation for the root of a `drive`. A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link.  The response will be a permission object with the grantedToV2 property containing the created grant details.  ## Roles property values For now, roles are only identified by a uuid. There are no hardcoded aliases like `read` or `write` because role actions can be completely customized. 
+         * @summary Send a sharing invitation
+         * @param {string} driveId key: id of drive
+         * @param {DriveItemInvite} [driveItemInvite] In the request body, provide a JSON object with the following parameters. To create a custom role submit a list of actions instead of roles.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        inviteSpaceRoot(driveId: string, driveItemInvite?: DriveItemInvite, options?: any): AxiosPromise<CollectionOfPermissions> {
+            return localVarFp.inviteSpaceRoot(driveId, driveItemInvite, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
+         * @summary List the effective permissions on the root item of a drive.
+         * @param {string} driveId key: id of drive
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPermissionsSpaceRoot(driveId: string, options?: any): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
+            return localVarFp.listPermissionsSpaceRoot(driveId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
+         * @summary Set sharing link password for the root item of a drive
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {SharingLinkPassword} sharingLinkPassword New password value
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        setPermissionPasswordSpaceRoot(driveId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: any): AxiosPromise<Permission> {
+            return localVarFp.setPermissionPasswordSpaceRoot(driveId, permId, sharingLinkPassword, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Update the properties of a sharing permission by patching the permission resource.  Only the `roles`, `expirationDateTime` and `password` properties can be modified this way. 
+         * @summary Update sharing permission
+         * @param {string} driveId key: id of drive
+         * @param {string} permId key: id of permission
+         * @param {Permission} permission New property values
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePermissionSpaceRoot(driveId: string, permId: string, permission: Permission, options?: any): AxiosPromise<Permission> {
+            return localVarFp.updatePermissionSpaceRoot(driveId, permId, permission, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3966,6 +4417,45 @@ export class DrivesRootApi extends BaseAPI {
     }
 
     /**
+     * You can use the createLink action to share a driveItem via a sharing link.  The response will be a permission object with the link facet containing the created link details.  ## Link types  For now, The following values are allowed for the type parameter.  | Value          | Display name      | Description                                                     | | -------------- | ----------------- | --------------------------------------------------------------- | | view           | View              | Creates a read-only link to the driveItem.                      | | upload         | Upload            | Creates a read-write link to the folder driveItem.              | | edit           | Edit              | Creates a read-write link to the driveItem.                     | | createOnly     | File Drop         | Creates an upload-only link to the folder driveItem.            | | blocksDownload | Secure View       | Creates a read-only link that blocks download to the driveItem. | 
+     * @summary Create a sharing link for the root item of a Drive
+     * @param {string} driveId key: id of drive
+     * @param {DriveItemCreateLink} [driveItemCreateLink] In the request body, provide a JSON object with the following parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public createLinkSpaceRoot(driveId: string, driveItemCreateLink?: DriveItemCreateLink, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).createLinkSpaceRoot(driveId, driveItemCreateLink, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Remove access to the root item of a drive.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
+     * @summary Remove access to a DriveItem
+     * @param {string} driveId key: id of drive
+     * @param {string} permId key: id of permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public deletePermissionSpaceRoot(driveId: string, permId: string, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).deletePermissionSpaceRoot(driveId, permId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Return the effective sharing permission for a particular permission resource. 
+     * @summary Get a single sharing permission for the root item of a drive
+     * @param {string} driveId key: id of drive
+     * @param {string} permId key: id of permission
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public getPermissionSpaceRoot(driveId: string, permId: string, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).getPermissionSpaceRoot(driveId, permId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * 
      * @summary Get root from arbitrary space
      * @param {string} driveId key: id of drive
@@ -3975,6 +4465,59 @@ export class DrivesRootApi extends BaseAPI {
      */
     public getRoot(driveId: string, options?: AxiosRequestConfig) {
         return DrivesRootApiFp(this.configuration).getRoot(driveId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Sends a sharing invitation for the root of a `drive`. A sharing invitation provides permissions to the recipients and optionally sends them an email with a sharing link.  The response will be a permission object with the grantedToV2 property containing the created grant details.  ## Roles property values For now, roles are only identified by a uuid. There are no hardcoded aliases like `read` or `write` because role actions can be completely customized. 
+     * @summary Send a sharing invitation
+     * @param {string} driveId key: id of drive
+     * @param {DriveItemInvite} [driveItemInvite] In the request body, provide a JSON object with the following parameters. To create a custom role submit a list of actions instead of roles.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public inviteSpaceRoot(driveId: string, driveItemInvite?: DriveItemInvite, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).inviteSpaceRoot(driveId, driveItemInvite, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
+     * @summary List the effective permissions on the root item of a drive.
+     * @param {string} driveId key: id of drive
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public listPermissionsSpaceRoot(driveId: string, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).listPermissionsSpaceRoot(driveId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
+     * @summary Set sharing link password for the root item of a drive
+     * @param {string} driveId key: id of drive
+     * @param {string} permId key: id of permission
+     * @param {SharingLinkPassword} sharingLinkPassword New password value
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public setPermissionPasswordSpaceRoot(driveId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).setPermissionPasswordSpaceRoot(driveId, permId, sharingLinkPassword, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Update the properties of a sharing permission by patching the permission resource.  Only the `roles`, `expirationDateTime` and `password` properties can be modified this way. 
+     * @summary Update sharing permission
+     * @param {string} driveId key: id of drive
+     * @param {string} permId key: id of permission
+     * @param {Permission} permission New property values
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DrivesRootApi
+     */
+    public updatePermissionSpaceRoot(driveId: string, permId: string, permission: Permission, options?: AxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).updatePermissionSpaceRoot(driveId, permId, permission, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
