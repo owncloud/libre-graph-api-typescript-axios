@@ -3969,7 +3969,7 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * Remove access to the root item of a drive.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
-         * @summary Remove access to a DriveItem
+         * @summary Remove access to a Drive
          * @param {string} driveId key: id of drive
          * @param {string} permId key: id of permission
          * @param {*} [options] Override http request option.
@@ -4287,7 +4287,7 @@ export const DrivesRootApiFp = function(configuration?: Configuration) {
         },
         /**
          * Remove access to the root item of a drive.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
-         * @summary Remove access to a DriveItem
+         * @summary Remove access to a Drive
          * @param {string} driveId key: id of drive
          * @param {string} permId key: id of permission
          * @param {*} [options] Override http request option.
@@ -4403,7 +4403,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * Remove access to the root item of a drive.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
-         * @summary Remove access to a DriveItem
+         * @summary Remove access to a Drive
          * @param {string} driveId key: id of drive
          * @param {string} permId key: id of permission
          * @param {*} [options] Override http request option.
@@ -4516,7 +4516,7 @@ export class DrivesRootApi extends BaseAPI {
 
     /**
      * Remove access to the root item of a drive.  Only sharing permissions that are not inherited can be deleted. The `inheritedFrom` property must be `null`. 
-     * @summary Remove access to a DriveItem
+     * @summary Remove access to a Drive
      * @param {string} driveId key: id of drive
      * @param {string} permId key: id of permission
      * @param {*} [options] Override http request option.
