@@ -2644,7 +2644,7 @@ export const DriveItemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDriveItem(driveId: string, itemId: string, driveItem: DriveItem, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateDriveItem(driveId: string, itemId: string, driveItem: DriveItem, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateDriveItem(driveId, itemId, driveItem, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2678,7 +2678,7 @@ export const DriveItemApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDriveItem(driveId: string, itemId: string, driveItem: DriveItem, options?: any): AxiosPromise<void> {
+        updateDriveItem(driveId: string, itemId: string, driveItem: DriveItem, options?: any): AxiosPromise<DriveItem> {
             return localVarFp.updateDriveItem(driveId, itemId, driveItem, options).then((request) => request(axios, basePath));
         },
     };
