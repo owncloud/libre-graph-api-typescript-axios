@@ -2568,6 +2568,46 @@ export const DriveItemApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
+         * Get a DriveItem by using its ID. 
+         * @summary Get a DriveItem.
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDriveItem: async (driveId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'driveId' is not null or undefined
+            assertParamExists('getDriveItem', 'driveId', driveId)
+            // verify required parameter 'itemId' is not null or undefined
+            assertParamExists('getDriveItem', 'itemId', itemId)
+            const localVarPath = `/v1beta1/drives/{drive-id}/items/{item-id}`
+                .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)))
+                .replace(`{${"item-id"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Update a DriveItem.  The request body must include a JSON object with the properties to update. Only the properties that are provided will be updated.  Currently it supports updating the following properties:  * `@UI.Hidden` - Hides the item from the UI. 
          * @summary Update a DriveItem.
          * @param {string} driveId key: id of drive
@@ -2636,6 +2676,18 @@ export const DriveItemApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Get a DriveItem by using its ID. 
+         * @summary Get a DriveItem.
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getDriveItem(driveId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DriveItem>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDriveItem(driveId, itemId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Update a DriveItem.  The request body must include a JSON object with the properties to update. Only the properties that are provided will be updated.  Currently it supports updating the following properties:  * `@UI.Hidden` - Hides the item from the UI. 
          * @summary Update a DriveItem.
          * @param {string} driveId key: id of drive
@@ -2670,6 +2722,17 @@ export const DriveItemApiFactory = function (configuration?: Configuration, base
             return localVarFp.deleteDriveItem(driveId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Get a DriveItem by using its ID. 
+         * @summary Get a DriveItem.
+         * @param {string} driveId key: id of drive
+         * @param {string} itemId key: id of item
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getDriveItem(driveId: string, itemId: string, options?: any): AxiosPromise<DriveItem> {
+            return localVarFp.getDriveItem(driveId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Update a DriveItem.  The request body must include a JSON object with the properties to update. Only the properties that are provided will be updated.  Currently it supports updating the following properties:  * `@UI.Hidden` - Hides the item from the UI. 
          * @summary Update a DriveItem.
          * @param {string} driveId key: id of drive
@@ -2702,6 +2765,19 @@ export class DriveItemApi extends BaseAPI {
      */
     public deleteDriveItem(driveId: string, itemId: string, options?: AxiosRequestConfig) {
         return DriveItemApiFp(this.configuration).deleteDriveItem(driveId, itemId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Get a DriveItem by using its ID. 
+     * @summary Get a DriveItem.
+     * @param {string} driveId key: id of drive
+     * @param {string} itemId key: id of item
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DriveItemApi
+     */
+    public getDriveItem(driveId: string, itemId: string, options?: AxiosRequestConfig) {
+        return DriveItemApiFp(this.configuration).getDriveItem(driveId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
