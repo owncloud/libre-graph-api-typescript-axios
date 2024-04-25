@@ -1616,6 +1616,12 @@ export interface Permission {
      */
     'expirationDateTime'?: string | null;
     /**
+     * An optional creation date. Libregraph only.
+     * @type {string}
+     * @memberof Permission
+     */
+    'createdDateTime'?: string | null;
+    /**
      * 
      * @type {SharePointIdentitySet}
      * @memberof Permission
