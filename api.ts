@@ -2388,6 +2388,10 @@ export const ApplicationsApiAxiosParamCreator = function (configuration?: Config
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2419,6 +2423,10 @@ export const ApplicationsApiAxiosParamCreator = function (configuration?: Config
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -2566,6 +2574,10 @@ export const DriveItemApiAxiosParamCreator = function (configuration?: Configura
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2605,6 +2617,10 @@ export const DriveItemApiAxiosParamCreator = function (configuration?: Configura
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -2648,6 +2664,10 @@ export const DriveItemApiAxiosParamCreator = function (configuration?: Configura
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -2843,6 +2863,10 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -2882,6 +2906,10 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
@@ -2923,6 +2951,10 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -2961,6 +2993,10 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -3184,6 +3220,10 @@ export const DrivesGetDrivesApiAxiosParamCreator = function (configuration?: Con
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
             if ($orderby !== undefined) {
                 localVarQueryParameter['$orderby'] = $orderby;
             }
@@ -3225,6 +3265,10 @@ export const DrivesGetDrivesApiAxiosParamCreator = function (configuration?: Con
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
             if ($orderby !== undefined) {
                 localVarQueryParameter['$orderby'] = $orderby;
@@ -3390,6 +3434,10 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -3437,6 +3485,10 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -3481,6 +3533,10 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -3521,6 +3577,10 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -3564,6 +3624,10 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -3611,6 +3675,10 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -3661,6 +3729,10 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -4031,6 +4103,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -4070,6 +4146,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -4114,6 +4194,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -4154,6 +4238,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -4189,6 +4277,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -4226,6 +4318,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -4265,6 +4361,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -4308,6 +4408,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -4354,6 +4458,10 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -7031,6 +7139,10 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -7070,6 +7182,10 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
@@ -7116,6 +7232,10 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
@@ -7157,6 +7277,10 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
             if ($select) {
                 localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
@@ -7202,6 +7326,10 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -7240,6 +7368,10 @@ export const GroupApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -7566,6 +7698,10 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -7604,6 +7740,10 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
             if ($search !== undefined) {
                 localVarQueryParameter['$search'] = $search;
@@ -7800,6 +7940,10 @@ export const MeChangepasswordApiAxiosParamCreator = function (configuration?: Co
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -7909,6 +8053,10 @@ export const MeDriveApiAxiosParamCreator = function (configuration?: Configurati
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -7941,6 +8089,10 @@ export const MeDriveApiAxiosParamCreator = function (configuration?: Configurati
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -7972,6 +8124,10 @@ export const MeDriveApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -8140,6 +8296,10 @@ export const MeDriveRootApiAxiosParamCreator = function (configuration?: Configu
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -8242,6 +8402,10 @@ export const MeDriveRootChildrenApiAxiosParamCreator = function (configuration?:
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -8348,6 +8512,10 @@ export const MeDrivesApiAxiosParamCreator = function (configuration?: Configurat
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
             if ($orderby !== undefined) {
                 localVarQueryParameter['$orderby'] = $orderby;
             }
@@ -8389,6 +8557,10 @@ export const MeDrivesApiAxiosParamCreator = function (configuration?: Configurat
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
             if ($orderby !== undefined) {
                 localVarQueryParameter['$orderby'] = $orderby;
@@ -8546,6 +8718,10 @@ export const MeUserApiAxiosParamCreator = function (configuration?: Configuratio
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
             if ($expand) {
                 localVarQueryParameter['$expand'] = Array.from($expand).join(COLLECTION_FORMATS.csv);
             }
@@ -8582,6 +8758,10 @@ export const MeUserApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -8738,6 +8918,10 @@ export const RoleManagementApiAxiosParamCreator = function (configuration?: Conf
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -8769,6 +8953,10 @@ export const RoleManagementApiAxiosParamCreator = function (configuration?: Conf
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -8909,6 +9097,10 @@ export const TagsApiAxiosParamCreator = function (configuration?: Configuration)
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -8944,6 +9136,10 @@ export const TagsApiAxiosParamCreator = function (configuration?: Configuration)
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -8976,6 +9172,10 @@ export const TagsApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -9158,6 +9358,10 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
@@ -9199,6 +9403,10 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -9239,6 +9447,10 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
             if ($select) {
                 localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
@@ -9286,6 +9498,10 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -9547,6 +9763,10 @@ export const UserAppRoleAssignmentApiAxiosParamCreator = function (configuration
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -9591,6 +9811,10 @@ export const UserAppRoleAssignmentApiAxiosParamCreator = function (configuration
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
             if (ifMatch != null) {
                 localVarHeaderParameter['If-Match'] = String(ifMatch);
             }
@@ -9630,6 +9854,10 @@ export const UserAppRoleAssignmentApiAxiosParamCreator = function (configuration
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
 
     
@@ -9819,6 +10047,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
 
             // authentication openId required
 
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -9858,6 +10090,10 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             const localVarQueryParameter = {} as any;
 
             // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
 
             if ($search !== undefined) {
                 localVarQueryParameter['$search'] = $search;
