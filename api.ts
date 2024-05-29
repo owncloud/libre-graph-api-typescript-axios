@@ -943,6 +943,115 @@ export interface DriveRecipient {
     '@libre.graph.recipient.type'?: string;
 }
 /**
+ * The drive represents an update to a space on the storage.
+ * @export
+ * @interface DriveUpdate
+ */
+export interface DriveUpdate {
+    /**
+     * The unique idenfier for this drive.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof DriveUpdate
+     */
+    'createdBy'?: IdentitySet;
+    /**
+     * Date and time of item creation. Read-only.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'createdDateTime'?: string;
+    /**
+     * Provides a user-visible description of the item. Optional.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'description'?: string;
+    /**
+     * ETag for the item. Read-only.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'eTag'?: string;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof DriveUpdate
+     */
+    'lastModifiedBy'?: IdentitySet;
+    /**
+     * Date and time the item was last modified. Read-only.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'lastModifiedDateTime'?: string;
+    /**
+     * The name of the item. Read-write.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'name'?: string;
+    /**
+     * 
+     * @type {ItemReference}
+     * @memberof DriveUpdate
+     */
+    'parentReference'?: ItemReference;
+    /**
+     * URL that displays the resource in the browser. Read-only.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'webUrl'?: string;
+    /**
+     * Describes the type of drive represented by this resource. Values are \"personal\" for users home spaces, \"project\", \"virtual\" or \"share\". Read-only.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'driveType'?: string;
+    /**
+     * The drive alias can be used in clients to make the urls user friendly. Example: \'personal/einstein\'. This will be used to resolve to the correct driveID.
+     * @type {string}
+     * @memberof DriveUpdate
+     */
+    'driveAlias'?: string;
+    /**
+     * 
+     * @type {IdentitySet}
+     * @memberof DriveUpdate
+     */
+    'owner'?: IdentitySet;
+    /**
+     * 
+     * @type {Quota}
+     * @memberof DriveUpdate
+     */
+    'quota'?: Quota;
+    /**
+     * All items contained in the drive. Read-only. Nullable.
+     * @type {Array<DriveItem>}
+     * @memberof DriveUpdate
+     */
+    'items'?: Array<DriveItem>;
+    /**
+     * 
+     * @type {DriveItem}
+     * @memberof DriveUpdate
+     */
+    'root'?: DriveItem;
+    /**
+     * A collection of special drive resources.
+     * @type {Array<DriveItem>}
+     * @memberof DriveUpdate
+     */
+    'special'?: Array<DriveItem>;
+}
+/**
  * And extension of group representing a class or course
  * @export
  * @interface EducationClass
@@ -2970,15 +3079,15 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
          * 
          * @summary Update the drive
          * @param {string} driveId key: id of drive
-         * @param {Drive} drive New space values
+         * @param {DriveUpdate} driveUpdate New space values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDrive: async (driveId: string, drive: Drive, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateDrive: async (driveId: string, driveUpdate: DriveUpdate, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'driveId' is not null or undefined
             assertParamExists('updateDrive', 'driveId', driveId)
-            // verify required parameter 'drive' is not null or undefined
-            assertParamExists('updateDrive', 'drive', drive)
+            // verify required parameter 'driveUpdate' is not null or undefined
+            assertParamExists('updateDrive', 'driveUpdate', driveUpdate)
             const localVarPath = `/v1.0/drives/{drive-id}`
                 .replace(`{${"drive-id"}}`, encodeURIComponent(String(driveId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3005,7 +3114,7 @@ export const DrivesApiAxiosParamCreator = function (configuration?: Configuratio
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(drive, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(driveUpdate, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3066,12 +3175,12 @@ export const DrivesApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update the drive
          * @param {string} driveId key: id of drive
-         * @param {Drive} drive New space values
+         * @param {DriveUpdate} driveUpdate New space values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDrive(driveId: string, drive: Drive, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDrive(driveId, drive, options);
+        async updateDrive(driveId: string, driveUpdate: DriveUpdate, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Drive>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDrive(driveId, driveUpdate, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DrivesApi.updateDrive']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -3121,12 +3230,12 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * 
          * @summary Update the drive
          * @param {string} driveId key: id of drive
-         * @param {Drive} drive New space values
+         * @param {DriveUpdate} driveUpdate New space values
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDrive(driveId: string, drive: Drive, options?: any): AxiosPromise<Drive> {
-            return localVarFp.updateDrive(driveId, drive, options).then((request) => request(axios, basePath));
+        updateDrive(driveId: string, driveUpdate: DriveUpdate, options?: any): AxiosPromise<Drive> {
+            return localVarFp.updateDrive(driveId, driveUpdate, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3179,13 +3288,13 @@ export class DrivesApi extends BaseAPI {
      * 
      * @summary Update the drive
      * @param {string} driveId key: id of drive
-     * @param {Drive} drive New space values
+     * @param {DriveUpdate} driveUpdate New space values
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DrivesApi
      */
-    public updateDrive(driveId: string, drive: Drive, options?: RawAxiosRequestConfig) {
-        return DrivesApiFp(this.configuration).updateDrive(driveId, drive, options).then((request) => request(this.axios, this.basePath));
+    public updateDrive(driveId: string, driveUpdate: DriveUpdate, options?: RawAxiosRequestConfig) {
+        return DrivesApiFp(this.configuration).updateDrive(driveId, driveUpdate, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
