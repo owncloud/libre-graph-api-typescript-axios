@@ -24,6 +24,63 @@ import type { RequestArgs } from './base';
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
 /**
+ * Represents activity.
+ * @export
+ * @interface Activity
+ */
+export interface Activity {
+    /**
+     * Activity ID.
+     * @type {string}
+     * @memberof Activity
+     */
+    'id': string;
+    /**
+     * 
+     * @type {ActivityTimes}
+     * @memberof Activity
+     */
+    'times': ActivityTimes;
+    /**
+     * 
+     * @type {ActivityTemplate}
+     * @memberof Activity
+     */
+    'template': ActivityTemplate;
+}
+/**
+ * 
+ * @export
+ * @interface ActivityTemplate
+ */
+export interface ActivityTemplate {
+    /**
+     * Activity description.
+     * @type {string}
+     * @memberof ActivityTemplate
+     */
+    'message': string;
+    /**
+     * Activity description variables.
+     * @type {object}
+     * @memberof ActivityTemplate
+     */
+    'variables'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface ActivityTimes
+ */
+export interface ActivityTimes {
+    /**
+     * Timestamp of the activity.
+     * @type {string}
+     * @memberof ActivityTimes
+     */
+    'recordedTime': string;
+}
+/**
  * 
  * @export
  * @interface AppRole
@@ -281,6 +338,19 @@ export interface ClassTeacherReference {
      * @memberof ClassTeacherReference
      */
     '@odata.id'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CollectionOfActivities
+ */
+export interface CollectionOfActivities {
+    /**
+     * 
+     * @type {Array<Activity>}
+     * @memberof CollectionOfActivities
+     */
+    'value'?: Array<Activity>;
 }
 /**
  * 
@@ -2465,6 +2535,121 @@ export interface Video {
      */
     'width'?: number;
 }
+
+/**
+ * ActivitiesApi - axios parameter creator
+ * @export
+ */
+export const ActivitiesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Get activities
+         * @param {string} [kql] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getActivities: async (kql?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/v1beta1/extensions/org.libregraph/activities`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication openId required
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            if (kql !== undefined) {
+                localVarQueryParameter['kql'] = kql;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * ActivitiesApi - functional programming interface
+ * @export
+ */
+export const ActivitiesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = ActivitiesApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Get activities
+         * @param {string} [kql] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getActivities(kql?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfActivities>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getActivities(kql, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['ActivitiesApi.getActivities']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * ActivitiesApi - factory interface
+ * @export
+ */
+export const ActivitiesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = ActivitiesApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Get activities
+         * @param {string} [kql] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getActivities(kql?: string, options?: any): AxiosPromise<CollectionOfActivities> {
+            return localVarFp.getActivities(kql, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * ActivitiesApi - object-oriented interface
+ * @export
+ * @class ActivitiesApi
+ * @extends {BaseAPI}
+ */
+export class ActivitiesApi extends BaseAPI {
+    /**
+     * 
+     * @summary Get activities
+     * @param {string} [kql] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActivitiesApi
+     */
+    public getActivities(kql?: string, options?: RawAxiosRequestConfig) {
+        return ActivitiesApiFp(this.configuration).getActivities(kql, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
 
 /**
  * ApplicationsApi - axios parameter creator
