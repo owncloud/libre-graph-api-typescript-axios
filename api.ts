@@ -2400,7 +2400,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    'displayName'?: string;
+    'displayName': string;
     /**
      * A collection of drives available for this user. Read-only.
      * @type {Array<Drive>}
@@ -2424,7 +2424,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    'mail'?: string;
+    'mail': string;
     /**
      * Groups that this user is a member of. HTTP Methods: GET (supported for all groups). Read-only. Nullable. Supports $expand.
      * @type {Array<Group>}
@@ -2432,11 +2432,11 @@ export interface User {
      */
     'memberOf'?: Array<Group>;
     /**
-     * Contains the on-premises SAM account name synchronized from the on-premises directory. Read-only.
+     * Contains the on-premises SAM account name synchronized from the on-premises directory.
      * @type {string}
      * @memberof User
      */
-    'onPremisesSamAccountName'?: string;
+    'onPremisesSamAccountName': string;
     /**
      * 
      * @type {PasswordProfile}
