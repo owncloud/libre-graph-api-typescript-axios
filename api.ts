@@ -622,7 +622,7 @@ export interface Deleted {
  */
 export interface Drive {
     /**
-     * The unique idenfier for this drive.
+     * The unique identifier for this drive.
      * @type {string}
      * @memberof Drive
      */
@@ -917,7 +917,7 @@ export interface DriveItem {
      */
     '@client.synchronize'?: boolean;
     /**
-     * Properties or facets (see UI.Facet) annotated with this term will not be rendered if the annotation evaluates to true. Users can set this to hide permissons.
+     * Properties or facets (see UI.Facet) annotated with this term will not be rendered if the annotation evaluates to true. Users can set this to hide permissions.
      * @type {boolean}
      * @memberof DriveItem
      */
@@ -969,7 +969,7 @@ export interface DriveItemCreateLink {
  */
 export interface DriveItemInvite {
     /**
-     * A collection of recipients who will receive access and the sharing invitation. Currently, only internal users or gorups are supported.
+     * A collection of recipients who will receive access and the sharing invitation. Currently, only internal users or groups are supported.
      * @type {Array<DriveRecipient>}
      * @memberof DriveItemInvite
      */
@@ -1019,7 +1019,7 @@ export interface DriveRecipient {
  */
 export interface DriveUpdate {
     /**
-     * The unique idenfier for this drive.
+     * The unique identifier for this drive.
      * @type {string}
      * @memberof DriveUpdate
      */
@@ -1185,7 +1185,7 @@ export type EducationClassClassificationEnum = typeof EducationClassClassificati
  */
 export interface EducationSchool {
     /**
-     * The unique idenfier for an entity. Read-only.
+     * The unique identifier for an entity. Read-only.
      * @type {string}
      * @memberof EducationSchool
      */
@@ -1210,7 +1210,7 @@ export interface EducationSchool {
     'terminationDate'?: string | null;
 }
 /**
- * And extension of user with education specific attributes
+ * An extension of user with education-specific attributes
  * @export
  * @interface EducationUser
  */
@@ -1396,7 +1396,7 @@ export interface FolderView {
     'viewType'?: string;
 }
 /**
- * The GeoCoordinates resource provides geographic coordinates and elevation of a location based on metadata contained within the file. If a DriveItem has a non-null location facet, the item represents a file with a known location assocaited with it. 
+ * The GeoCoordinates resource provides geographic coordinates and elevation of a location based on metadata contained within the file. If a DriveItem has a non-null location facet, the item represents a file with a known location associated with it. 
  * @export
  * @interface GeoCoordinates
  */
@@ -8212,7 +8212,7 @@ export const MeChangepasswordApiAxiosParamCreator = function (configuration?: Co
     return {
         /**
          * 
-         * @summary Chanage your own password
+         * @summary Change your own password
          * @param {PasswordChange} passwordChange Password change request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8264,7 +8264,7 @@ export const MeChangepasswordApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Chanage your own password
+         * @summary Change your own password
          * @param {PasswordChange} passwordChange Password change request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8287,7 +8287,7 @@ export const MeChangepasswordApiFactory = function (configuration?: Configuratio
     return {
         /**
          * 
-         * @summary Chanage your own password
+         * @summary Change your own password
          * @param {PasswordChange} passwordChange Password change request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -8307,7 +8307,7 @@ export const MeChangepasswordApiFactory = function (configuration?: Configuratio
 export class MeChangepasswordApi extends BaseAPI {
     /**
      * 
-     * @summary Chanage your own password
+     * @summary Change your own password
      * @param {PasswordChange} passwordChange Password change request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
