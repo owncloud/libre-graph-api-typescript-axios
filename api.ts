@@ -1294,7 +1294,7 @@ export interface EducationUser {
      */
     'primaryRole'?: string;
     /**
-     * The user`s type. This can be either \"Member\" for regular user, or \"Guest\" for guest users.
+     * The user`s type. This can be either \"Member\" for regular user, \"Guest\" for guest users or \"Federated\" for users imported from a federated instance.
      * @type {string}
      * @memberof EducationUser
      */
@@ -2456,7 +2456,7 @@ export interface User {
      */
     'givenName'?: string;
     /**
-     * The user`s type. This can be either \"Member\" for regular user, or \"Guest\" for guest users.
+     * The user`s type. This can be either \"Member\" for regular user, \"Guest\" for guest users or \"Federated\" for users imported from a federated instance.
      * @type {string}
      * @memberof User
      */
