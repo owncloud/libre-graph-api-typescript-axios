@@ -3895,10 +3895,12 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
          * @summary List the effective sharing permissions on a driveItem.
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
+         * @param {string} [$filter] Filter items by property values. By default all permissions are returned and the avalable sharing roles are limited to normal users. To get a list of sharing roles applicable to federated users use the example $select query and combine it with $filter to omit the list of permissions.
+         * @param {Set<ListPermissionsSelectEnum>} [$select] Select properties to be returned. By default all properties are returned. Select the roles property to fetch the available sharing roles without resolving all the permissions. Combine this with the $filter parameter to fetch the actions applicable to federated users.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPermissions: async (driveId: string, itemId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listPermissions: async (driveId: string, itemId: string, $filter?: string, $select?: Set<ListPermissionsSelectEnum>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'driveId' is not null or undefined
             assertParamExists('listPermissions', 'driveId', driveId)
             // verify required parameter 'itemId' is not null or undefined
@@ -3922,6 +3924,14 @@ export const DrivesPermissionsApiAxiosParamCreator = function (configuration?: C
             // authentication basicAuth required
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            if ($filter !== undefined) {
+                localVarQueryParameter['$filter'] = $filter;
+            }
+
+            if ($select) {
+                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
+            }
 
 
     
@@ -4117,11 +4127,13 @@ export const DrivesPermissionsApiFp = function(configuration?: Configuration) {
          * @summary List the effective sharing permissions on a driveItem.
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
+         * @param {string} [$filter] Filter items by property values. By default all permissions are returned and the avalable sharing roles are limited to normal users. To get a list of sharing roles applicable to federated users use the example $select query and combine it with $filter to omit the list of permissions.
+         * @param {Set<ListPermissionsSelectEnum>} [$select] Select properties to be returned. By default all properties are returned. Select the roles property to fetch the available sharing roles without resolving all the permissions. Combine this with the $filter parameter to fetch the actions applicable to federated users.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listPermissions(driveId: string, itemId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissionsWithAllowedValues>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listPermissions(driveId, itemId, options);
+        async listPermissions(driveId: string, itemId: string, $filter?: string, $select?: Set<ListPermissionsSelectEnum>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissionsWithAllowedValues>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPermissions(driveId, itemId, $filter, $select, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DrivesPermissionsApi.listPermissions']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -4221,11 +4233,13 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @summary List the effective sharing permissions on a driveItem.
          * @param {string} driveId key: id of drive
          * @param {string} itemId key: id of item
+         * @param {string} [$filter] Filter items by property values. By default all permissions are returned and the avalable sharing roles are limited to normal users. To get a list of sharing roles applicable to federated users use the example $select query and combine it with $filter to omit the list of permissions.
+         * @param {Set<ListPermissionsSelectEnum>} [$select] Select properties to be returned. By default all properties are returned. Select the roles property to fetch the available sharing roles without resolving all the permissions. Combine this with the $filter parameter to fetch the actions applicable to federated users.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPermissions(driveId: string, itemId: string, options?: any): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
-            return localVarFp.listPermissions(driveId, itemId, options).then((request) => request(axios, basePath));
+        listPermissions(driveId: string, itemId: string, $filter?: string, $select?: Set<ListPermissionsSelectEnum>, options?: any): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
+            return localVarFp.listPermissions(driveId, itemId, $filter, $select, options).then((request) => request(axios, basePath));
         },
         /**
          * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
@@ -4324,12 +4338,14 @@ export class DrivesPermissionsApi extends BaseAPI {
      * @summary List the effective sharing permissions on a driveItem.
      * @param {string} driveId key: id of drive
      * @param {string} itemId key: id of item
+     * @param {string} [$filter] Filter items by property values. By default all permissions are returned and the avalable sharing roles are limited to normal users. To get a list of sharing roles applicable to federated users use the example $select query and combine it with $filter to omit the list of permissions.
+     * @param {Set<ListPermissionsSelectEnum>} [$select] Select properties to be returned. By default all properties are returned. Select the roles property to fetch the available sharing roles without resolving all the permissions. Combine this with the $filter parameter to fetch the actions applicable to federated users.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DrivesPermissionsApi
      */
-    public listPermissions(driveId: string, itemId: string, options?: RawAxiosRequestConfig) {
-        return DrivesPermissionsApiFp(this.configuration).listPermissions(driveId, itemId, options).then((request) => request(this.axios, this.basePath));
+    public listPermissions(driveId: string, itemId: string, $filter?: string, $select?: Set<ListPermissionsSelectEnum>, options?: RawAxiosRequestConfig) {
+        return DrivesPermissionsApiFp(this.configuration).listPermissions(driveId, itemId, $filter, $select, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4363,6 +4379,15 @@ export class DrivesPermissionsApi extends BaseAPI {
     }
 }
 
+/**
+ * @export
+ */
+export const ListPermissionsSelectEnum = {
+    LibreGraphPermissionsActionsAllowedValues: '\\@libre.graph.permissions.actions.allowedValues',
+    LibreGraphPermissionsRolesAllowedValues: '\\@libre.graph.permissions.roles.allowedValues',
+    Value: 'value'
+} as const;
+export type ListPermissionsSelectEnum = typeof ListPermissionsSelectEnum[keyof typeof ListPermissionsSelectEnum];
 
 
 /**
@@ -4635,10 +4660,12 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
          * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
          * @summary List the effective permissions on the root item of a drive.
          * @param {string} driveId key: id of drive
+         * @param {string} [$filter] Filter items by property values. By default all permissions are returned and the avalable sharing roles are limited to normal users. To get a list of sharing roles applicable to federated users use the example $select query and combine it with $filter to omit the list of permissions.
+         * @param {Set<ListPermissionsSpaceRootSelectEnum>} [$select] Select properties to be returned. By default all properties are returned. Select the roles property to fetch the available sharing roles without resolving all the permissions. Combine this with the $filter parameter to fetch the actions applicable to federated users.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPermissionsSpaceRoot: async (driveId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listPermissionsSpaceRoot: async (driveId: string, $filter?: string, $select?: Set<ListPermissionsSpaceRootSelectEnum>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'driveId' is not null or undefined
             assertParamExists('listPermissionsSpaceRoot', 'driveId', driveId)
             const localVarPath = `/v1beta1/drives/{drive-id}/root/permissions`
@@ -4659,6 +4686,14 @@ export const DrivesRootApiAxiosParamCreator = function (configuration?: Configur
             // authentication basicAuth required
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            if ($filter !== undefined) {
+                localVarQueryParameter['$filter'] = $filter;
+            }
+
+            if ($select) {
+                localVarQueryParameter['$select'] = Array.from($select).join(COLLECTION_FORMATS.csv);
+            }
 
 
     
@@ -4868,11 +4903,13 @@ export const DrivesRootApiFp = function(configuration?: Configuration) {
          * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
          * @summary List the effective permissions on the root item of a drive.
          * @param {string} driveId key: id of drive
+         * @param {string} [$filter] Filter items by property values. By default all permissions are returned and the avalable sharing roles are limited to normal users. To get a list of sharing roles applicable to federated users use the example $select query and combine it with $filter to omit the list of permissions.
+         * @param {Set<ListPermissionsSpaceRootSelectEnum>} [$select] Select properties to be returned. By default all properties are returned. Select the roles property to fetch the available sharing roles without resolving all the permissions. Combine this with the $filter parameter to fetch the actions applicable to federated users.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listPermissionsSpaceRoot(driveId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissionsWithAllowedValues>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listPermissionsSpaceRoot(driveId, options);
+        async listPermissionsSpaceRoot(driveId: string, $filter?: string, $select?: Set<ListPermissionsSpaceRootSelectEnum>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CollectionOfPermissionsWithAllowedValues>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPermissionsSpaceRoot(driveId, $filter, $select, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DrivesRootApi.listPermissionsSpaceRoot']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -4986,11 +5023,13 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
          * @summary List the effective permissions on the root item of a drive.
          * @param {string} driveId key: id of drive
+         * @param {string} [$filter] Filter items by property values. By default all permissions are returned and the avalable sharing roles are limited to normal users. To get a list of sharing roles applicable to federated users use the example $select query and combine it with $filter to omit the list of permissions.
+         * @param {Set<ListPermissionsSpaceRootSelectEnum>} [$select] Select properties to be returned. By default all properties are returned. Select the roles property to fetch the available sharing roles without resolving all the permissions. Combine this with the $filter parameter to fetch the actions applicable to federated users.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPermissionsSpaceRoot(driveId: string, options?: any): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
-            return localVarFp.listPermissionsSpaceRoot(driveId, options).then((request) => request(axios, basePath));
+        listPermissionsSpaceRoot(driveId: string, $filter?: string, $select?: Set<ListPermissionsSpaceRootSelectEnum>, options?: any): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
+            return localVarFp.listPermissionsSpaceRoot(driveId, $filter, $select, options).then((request) => request(axios, basePath));
         },
         /**
          * Set the password of a sharing permission.  Only the `password` property can be modified this way. 
@@ -5107,12 +5146,14 @@ export class DrivesRootApi extends BaseAPI {
      * The permissions collection includes potentially sensitive information and may not be available for every caller.  * For the owner of the item, all sharing permissions will be returned. This includes co-owners. * For a non-owner caller, only the sharing permissions that apply to the caller are returned. * Sharing permission properties that contain secrets (e.g. `webUrl`) are only returned for callers that are able to create the sharing permission.  All permission objects have an `id`. A permission representing * a link has the `link` facet filled with details. * a share has the `roles` property set and the `grantedToV2` property filled with the grant recipient details. 
      * @summary List the effective permissions on the root item of a drive.
      * @param {string} driveId key: id of drive
+     * @param {string} [$filter] Filter items by property values. By default all permissions are returned and the avalable sharing roles are limited to normal users. To get a list of sharing roles applicable to federated users use the example $select query and combine it with $filter to omit the list of permissions.
+     * @param {Set<ListPermissionsSpaceRootSelectEnum>} [$select] Select properties to be returned. By default all properties are returned. Select the roles property to fetch the available sharing roles without resolving all the permissions. Combine this with the $filter parameter to fetch the actions applicable to federated users.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DrivesRootApi
      */
-    public listPermissionsSpaceRoot(driveId: string, options?: RawAxiosRequestConfig) {
-        return DrivesRootApiFp(this.configuration).listPermissionsSpaceRoot(driveId, options).then((request) => request(this.axios, this.basePath));
+    public listPermissionsSpaceRoot(driveId: string, $filter?: string, $select?: Set<ListPermissionsSpaceRootSelectEnum>, options?: RawAxiosRequestConfig) {
+        return DrivesRootApiFp(this.configuration).listPermissionsSpaceRoot(driveId, $filter, $select, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -5144,6 +5185,15 @@ export class DrivesRootApi extends BaseAPI {
     }
 }
 
+/**
+ * @export
+ */
+export const ListPermissionsSpaceRootSelectEnum = {
+    LibreGraphPermissionsActionsAllowedValues: '\\@libre.graph.permissions.actions.allowedValues',
+    LibreGraphPermissionsRolesAllowedValues: '\\@libre.graph.permissions.roles.allowedValues',
+    Value: 'value'
+} as const;
+export type ListPermissionsSpaceRootSelectEnum = typeof ListPermissionsSpaceRootSelectEnum[keyof typeof ListPermissionsSpaceRootSelectEnum];
 
 
 /**
