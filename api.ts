@@ -4383,8 +4383,8 @@ export class DrivesPermissionsApi extends BaseAPI {
  * @export
  */
 export const ListPermissionsSelectEnum = {
-    LibreGraphPermissionsActionsAllowedValues: '\\@libre.graph.permissions.actions.allowedValues',
-    LibreGraphPermissionsRolesAllowedValues: '\\@libre.graph.permissions.roles.allowedValues',
+    LibreGraphPermissionsActionsAllowedValues: '@libre.graph.permissions.actions.allowedValues',
+    LibreGraphPermissionsRolesAllowedValues: '@libre.graph.permissions.roles.allowedValues',
     Value: 'value'
 } as const;
 export type ListPermissionsSelectEnum = typeof ListPermissionsSelectEnum[keyof typeof ListPermissionsSelectEnum];
@@ -5189,8 +5189,8 @@ export class DrivesRootApi extends BaseAPI {
  * @export
  */
 export const ListPermissionsSpaceRootSelectEnum = {
-    LibreGraphPermissionsActionsAllowedValues: '\\@libre.graph.permissions.actions.allowedValues',
-    LibreGraphPermissionsRolesAllowedValues: '\\@libre.graph.permissions.roles.allowedValues',
+    LibreGraphPermissionsActionsAllowedValues: '@libre.graph.permissions.actions.allowedValues',
+    LibreGraphPermissionsRolesAllowedValues: '@libre.graph.permissions.roles.allowedValues',
     Value: 'value'
 } as const;
 export type ListPermissionsSpaceRootSelectEnum = typeof ListPermissionsSpaceRootSelectEnum[keyof typeof ListPermissionsSpaceRootSelectEnum];
