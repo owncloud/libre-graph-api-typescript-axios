@@ -1512,6 +1512,12 @@ export interface Identity {
      * @memberof Identity
      */
     'id'?: string;
+    /**
+     * The type of the identity. This can be either \"Member\" for regular user, \"Guest\" for guest users or \"Federated\" for users imported from a federated instance. Can be used by clients to indicate the type of user. For more details, clients should look up and cache the user at the /users enpoint.
+     * @type {string}
+     * @memberof Identity
+     */
+    '@libre.graph.userType'?: string;
 }
 /**
  * Optional. User account.
