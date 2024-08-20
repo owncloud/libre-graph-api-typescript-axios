@@ -2726,7 +2726,7 @@ export const ActivitiesApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getActivities(kql?: string, options?: any): AxiosPromise<CollectionOfActivities> {
+        getActivities(kql?: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfActivities> {
             return localVarFp.getActivities(kql, options).then((request) => request(axios, basePath));
         },
     };
@@ -2888,7 +2888,7 @@ export const ApplicationsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getApplication(applicationId: string, options?: any): AxiosPromise<Application> {
+        getApplication(applicationId: string, options?: RawAxiosRequestConfig): AxiosPromise<Application> {
             return localVarFp.getApplication(applicationId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2897,7 +2897,7 @@ export const ApplicationsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listApplications(options?: any): AxiosPromise<CollectionOfApplications> {
+        listApplications(options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfApplications> {
             return localVarFp.listApplications(options).then((request) => request(axios, basePath));
         },
     };
@@ -3151,7 +3151,7 @@ export const DriveItemApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteDriveItem(driveId: string, itemId: string, options?: any): AxiosPromise<void> {
+        deleteDriveItem(driveId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteDriveItem(driveId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3162,7 +3162,7 @@ export const DriveItemApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDriveItem(driveId: string, itemId: string, options?: any): AxiosPromise<DriveItem> {
+        getDriveItem(driveId: string, itemId: string, options?: RawAxiosRequestConfig): AxiosPromise<DriveItem> {
             return localVarFp.getDriveItem(driveId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3174,7 +3174,7 @@ export const DriveItemApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDriveItem(driveId: string, itemId: string, driveItem: DriveItem, options?: any): AxiosPromise<DriveItem> {
+        updateDriveItem(driveId: string, itemId: string, driveItem: DriveItem, options?: RawAxiosRequestConfig): AxiosPromise<DriveItem> {
             return localVarFp.updateDriveItem(driveId, itemId, driveItem, options).then((request) => request(axios, basePath));
         },
     };
@@ -3490,7 +3490,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createDrive(drive: Drive, options?: any): AxiosPromise<Drive> {
+        createDrive(drive: Drive, options?: RawAxiosRequestConfig): AxiosPromise<Drive> {
             return localVarFp.createDrive(drive, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3501,7 +3501,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteDrive(driveId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+        deleteDrive(driveId: string, ifMatch?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteDrive(driveId, ifMatch, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3511,7 +3511,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDrive(driveId: string, options?: any): AxiosPromise<Drive> {
+        getDrive(driveId: string, options?: RawAxiosRequestConfig): AxiosPromise<Drive> {
             return localVarFp.getDrive(driveId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3522,7 +3522,7 @@ export const DrivesApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDrive(driveId: string, driveUpdate: DriveUpdate, options?: any): AxiosPromise<Drive> {
+        updateDrive(driveId: string, driveUpdate: DriveUpdate, options?: RawAxiosRequestConfig): AxiosPromise<Drive> {
             return localVarFp.updateDrive(driveId, driveUpdate, options).then((request) => request(axios, basePath));
         },
     };
@@ -3742,7 +3742,7 @@ export const DrivesGetDrivesApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listAllDrives($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives1> {
+        listAllDrives($orderby?: string, $filter?: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfDrives1> {
             return localVarFp.listAllDrives($orderby, $filter, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3753,7 +3753,7 @@ export const DrivesGetDrivesApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listAllDrivesBeta($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives1> {
+        listAllDrivesBeta($orderby?: string, $filter?: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfDrives1> {
             return localVarFp.listAllDrivesBeta($orderby, $filter, options).then((request) => request(axios, basePath));
         },
     };
@@ -4292,7 +4292,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createLink(driveId: string, itemId: string, driveItemCreateLink?: DriveItemCreateLink, options?: any): AxiosPromise<Permission> {
+        createLink(driveId: string, itemId: string, driveItemCreateLink?: DriveItemCreateLink, options?: RawAxiosRequestConfig): AxiosPromise<Permission> {
             return localVarFp.createLink(driveId, itemId, driveItemCreateLink, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4304,7 +4304,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePermission(driveId: string, itemId: string, permId: string, options?: any): AxiosPromise<void> {
+        deletePermission(driveId: string, itemId: string, permId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deletePermission(driveId, itemId, permId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4316,7 +4316,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPermission(driveId: string, itemId: string, permId: string, options?: any): AxiosPromise<Permission> {
+        getPermission(driveId: string, itemId: string, permId: string, options?: RawAxiosRequestConfig): AxiosPromise<Permission> {
             return localVarFp.getPermission(driveId, itemId, permId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4328,7 +4328,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invite(driveId: string, itemId: string, driveItemInvite?: DriveItemInvite, options?: any): AxiosPromise<CollectionOfPermissions> {
+        invite(driveId: string, itemId: string, driveItemInvite?: DriveItemInvite, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfPermissions> {
             return localVarFp.invite(driveId, itemId, driveItemInvite, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4341,7 +4341,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPermissions(driveId: string, itemId: string, $filter?: string, $select?: Set<ListPermissionsSelectEnum>, options?: any): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
+        listPermissions(driveId: string, itemId: string, $filter?: string, $select?: Set<ListPermissionsSelectEnum>, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
             return localVarFp.listPermissions(driveId, itemId, $filter, $select, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4354,7 +4354,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setPermissionPassword(driveId: string, itemId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: any): AxiosPromise<Permission> {
+        setPermissionPassword(driveId: string, itemId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: RawAxiosRequestConfig): AxiosPromise<Permission> {
             return localVarFp.setPermissionPassword(driveId, itemId, permId, sharingLinkPassword, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4367,7 +4367,7 @@ export const DrivesPermissionsApiFactory = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePermission(driveId: string, itemId: string, permId: string, permission: Permission, options?: any): AxiosPromise<Permission> {
+        updatePermission(driveId: string, itemId: string, permId: string, permission: Permission, options?: RawAxiosRequestConfig): AxiosPromise<Permission> {
             return localVarFp.updatePermission(driveId, itemId, permId, permission, options).then((request) => request(axios, basePath));
         },
     };
@@ -5065,7 +5065,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createDriveItem(driveId: string, driveItem?: DriveItem, options?: any): AxiosPromise<DriveItem> {
+        createDriveItem(driveId: string, driveItem?: DriveItem, options?: RawAxiosRequestConfig): AxiosPromise<DriveItem> {
             return localVarFp.createDriveItem(driveId, driveItem, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5076,7 +5076,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createLinkSpaceRoot(driveId: string, driveItemCreateLink?: DriveItemCreateLink, options?: any): AxiosPromise<Permission> {
+        createLinkSpaceRoot(driveId: string, driveItemCreateLink?: DriveItemCreateLink, options?: RawAxiosRequestConfig): AxiosPromise<Permission> {
             return localVarFp.createLinkSpaceRoot(driveId, driveItemCreateLink, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5087,7 +5087,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deletePermissionSpaceRoot(driveId: string, permId: string, options?: any): AxiosPromise<void> {
+        deletePermissionSpaceRoot(driveId: string, permId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deletePermissionSpaceRoot(driveId, permId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5098,7 +5098,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPermissionSpaceRoot(driveId: string, permId: string, options?: any): AxiosPromise<Permission> {
+        getPermissionSpaceRoot(driveId: string, permId: string, options?: RawAxiosRequestConfig): AxiosPromise<Permission> {
             return localVarFp.getPermissionSpaceRoot(driveId, permId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5108,7 +5108,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRoot(driveId: string, options?: any): AxiosPromise<DriveItem> {
+        getRoot(driveId: string, options?: RawAxiosRequestConfig): AxiosPromise<DriveItem> {
             return localVarFp.getRoot(driveId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5119,7 +5119,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        inviteSpaceRoot(driveId: string, driveItemInvite?: DriveItemInvite, options?: any): AxiosPromise<CollectionOfPermissions> {
+        inviteSpaceRoot(driveId: string, driveItemInvite?: DriveItemInvite, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfPermissions> {
             return localVarFp.inviteSpaceRoot(driveId, driveItemInvite, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5131,7 +5131,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPermissionsSpaceRoot(driveId: string, $filter?: string, $select?: Set<ListPermissionsSpaceRootSelectEnum>, options?: any): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
+        listPermissionsSpaceRoot(driveId: string, $filter?: string, $select?: Set<ListPermissionsSpaceRootSelectEnum>, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfPermissionsWithAllowedValues> {
             return localVarFp.listPermissionsSpaceRoot(driveId, $filter, $select, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5143,7 +5143,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setPermissionPasswordSpaceRoot(driveId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: any): AxiosPromise<Permission> {
+        setPermissionPasswordSpaceRoot(driveId: string, permId: string, sharingLinkPassword: SharingLinkPassword, options?: RawAxiosRequestConfig): AxiosPromise<Permission> {
             return localVarFp.setPermissionPasswordSpaceRoot(driveId, permId, sharingLinkPassword, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5155,7 +5155,7 @@ export const DrivesRootApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updatePermissionSpaceRoot(driveId: string, permId: string, permission: Permission, options?: any): AxiosPromise<Permission> {
+        updatePermissionSpaceRoot(driveId: string, permId: string, permission: Permission, options?: RawAxiosRequestConfig): AxiosPromise<Permission> {
             return localVarFp.updatePermissionSpaceRoot(driveId, permId, permission, options).then((request) => request(axios, basePath));
         },
     };
@@ -5757,7 +5757,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addUserToClass(classId: string, classMemberReference: ClassMemberReference, options?: any): AxiosPromise<void> {
+        addUserToClass(classId: string, classMemberReference: ClassMemberReference, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.addUserToClass(classId, classMemberReference, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5767,7 +5767,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createClass(educationClass: EducationClass, options?: any): AxiosPromise<EducationClass> {
+        createClass(educationClass: EducationClass, options?: RawAxiosRequestConfig): AxiosPromise<EducationClass> {
             return localVarFp.createClass(educationClass, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5777,7 +5777,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteClass(classId: string, options?: any): AxiosPromise<void> {
+        deleteClass(classId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteClass(classId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5788,7 +5788,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserFromClass(classId: string, userId: string, options?: any): AxiosPromise<void> {
+        deleteUserFromClass(classId: string, userId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteUserFromClass(classId, userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5798,7 +5798,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getClass(classId: string, options?: any): AxiosPromise<EducationClass> {
+        getClass(classId: string, options?: RawAxiosRequestConfig): AxiosPromise<EducationClass> {
             return localVarFp.getClass(classId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5808,7 +5808,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listClassMembers(classId: string, options?: any): AxiosPromise<CollectionOfEducationUser> {
+        listClassMembers(classId: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfEducationUser> {
             return localVarFp.listClassMembers(classId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5817,7 +5817,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listClasses(options?: any): AxiosPromise<CollectionOfClass> {
+        listClasses(options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfClass> {
             return localVarFp.listClasses(options).then((request) => request(axios, basePath));
         },
         /**
@@ -5828,7 +5828,7 @@ export const EducationClassApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateClass(classId: string, educationClass: EducationClass, options?: any): AxiosPromise<EducationClass> {
+        updateClass(classId: string, educationClass: EducationClass, options?: RawAxiosRequestConfig): AxiosPromise<EducationClass> {
             return localVarFp.updateClass(classId, educationClass, options).then((request) => request(axios, basePath));
         },
     };
@@ -6141,7 +6141,7 @@ export const EducationClassTeachersApiFactory = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addTeacherToClass(classId: string, classTeacherReference: ClassTeacherReference, options?: any): AxiosPromise<void> {
+        addTeacherToClass(classId: string, classTeacherReference: ClassTeacherReference, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.addTeacherToClass(classId, classTeacherReference, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6152,7 +6152,7 @@ export const EducationClassTeachersApiFactory = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteTeacherFromClass(classId: string, userId: string, options?: any): AxiosPromise<void> {
+        deleteTeacherFromClass(classId: string, userId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteTeacherFromClass(classId, userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6162,7 +6162,7 @@ export const EducationClassTeachersApiFactory = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTeachers(classId: string, options?: any): AxiosPromise<CollectionOfEducationUser> {
+        getTeachers(classId: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfEducationUser> {
             return localVarFp.getTeachers(classId, options).then((request) => request(axios, basePath));
         },
     };
@@ -6839,7 +6839,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addClassToSchool(schoolId: string, classReference: ClassReference, options?: any): AxiosPromise<void> {
+        addClassToSchool(schoolId: string, classReference: ClassReference, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.addClassToSchool(schoolId, classReference, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6850,7 +6850,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addUserToSchool(schoolId: string, educationUserReference: EducationUserReference, options?: any): AxiosPromise<void> {
+        addUserToSchool(schoolId: string, educationUserReference: EducationUserReference, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.addUserToSchool(schoolId, educationUserReference, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6860,7 +6860,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createSchool(educationSchool: EducationSchool, options?: any): AxiosPromise<EducationSchool> {
+        createSchool(educationSchool: EducationSchool, options?: RawAxiosRequestConfig): AxiosPromise<EducationSchool> {
             return localVarFp.createSchool(educationSchool, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6871,7 +6871,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteClassFromSchool(schoolId: string, classId: string, options?: any): AxiosPromise<void> {
+        deleteClassFromSchool(schoolId: string, classId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteClassFromSchool(schoolId, classId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6881,7 +6881,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteSchool(schoolId: string, options?: any): AxiosPromise<void> {
+        deleteSchool(schoolId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteSchool(schoolId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6892,7 +6892,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUserFromSchool(schoolId: string, userId: string, options?: any): AxiosPromise<void> {
+        deleteUserFromSchool(schoolId: string, userId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteUserFromSchool(schoolId, userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6902,7 +6902,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSchool(schoolId: string, options?: any): AxiosPromise<EducationSchool> {
+        getSchool(schoolId: string, options?: RawAxiosRequestConfig): AxiosPromise<EducationSchool> {
             return localVarFp.getSchool(schoolId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6912,7 +6912,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listSchoolClasses(schoolId: string, options?: any): AxiosPromise<CollectionOfEducationClass> {
+        listSchoolClasses(schoolId: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfEducationClass> {
             return localVarFp.listSchoolClasses(schoolId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6922,7 +6922,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listSchoolUsers(schoolId: string, options?: any): AxiosPromise<CollectionOfEducationUser> {
+        listSchoolUsers(schoolId: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfEducationUser> {
             return localVarFp.listSchoolUsers(schoolId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6931,7 +6931,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listSchools(options?: any): AxiosPromise<CollectionOfSchools> {
+        listSchools(options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfSchools> {
             return localVarFp.listSchools(options).then((request) => request(axios, basePath));
         },
         /**
@@ -6942,7 +6942,7 @@ export const EducationSchoolApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateSchool(schoolId: string, educationSchool: EducationSchool, options?: any): AxiosPromise<EducationSchool> {
+        updateSchool(schoolId: string, educationSchool: EducationSchool, options?: RawAxiosRequestConfig): AxiosPromise<EducationSchool> {
             return localVarFp.updateSchool(schoolId, educationSchool, options).then((request) => request(axios, basePath));
         },
     };
@@ -7404,7 +7404,7 @@ export const EducationUserApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createEducationUser(educationUser: EducationUser, options?: any): AxiosPromise<EducationUser> {
+        createEducationUser(educationUser: EducationUser, options?: RawAxiosRequestConfig): AxiosPromise<EducationUser> {
             return localVarFp.createEducationUser(educationUser, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7414,7 +7414,7 @@ export const EducationUserApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteEducationUser(userId: string, options?: any): AxiosPromise<void> {
+        deleteEducationUser(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteEducationUser(userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7425,7 +7425,7 @@ export const EducationUserApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getEducationUser(userId: string, $expand?: Set<GetEducationUserExpandEnum>, options?: any): AxiosPromise<EducationUser> {
+        getEducationUser(userId: string, $expand?: Set<GetEducationUserExpandEnum>, options?: RawAxiosRequestConfig): AxiosPromise<EducationUser> {
             return localVarFp.getEducationUser(userId, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7436,7 +7436,7 @@ export const EducationUserApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listEducationUsers($orderby?: Set<ListEducationUsersOrderbyEnum>, $expand?: Set<ListEducationUsersExpandEnum>, options?: any): AxiosPromise<CollectionOfEducationUser> {
+        listEducationUsers($orderby?: Set<ListEducationUsersOrderbyEnum>, $expand?: Set<ListEducationUsersExpandEnum>, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfEducationUser> {
             return localVarFp.listEducationUsers($orderby, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7447,7 +7447,7 @@ export const EducationUserApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateEducationUser(userId: string, educationUser: EducationUser, options?: any): AxiosPromise<EducationUser> {
+        updateEducationUser(userId: string, educationUser: EducationUser, options?: RawAxiosRequestConfig): AxiosPromise<EducationUser> {
             return localVarFp.updateEducationUser(userId, educationUser, options).then((request) => request(axios, basePath));
         },
     };
@@ -7947,7 +7947,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addMember(groupId: string, memberReference: MemberReference, options?: any): AxiosPromise<void> {
+        addMember(groupId: string, memberReference: MemberReference, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.addMember(groupId, memberReference, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7958,7 +7958,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteGroup(groupId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+        deleteGroup(groupId: string, ifMatch?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteGroup(groupId, ifMatch, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7970,7 +7970,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteMember(groupId: string, directoryObjectId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+        deleteMember(groupId: string, directoryObjectId: string, ifMatch?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteMember(groupId, directoryObjectId, ifMatch, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7982,7 +7982,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGroup(groupId: string, $select?: Set<GetGroupSelectEnum>, $expand?: Set<GetGroupExpandEnum>, options?: any): AxiosPromise<Group> {
+        getGroup(groupId: string, $select?: Set<GetGroupSelectEnum>, $expand?: Set<GetGroupExpandEnum>, options?: RawAxiosRequestConfig): AxiosPromise<Group> {
             return localVarFp.getGroup(groupId, $select, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -7992,7 +7992,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listMembers(groupId: string, options?: any): AxiosPromise<CollectionOfUsers> {
+        listMembers(groupId: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfUsers> {
             return localVarFp.listMembers(groupId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8003,7 +8003,7 @@ export const GroupApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGroup(groupId: string, group: Group, options?: any): AxiosPromise<void> {
+        updateGroup(groupId: string, group: Group, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.updateGroup(groupId, group, options).then((request) => request(axios, basePath));
         },
     };
@@ -8275,7 +8275,7 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGroup(group: Group, options?: any): AxiosPromise<Group> {
+        createGroup(group: Group, options?: RawAxiosRequestConfig): AxiosPromise<Group> {
             return localVarFp.createGroup(group, options).then((request) => request(axios, basePath));
         },
         /**
@@ -8288,7 +8288,7 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGroups($search?: string, $orderby?: Set<ListGroupsOrderbyEnum>, $select?: Set<ListGroupsSelectEnum>, $expand?: Set<ListGroupsExpandEnum>, options?: any): AxiosPromise<CollectionOfGroup> {
+        listGroups($search?: string, $orderby?: Set<ListGroupsOrderbyEnum>, $select?: Set<ListGroupsSelectEnum>, $expand?: Set<ListGroupsExpandEnum>, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfGroup> {
             return localVarFp.listGroups($search, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
@@ -8445,7 +8445,7 @@ export const MeChangepasswordApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        changeOwnPassword(passwordChange: PasswordChange, options?: any): AxiosPromise<void> {
+        changeOwnPassword(passwordChange: PasswordChange, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.changeOwnPassword(passwordChange, options).then((request) => request(axios, basePath));
         },
     };
@@ -8649,7 +8649,7 @@ export const MeDriveApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getHome(options?: any): AxiosPromise<Drive> {
+        getHome(options?: RawAxiosRequestConfig): AxiosPromise<Drive> {
             return localVarFp.getHome(options).then((request) => request(axios, basePath));
         },
         /**
@@ -8658,7 +8658,7 @@ export const MeDriveApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listSharedByMe(options?: any): AxiosPromise<CollectionOfDriveItems1> {
+        listSharedByMe(options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfDriveItems1> {
             return localVarFp.listSharedByMe(options).then((request) => request(axios, basePath));
         },
         /**
@@ -8667,7 +8667,7 @@ export const MeDriveApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listSharedWithMe(options?: any): AxiosPromise<CollectionOfDriveItems1> {
+        listSharedWithMe(options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfDriveItems1> {
             return localVarFp.listSharedWithMe(options).then((request) => request(axios, basePath));
         },
     };
@@ -8796,7 +8796,7 @@ export const MeDriveRootApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        homeGetRoot(options?: any): AxiosPromise<DriveItem> {
+        homeGetRoot(options?: RawAxiosRequestConfig): AxiosPromise<DriveItem> {
             return localVarFp.homeGetRoot(options).then((request) => request(axios, basePath));
         },
     };
@@ -8903,7 +8903,7 @@ export const MeDriveRootChildrenApiFactory = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        homeGetChildren(options?: any): AxiosPromise<CollectionOfDriveItems> {
+        homeGetChildren(options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfDriveItems> {
             return localVarFp.homeGetChildren(options).then((request) => request(axios, basePath));
         },
     };
@@ -9084,7 +9084,7 @@ export const MeDrivesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listMyDrives($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives> {
+        listMyDrives($orderby?: string, $filter?: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfDrives> {
             return localVarFp.listMyDrives($orderby, $filter, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9095,7 +9095,7 @@ export const MeDrivesApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listMyDrivesBeta($orderby?: string, $filter?: string, options?: any): AxiosPromise<CollectionOfDrives> {
+        listMyDrivesBeta($orderby?: string, $filter?: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfDrives> {
             return localVarFp.listMyDrivesBeta($orderby, $filter, options).then((request) => request(axios, basePath));
         },
     };
@@ -9277,7 +9277,7 @@ export const MeUserApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getOwnUser($expand?: Set<GetOwnUserExpandEnum>, options?: any): AxiosPromise<User> {
+        getOwnUser($expand?: Set<GetOwnUserExpandEnum>, options?: RawAxiosRequestConfig): AxiosPromise<User> {
             return localVarFp.getOwnUser($expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9287,7 +9287,7 @@ export const MeUserApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOwnUser(userUpdate?: UserUpdate, options?: any): AxiosPromise<User> {
+        updateOwnUser(userUpdate?: UserUpdate, options?: RawAxiosRequestConfig): AxiosPromise<User> {
             return localVarFp.updateOwnUser(userUpdate, options).then((request) => request(axios, basePath));
         },
     };
@@ -9468,7 +9468,7 @@ export const RoleManagementApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPermissionRoleDefinition(roleId: string, options?: any): AxiosPromise<UnifiedRoleDefinition> {
+        getPermissionRoleDefinition(roleId: string, options?: RawAxiosRequestConfig): AxiosPromise<UnifiedRoleDefinition> {
             return localVarFp.getPermissionRoleDefinition(roleId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9477,7 +9477,7 @@ export const RoleManagementApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listPermissionRoleDefinitions(options?: any): AxiosPromise<UnifiedRoleDefinition> {
+        listPermissionRoleDefinitions(options?: RawAxiosRequestConfig): AxiosPromise<UnifiedRoleDefinition> {
             return localVarFp.listPermissionRoleDefinitions(options).then((request) => request(axios, basePath));
         },
     };
@@ -9703,7 +9703,7 @@ export const TagsApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assignTags(tagAssignment?: TagAssignment, options?: any): AxiosPromise<void> {
+        assignTags(tagAssignment?: TagAssignment, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.assignTags(tagAssignment, options).then((request) => request(axios, basePath));
         },
         /**
@@ -9712,7 +9712,7 @@ export const TagsApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTags(options?: any): AxiosPromise<CollectionOfTags> {
+        getTags(options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfTags> {
             return localVarFp.getTags(options).then((request) => request(axios, basePath));
         },
         /**
@@ -9722,7 +9722,7 @@ export const TagsApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        unassignTags(tagUnassignment?: TagUnassignment, options?: any): AxiosPromise<void> {
+        unassignTags(tagUnassignment?: TagUnassignment, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.unassignTags(tagUnassignment, options).then((request) => request(axios, basePath));
         },
     };
@@ -10049,7 +10049,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteUser(userId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+        deleteUser(userId: string, ifMatch?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteUser(userId, ifMatch, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10060,7 +10060,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exportPersonalData(userId: string, exportPersonalDataRequest?: ExportPersonalDataRequest, options?: any): AxiosPromise<void> {
+        exportPersonalData(userId: string, exportPersonalDataRequest?: ExportPersonalDataRequest, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.exportPersonalData(userId, exportPersonalDataRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10072,7 +10072,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUser(userId: string, $select?: Set<GetUserSelectEnum>, $expand?: Set<GetUserExpandEnum>, options?: any): AxiosPromise<User> {
+        getUser(userId: string, $select?: Set<GetUserSelectEnum>, $expand?: Set<GetUserExpandEnum>, options?: RawAxiosRequestConfig): AxiosPromise<User> {
             return localVarFp.getUser(userId, $select, $expand, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10083,7 +10083,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateUser(userId: string, userUpdate: UserUpdate, options?: any): AxiosPromise<User> {
+        updateUser(userId: string, userUpdate: UserUpdate, options?: RawAxiosRequestConfig): AxiosPromise<User> {
             return localVarFp.updateUser(userId, userUpdate, options).then((request) => request(axios, basePath));
         },
     };
@@ -10387,7 +10387,7 @@ export const UserAppRoleAssignmentApiFactory = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userCreateAppRoleAssignments(userId: string, appRoleAssignment: AppRoleAssignment, options?: any): AxiosPromise<AppRoleAssignment> {
+        userCreateAppRoleAssignments(userId: string, appRoleAssignment: AppRoleAssignment, options?: RawAxiosRequestConfig): AxiosPromise<AppRoleAssignment> {
             return localVarFp.userCreateAppRoleAssignments(userId, appRoleAssignment, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10399,7 +10399,7 @@ export const UserAppRoleAssignmentApiFactory = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userDeleteAppRoleAssignments(userId: string, appRoleAssignmentId: string, ifMatch?: string, options?: any): AxiosPromise<void> {
+        userDeleteAppRoleAssignments(userId: string, appRoleAssignmentId: string, ifMatch?: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.userDeleteAppRoleAssignments(userId, appRoleAssignmentId, ifMatch, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10409,7 +10409,7 @@ export const UserAppRoleAssignmentApiFactory = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userListAppRoleAssignments(userId: string, options?: any): AxiosPromise<CollectionOfAppRoleAssignments> {
+        userListAppRoleAssignments(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfAppRoleAssignments> {
             return localVarFp.userListAppRoleAssignments(userId, options).then((request) => request(axios, basePath));
         },
     };
@@ -10630,7 +10630,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createUser(user: User, options?: any): AxiosPromise<User> {
+        createUser(user: User, options?: RawAxiosRequestConfig): AxiosPromise<User> {
             return localVarFp.createUser(user, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10644,7 +10644,7 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listUsers($search?: string, $filter?: string, $orderby?: Set<ListUsersOrderbyEnum>, $select?: Set<ListUsersSelectEnum>, $expand?: Set<ListUsersExpandEnum>, options?: any): AxiosPromise<CollectionOfUser> {
+        listUsers($search?: string, $filter?: string, $orderby?: Set<ListUsersOrderbyEnum>, $select?: Set<ListUsersSelectEnum>, $expand?: Set<ListUsersExpandEnum>, options?: RawAxiosRequestConfig): AxiosPromise<CollectionOfUser> {
             return localVarFp.listUsers($search, $filter, $orderby, $select, $expand, options).then((request) => request(axios, basePath));
         },
     };
