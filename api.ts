@@ -2178,6 +2178,19 @@ export type SharingLinkType = typeof SharingLinkType[keyof typeof SharingLinkTyp
 
 
 /**
+ * Provides the last successful sign-in attempt for a user
+ * @export
+ * @interface SignInActivity
+ */
+export interface SignInActivity {
+    /**
+     * The date and time of the last successful sign-in for the user.
+     * @type {string}
+     * @memberof SignInActivity
+     */
+    'lastSuccessfulSignInDateTime'?: string;
+}
+/**
  * If the current item is also available as a special folder, this facet is returned. Read-only
  * @export
  * @interface SpecialFolder
@@ -2473,6 +2486,12 @@ export interface User {
      * @memberof User
      */
     'preferredLanguage'?: string;
+    /**
+     * 
+     * @type {SignInActivity}
+     * @memberof User
+     */
+    'signInActivity'?: SignInActivity;
 }
 /**
  * Represents updates to an Active Directory user object.
@@ -2570,6 +2589,12 @@ export interface UserUpdate {
      * @memberof UserUpdate
      */
     'preferredLanguage'?: string;
+    /**
+     * 
+     * @type {SignInActivity}
+     * @memberof UserUpdate
+     */
+    'signInActivity'?: SignInActivity;
 }
 /**
  * The video resource groups video-related data items into a single structure.  If a driveItem has a non-null video facet, the item represents a video file. The properties of the video resource are populated by extracting metadata from the file. 
