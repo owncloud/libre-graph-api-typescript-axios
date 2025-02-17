@@ -1144,7 +1144,7 @@ export interface EducationClass {
      * @type {string}
      * @memberof EducationClass
      */
-    'displayName': string;
+    'displayName'?: string;
     /**
      * Users and groups that are members of this group. HTTP Methods: GET (supported for all groups), Nullable. Supports $expand.
      * @type {Array<User>}
@@ -1162,7 +1162,7 @@ export interface EducationClass {
      * @type {string}
      * @memberof EducationClass
      */
-    'classification': EducationClassClassificationEnum;
+    'classification'?: EducationClassClassificationEnum;
     /**
      * An external unique ID for the class
      * @type {string}
