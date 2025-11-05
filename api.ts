@@ -1299,6 +1299,12 @@ export interface EducationUser {
      * @memberof EducationUser
      */
     'userType'?: string;
+    /**
+     * A unique identifier for the user assigned by the school or institution.
+     * @type {string}
+     * @memberof EducationUser
+     */
+    'externalID'?: string;
 }
 /**
  * 
