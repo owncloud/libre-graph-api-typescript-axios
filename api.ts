@@ -2498,6 +2498,12 @@ export interface User {
      * @memberof User
      */
     'signInActivity'?: SignInActivity;
+    /**
+     * A unique identifier assigned to the user by the organization.
+     * @type {string}
+     * @memberof User
+     */
+    'externalID'?: string;
 }
 /**
  * Represents updates to an Active Directory user object.
@@ -2601,6 +2607,12 @@ export interface UserUpdate {
      * @memberof UserUpdate
      */
     'signInActivity'?: SignInActivity;
+    /**
+     * A unique identifier assigned to the user by the organization.
+     * @type {string}
+     * @memberof UserUpdate
+     */
+    'externalID'?: string;
 }
 /**
  * The video resource groups video-related data items into a single structure.  If a driveItem has a non-null video facet, the item represents a video file. The properties of the video resource are populated by extracting metadata from the file. 
