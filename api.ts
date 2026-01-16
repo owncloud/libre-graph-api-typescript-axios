@@ -1576,6 +1576,25 @@ export interface Image {
     'width'?: number;
 }
 /**
+ * An oCIS instance that the user is either a member or a guest of.
+ * @export
+ * @interface Instance
+ */
+export interface Instance {
+    /**
+     * The URL of the oCIS instance.
+     * @type {string}
+     * @memberof Instance
+     */
+    'url'?: string;
+    /**
+     * Whether the instance is the user\'s primary instance.
+     * @type {boolean}
+     * @memberof Instance
+     */
+    'primary'?: boolean;
+}
+/**
  * 
  * @export
  * @interface ItemReference
@@ -2504,6 +2523,18 @@ export interface User {
      * @memberof User
      */
     'externalID'?: string;
+    /**
+     * A unique reference to the user. This is used to query the user from a different oCIS instance connected to the same identity provider.
+     * @type {string}
+     * @memberof User
+     */
+    'crossInstanceReference'?: string;
+    /**
+     * oCIS instances that the user is either a member or a guest of.
+     * @type {Array<Instance>}
+     * @memberof User
+     */
+    'instances'?: Array<Instance>;
 }
 /**
  * Represents updates to an Active Directory user object.
@@ -2613,6 +2644,18 @@ export interface UserUpdate {
      * @memberof UserUpdate
      */
     'externalID'?: string;
+    /**
+     * A unique reference to the user. This is used to query the user from a different oCIS instance connected to the same identity provider.
+     * @type {string}
+     * @memberof UserUpdate
+     */
+    'crossInstanceReference'?: string;
+    /**
+     * oCIS instances that the user is either a member or a guest of.
+     * @type {Array<Instance>}
+     * @memberof UserUpdate
+     */
+    'instances'?: Array<Instance>;
 }
 /**
  * The video resource groups video-related data items into a single structure.  If a driveItem has a non-null video facet, the item represents a video file. The properties of the video resource are populated by extracting metadata from the file. 
