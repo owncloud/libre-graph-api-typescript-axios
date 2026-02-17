@@ -1586,13 +1586,13 @@ export interface Instance {
      * @type {string}
      * @memberof Instance
      */
-    'url'?: string;
+    'url': string;
     /**
      * Whether the instance is the user\'s primary instance.
      * @type {boolean}
      * @memberof Instance
      */
-    'primary'?: boolean;
+    'primary': boolean;
 }
 /**
  * 
