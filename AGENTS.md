@@ -1,4 +1,4 @@
-# agents.md -- Libre Graph API TypeScript/Axios Client
+# AGENTS.md -- Libre Graph API TypeScript/Axios Client
 
 ## Repository Overview
 
